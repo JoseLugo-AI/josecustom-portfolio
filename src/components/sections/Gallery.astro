@@ -1,0 +1,25 @@
+---
+interface Props {
+  data: {
+    heading?: string;
+    images: { src: string; alt: string }[];
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section class="py-20 md:py-28 bg-secondary/20">
+  <div class="max-w-7xl mx-auto px-6">
+    {data.heading && (
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 text-center">{data.heading}</h2>
+    )}
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {data.images.map(img => (
+        <div class="overflow-hidden rounded-lg aspect-square">
+          <img src={img.src} alt={img.alt} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

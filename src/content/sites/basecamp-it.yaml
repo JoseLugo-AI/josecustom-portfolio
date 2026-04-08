@@ -1,0 +1,89 @@
+name: "Basecamp IT Solutions"
+slug: "basecamp-it"
+tagline: "Your tech. Handled."
+neighborhood: "Lake Nona"
+address: "9801 Lake Nona Blvd, Orlando, FL 32827"
+phone: "(407) 555-9283"
+email: "support@basecampit.com"
+
+theme:
+  primary: "#0A2540"
+  secondary: "#E3ECF3"
+  accent: "#00A67E"
+  bg: "#F8FAFB"
+  text: "#1A2B3C"
+  navBg: "#FFFFFF"
+  fontHeading: "'Plus Jakarta Sans', sans-serif"
+  fontBody: "'IBM Plex Sans', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+
+hero:
+  variant: "gradient"
+  headline: "Your Tech. Handled."
+  subheadline: "Managed IT support for small businesses in Lake Nona and greater Orlando. Flat-rate plans, same-day response, no jargon."
+  image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80"
+  ctaText: "Get a Free Assessment"
+  ctaHref: "#contact"
+
+nav:
+  variant: "classic"
+  links:
+    - label: "Services"
+      href: "#services"
+    - label: "Why Us"
+      href: "#features"
+    - label: "About"
+      href: "#about"
+    - label: "Contact"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "What We Handle"
+      services:
+        - name: "Managed IT Support"
+          description: "Helpdesk, monitoring, patching, and backups. One number to call, one team that knows your systems. Flat monthly rate, no surprises."
+        - name: "Network Design & Security"
+          description: "Firewall configuration, VPN setup, endpoint protection, and security audits. Built for businesses that can't afford a breach."
+        - name: "Cloud Migration"
+          description: "Microsoft 365, Azure, and Google Workspace migrations done right. We handle the move so your team doesn't skip a beat."
+        - name: "Compliance Consulting"
+          description: "HIPAA, SOC 2, and PCI readiness assessments. We help healthcare practices and professional firms meet requirements without the overhead."
+
+  - type: "features"
+    data:
+      heading: "Why Businesses Choose Us"
+      features:
+        - title: "Same-Day Response"
+          description: "Submit a ticket, get a human within hours. Not days. Not 'we'll get back to you.'"
+          icon: "clock"
+        - title: "Flat-Rate Pricing"
+          description: "One monthly number. No per-incident charges, no surprise bills. Budget with confidence."
+          icon: "check"
+        - title: "No Jargon"
+          description: "We explain what's happening in plain English. You make informed decisions, not confused ones."
+          icon: "shield"
+        - title: "Local Team"
+          description: "Our technicians are in Orlando. When on-site is needed, we're there -- not dispatching from another state."
+          icon: "users"
+
+  - type: "about"
+    data:
+      heading: "About Basecamp"
+      bio: "Basecamp IT serves small and mid-size businesses in the Lake Nona, Medical City, and greater Orlando area. Founded by Alex Navarro, a former hospital IT director who got tired of watching small practices get overcharged by big MSPs for basic support.\n\nWe keep it simple: flat-rate monthly plans, same-day response, no jargon. Our specialty is healthcare and professional services firms that need real security, not just antivirus."
+      ownerName: "Alex Navarro"
+      ownerTitle: "Founder & CEO"
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "AI Helpdesk Triage"
+      description: "Support tickets are automatically categorized by severity, routed to the right technician, and drafted with an initial response -- all before a human touches them. Faster resolution, fewer tickets falling through the cracks."
+
+  - type: "contact"
+    data:
+      heading: "Let's Talk"
+      subheading: "Free IT assessment for businesses in the Orlando area. No obligation, no sales pitch."

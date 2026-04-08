@@ -1,0 +1,89 @@
+name: "The Eola Parlor"
+slug: "eola-parlor"
+tagline: "Your night. Our room."
+neighborhood: "Thornton Park"
+address: "720 E Washington St, Orlando, FL 32801"
+phone: "(407) 555-6820"
+email: "events@eolaparlor.com"
+
+theme:
+  primary: "#2C1810"
+  secondary: "#EDE5DB"
+  accent: "#B07D4F"
+  bg: "#FAF7F2"
+  text: "#2C1810"
+  navBg: "#FAF7F2"
+  fontHeading: "'Fraunces', serif"
+  fontBody: "'Outfit', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap"
+
+hero:
+  variant: "fullbleed"
+  headline: "Your Night. Our Room."
+  subheadline: "A renovated 1940s building two blocks from Lake Eola. Hardwood floors, exposed brick, and everything you need to host an unforgettable event."
+  image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1600&q=80"
+  ctaText: "Check Availability"
+  ctaHref: "#contact"
+
+nav:
+  variant: "centered"
+  links:
+    - label: "The Space"
+      href: "#gallery"
+    - label: "Events"
+      href: "#services"
+    - label: "About"
+      href: "#about"
+    - label: "Book"
+      href: "#contact"
+
+sections:
+  - type: "gallery"
+    data:
+      heading: "The Space"
+      images:
+        - src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80"
+          alt: "Main event hall with exposed brick"
+        - src: "https://images.unsplash.com/photo-1530023367847-a683933f4172?w=600&q=80"
+          alt: "Wedding reception setup"
+        - src: "https://images.unsplash.com/photo-1504275107785-4d09c5130396?w=600&q=80"
+          alt: "Bar area with warm lighting"
+        - src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80"
+          alt: "Corporate dinner setup"
+        - src: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&q=80"
+          alt: "Outdoor courtyard"
+        - src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80"
+          alt: "Evening event with guests"
+
+  - type: "services"
+    data:
+      heading: "What We Host"
+      services:
+        - name: "Private Events (40-120 Guests)"
+          description: "Full venue rental with flexible floor plans. Tables, chairs, linens, sound system, and a dedicated event coordinator included."
+        - name: "Corporate Dinners & Offsites"
+          description: "Board meetings, client dinners, team celebrations. AV setup, breakout areas, and catering coordination handled."
+        - name: "Wedding Receptions & Rehearsal Dinners"
+          description: "The backdrop your photographer will love. We work with your planner or provide our own coordinator."
+        - name: "Full-Service Bar & Catering Coordination"
+          description: "In-house bar service with custom cocktail menus. We'll connect you with our preferred catering partners or work with yours."
+
+  - type: "about"
+    data:
+      heading: "The Story"
+      bio: "The Eola Parlor is a renovated 1940s building two blocks from Lake Eola in Thornton Park. We kept the original hardwood floors and exposed brick and added the sound, lighting, and kitchen infrastructure to host real events.\n\nWe're not a banquet hall -- we're a room with character that your guests will actually remember. Owners David and Nina Chen handle every booking personally."
+      ownerName: "David & Nina Chen"
+      ownerTitle: "Owners"
+      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "24/7 Booking Assistant"
+      description: "Inquiries come in at all hours. Our AI assistant responds instantly with availability, pricing packages, and venue specs -- then hands off to our team for the personal touch. No inquiry sits unanswered overnight."
+
+  - type: "contact"
+    data:
+      heading: "Plan Your Event"
+      subheading: "Tell us your date and guest count. We'll get back to you within 24 hours."

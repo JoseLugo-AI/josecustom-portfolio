@@ -1,0 +1,100 @@
+name: "Iron & Asphalt Customs"
+slug: "iron-asphalt"
+tagline: "Built. Not bought."
+neighborhood: "SoDo"
+address: "1842 S Division Ave, Orlando, FL 32805"
+phone: "(407) 555-7463"
+email: "builds@ironandasphalt.com"
+
+theme:
+  primary: "#1A1A1A"
+  secondary: "#E8E0D4"
+  accent: "#D4382C"
+  bg: "#F0EBE3"
+  text: "#1A1A1A"
+  navBg: "#1A1A1A"
+  fontHeading: "'Oswald', sans-serif"
+  fontBody: "'Barlow', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap"
+
+hero:
+  variant: "gradient"
+  headline: "Built. Not Bought."
+  subheadline: "Custom motorcycle builds, restorations, and performance tuning out of our SoDo garage. No subcontractors, no runaround."
+  image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80"
+  ctaText: "Get a Quote"
+  ctaHref: "#contact"
+
+nav:
+  variant: "classic"
+  links:
+    - label: "Services"
+      href: "#services"
+    - label: "About"
+      href: "#about"
+    - label: "Gallery"
+      href: "#gallery"
+    - label: "Contact"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "What We Do"
+      services:
+        - name: "Custom Motorcycle Builds & Restorations"
+          description: "Ground-up builds and full restorations. Cafe racers, bobbers, scramblers, or whatever you've got in mind. Your vision, our hands."
+        - name: "Performance Tuning & Dyno Testing"
+          description: "Carburetor tuning, ECU mapping, exhaust upgrades, and dyno runs to prove the numbers. We tune for real-world riding, not just peak numbers."
+        - name: "Paint & Bodywork"
+          description: "Custom paint jobs, tank art, and bodywork -- all done in-house. No farming out, no waiting on third parties."
+        - name: "Maintenance & Repair"
+          description: "Oil changes to full engine rebuilds. All makes, all models. Bring it in, we'll tell you straight what it needs."
+
+  - type: "gallery"
+    data:
+      heading: "Recent Builds"
+      images:
+        - src: "https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=600&q=80"
+          alt: "Custom cafe racer build"
+        - src: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&q=80"
+          alt: "Engine detail work"
+        - src: "https://images.unsplash.com/photo-1525160354320-d8e92641c563?w=600&q=80"
+          alt: "Motorcycle in workshop"
+        - src: "https://images.unsplash.com/photo-1580310614729-ccd69652491d?w=600&q=80"
+          alt: "Custom paint job"
+        - src: "https://images.unsplash.com/photo-1558980664-769d59546b3d?w=600&q=80"
+          alt: "Garage workspace"
+        - src: "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=600&q=80"
+          alt: "Finished custom motorcycle"
+
+  - type: "about"
+    data:
+      heading: "The Shop"
+      bio: "Iron & Asphalt has been building and restoring bikes and cars out of our SoDo garage since 2016. Owner Marco Reyes spent 10 years turning wrenches at dealerships before going independent.\n\nWe do everything in-house -- fabrication, paint, electrical, engine work. No subcontractors, no runaround. You talk to the person who's building your machine."
+      ownerName: "Marco Reyes"
+      ownerTitle: "Owner & Lead Builder"
+      image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Photo Estimate Tool"
+      description: "Customers upload photos of their vehicle, and our system generates a preliminary repair estimate with parts pricing before they ever step into the shop. Faster quotes, fewer wasted trips."
+
+  - type: "testimonials"
+    data:
+      heading: "From Our Clients"
+      testimonials:
+        - quote: "Marco took my grandfather's old Honda from a rusted frame to a showroom piece. The attention to detail is insane."
+          name: "Carlos R."
+          role: "Restoration client"
+        - quote: "Honest shop. They told me what I actually needed, not what would run up the bill. Hard to find that."
+          name: "James K."
+          role: "Regular maintenance"
+
+  - type: "contact"
+    data:
+      heading: "Bring It In"
+      subheading: "Walk-ins welcome for estimates. Custom builds start with a conversation."

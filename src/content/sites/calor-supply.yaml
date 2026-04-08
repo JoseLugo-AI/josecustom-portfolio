@@ -1,0 +1,87 @@
+name: "Calor Supply Co."
+slug: "calor-supply"
+tagline: "Heat with a point."
+neighborhood: "Mills 50"
+address: "1420 N Mills Ave, Orlando, FL 32803"
+phone: "(407) 555-3847"
+email: "hello@calorsupply.com"
+
+theme:
+  primary: "#8B1A1A"
+  secondary: "#FFF3E0"
+  accent: "#E65100"
+  bg: "#FFFDF8"
+  text: "#2D1810"
+  navBg: "#FFFDF8"
+  fontHeading: "'Archivo Black', sans-serif"
+  fontBody: "'Lato', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+
+hero:
+  variant: "split"
+  headline: "Heat with a Point."
+  subheadline: "Small-batch hot sauces made in Orlando. No extract, no gimmick flavors. Just peppers, heat, and something worth putting on your food."
+  image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=1600&q=80"
+  ctaText: "Shop Sauces"
+  ctaHref: "#services"
+
+nav:
+  variant: "classic"
+  links:
+    - label: "Sauces"
+      href: "#services"
+    - label: "About"
+      href: "#about"
+    - label: "Wholesale"
+      href: "#features"
+    - label: "Order"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "The Lineup"
+      services:
+        - name: "Signature Hot Sauces (6 Varieties)"
+          description: "From our everyday habanero-mango to the limited-edition Carolina Reaper blend. Every bottle is small-batch, cooked in our Mills 50 kitchen."
+        - name: "Online Store & Nationwide Shipping"
+          description: "Order direct from us. Flat-rate shipping anywhere in the US. Gift packs and subscription boxes available."
+        - name: "Wholesale for Restaurants & Retailers"
+          description: "Currently in 40+ stores across Central Florida. Custom volume pricing for restaurants, specialty shops, and grocery chains."
+        - name: "Custom Private-Label Sauces"
+          description: "Want your restaurant's own branded hot sauce? We'll develop the recipe and produce it. Your label, our kitchen."
+
+  - type: "gallery"
+    data:
+      heading: "From the Kitchen"
+      images:
+        - src: "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?w=600&q=80"
+          alt: "Hot peppers ready for processing"
+        - src: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80"
+          alt: "Sauce bottling process"
+        - src: "https://images.unsplash.com/photo-1536304993881-460587ad3baf?w=600&q=80"
+          alt: "Fresh chili peppers"
+        - src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80"
+          alt: "Food with hot sauce"
+        - src: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=600&q=80"
+          alt: "Farmers market booth"
+        - src: "https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=600&q=80"
+          alt: "Peppers growing in garden"
+
+  - type: "about"
+    data:
+      heading: "Our Story"
+      bio: "Calor started at the Mills 50 farmers market in 2021 with one habanero-mango sauce and a folding table. Three years later we're in 40+ stores across Central Florida and shipping nationwide.\n\nEvery batch is cooked in our commercial kitchen on Virginia Drive. We grow our own peppers when the season allows and source the rest from Florida farms. No extract, no gimmick flavors, no skull on the label."
+      image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Smart Product Descriptions & Inventory Sync"
+      description: "Our system writes product copy in our brand voice for every new sauce and seasonal release, then syncs inventory counts across Shopify, Amazon, and our wholesale portal in real time. One update, everywhere at once."
+
+  - type: "contact"
+    data:
+      heading: "Get in Touch"
+      subheading: "Wholesale inquiries, custom label requests, or just want to say hey -- drop us a line."

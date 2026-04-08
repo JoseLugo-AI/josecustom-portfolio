@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
+
+const sites = await getCollection('sites');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | josecustom.ai</title>
+    <meta name="description" content="AI-Ready websites built for Orlando businesses by josecustom.ai" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#0a0a0a] text-white min-h-screen" style="font-family: 'Inter', sans-serif;">
+    <header class="max-w-7xl mx-auto px-6 py-12">
+      <div class="flex items-center justify-between mb-4">
+        <a href="https://josecustom.ai" class="text-[#1E90FF] text-sm font-medium hover:underline">&larr; josecustom.ai</a>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Portfolio</h1>
+      <p class="text-white/60 text-lg max-w-2xl">
+        AI-Ready websites built for Orlando businesses. Each site includes custom AI integration architecture. Starting at $4,500.
+      </p>
+    </header>
+    <main class="max-w-7xl mx-auto px-6 pb-24">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sites.map(s => (
+          <a href={`/sites/${s.id}/`} class="group block bg-white/5 rounded-xl overflow-hidden border border-white/10 hover:border-[#1E90FF]/50 transition-all">
+            <div class="aspect-video overflow-hidden">
+              <img src={s.data.hero.image} alt={s.data.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <h2 class="text-lg font-semibold mb-1">{s.data.name}</h2>
+              <p class="text-white/50 text-sm mb-3">{s.data.neighborhood} &middot; Orlando, FL</p>
+              <p class="text-white/40 text-xs">{s.data.tagline}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </main>
+    <footer class="max-w-7xl mx-auto px-6 py-8 border-t border-white/10">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/30 text-sm">Want a site like these? <a href="https://josecustom.ai/websites" class="text-[#1E90FF] hover:underline">Starting at $4,500</a></p>
+        <p class="text-white/20 text-xs">&copy; 2026 josecustom.ai</p>
+      </div>
+    </footer>
+  </body>
+</html>

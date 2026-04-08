@@ -1,0 +1,100 @@
+name: "Puente Learning Academy"
+slug: "puente-learning"
+tagline: "Two languages. One future."
+neighborhood: "Conway"
+address: "4510 S Conway Rd, Orlando, FL 32812"
+phone: "(407) 555-6241"
+email: "info@puentelearning.com"
+
+theme:
+  primary: "#1B3A5C"
+  secondary: "#E8F0F2"
+  accent: "#E8963E"
+  bg: "#FAFCFD"
+  text: "#1C2D3F"
+  navBg: "#FAFCFD"
+  fontHeading: "'Poppins', sans-serif"
+  fontBody: "'Open Sans', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap"
+
+hero:
+  variant: "split"
+  headline: "Two Languages. One Future."
+  subheadline: "Bilingual tutoring for K-8 students in Conway and East Orlando. Strong in English. Strong in Spanish. Strong in both."
+  image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80"
+  ctaText: "Enroll Your Child"
+  ctaHref: "#contact"
+
+nav:
+  variant: "classic"
+  links:
+    - label: "Programs"
+      href: "#services"
+    - label: "About"
+      href: "#about"
+    - label: "Results"
+      href: "#features"
+    - label: "Contact"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "Our Programs"
+      services:
+        - name: "After-School Tutoring (K-8)"
+          description: "Monday through Thursday, 3:30-6pm. Reading, math, and writing instruction in English and Spanish. Small groups, credentialed bilingual tutors."
+        - name: "Reading & Math Intervention"
+          description: "Targeted support for students performing below grade level. Structured programs that close gaps without making kids feel behind."
+        - name: "Summer Enrichment Camps"
+          description: "Six-week summer program combining academic reinforcement with hands-on STEM projects. Keeps skills sharp without feeling like school."
+        - name: "Parent Workshops"
+          description: "Monthly workshops helping parents navigate the school system, understand report cards, and advocate for their children. In Spanish and English."
+
+  - type: "features"
+    data:
+      heading: "Why Families Choose Us"
+      features:
+        - title: "Bilingual Tutors"
+          description: "Every tutor speaks English and Spanish fluently. Instruction happens in both languages naturally."
+          icon: "users"
+        - title: "Credentialed Staff"
+          description: "All tutors hold teaching credentials or are completing education degrees at local universities."
+          icon: "check"
+        - title: "From the Community"
+          description: "Our team lives in the neighborhoods we serve. We understand the families because we are the families."
+          icon: "heart"
+
+  - type: "about"
+    data:
+      heading: "Our Story"
+      bio: "Puente was founded by Carmen Delgado, a former Orange County Public Schools teacher who saw too many bilingual kids falling through the cracks.\n\nWe work with families in Conway, Azalea Park, and Meadow Woods -- mostly first- and second-generation Latino households where parents want their kids strong in both languages. Our tutors are bilingual, credentialed, and from the community."
+      ownerName: "Carmen Delgado"
+      ownerTitle: "Founder & Director"
+      image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Automated Progress Reports"
+      description: "Our system tracks each student's weekly performance and generates bilingual progress reports sent directly to parents. English and Spanish, every Friday, no extra admin time for tutors."
+
+  - type: "testimonials"
+    data:
+      heading: "From Our Families"
+      testimonials:
+        - quote: "My daughter went from dreading reading to asking for books. Carmen and her team changed everything for us."
+          name: "Rosa M."
+          role: "Parent, Conway"
+        - quote: "The bilingual approach means my son doesn't have to choose. He's getting stronger in both languages at the same time."
+          name: "Eduardo S."
+          role: "Parent, Azalea Park"
+        - quote: "The parent workshops helped me understand how to talk to my child's teacher. That alone was worth it."
+          name: "Lucia T."
+          role: "Parent, Meadow Woods"
+
+  - type: "contact"
+    data:
+      heading: "Enroll Your Child"
+      subheading: "Walk-ins welcome. We'll find the right program for your child."

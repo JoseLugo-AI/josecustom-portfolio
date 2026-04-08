@@ -1,0 +1,32 @@
+---
+interface Props {
+  data: {
+    heading?: string;
+    testimonials: { quote: string; name: string; role?: string }[];
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section class="py-20 md:py-28 bg-bg">
+  <div class="max-w-7xl mx-auto px-6">
+    {data.heading && (
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-12 text-center">{data.heading}</h2>
+    )}
+    <div class="grid md:grid-cols-{data.testimonials.length > 2 ? '3' : '2'} gap-8">
+      {data.testimonials.map(t => (
+        <div class="p-8 bg-secondary/20 rounded-lg">
+          <svg class="h-8 w-8 text-accent/30 mb-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z"/>
+          </svg>
+          <p class="text-text/70 font-body leading-relaxed mb-6 italic">"{t.quote}"</p>
+          <div>
+            <p class="font-heading font-semibold text-primary text-sm">{t.name}</p>
+            {t.role && <p class="text-text/50 text-xs font-body">{t.role}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

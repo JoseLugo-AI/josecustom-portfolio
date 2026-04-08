@@ -1,0 +1,37 @@
+---
+interface Props {
+  data: {
+    heading?: string;
+    bio: string;
+    image?: string;
+    ownerName?: string;
+    ownerTitle?: string;
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section class="py-20 md:py-28 bg-bg">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      {data.image && (
+        <div class="rounded-lg overflow-hidden">
+          <img src={data.image} alt={data.ownerName || 'About'} class="w-full h-[400px] object-cover" loading="lazy" />
+        </div>
+      )}
+      <div class={!data.image ? 'md:col-span-2 max-w-3xl mx-auto' : ''}>
+        {data.heading && (
+          <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">{data.heading}</h2>
+        )}
+        <p class="text-text/70 font-body leading-relaxed text-lg whitespace-pre-line">{data.bio}</p>
+        {data.ownerName && (
+          <div class="mt-8 pt-6 border-t border-primary/10">
+            <p class="font-heading font-semibold text-primary">{data.ownerName}</p>
+            {data.ownerTitle && <p class="text-sm text-text/50 font-body">{data.ownerTitle}</p>}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

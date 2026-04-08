@@ -1,0 +1,103 @@
+name: "Stem & Table"
+slug: "stem-table"
+tagline: "Seasonal. Intentional. Yours."
+neighborhood: "Winter Park"
+address: "287 W Fairbanks Ave, Winter Park, FL 32789"
+phone: "(407) 555-3192"
+email: "flowers@stemandtable.com"
+
+theme:
+  primary: "#2D4A3E"
+  secondary: "#F2EDE8"
+  accent: "#9B6B4A"
+  bg: "#FDFAF6"
+  text: "#2C3E36"
+  navBg: "#FDFAF6"
+  fontHeading: "'Cormorant Garamond', serif"
+  fontBody: "'Nunito Sans', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600&display=swap"
+
+hero:
+  variant: "split"
+  headline: "Seasonal. Intentional. Yours."
+  subheadline: "Boutique floral design for Central Florida weddings and events. We work with what's in season because that's what looks best."
+  image: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1600&q=80"
+  ctaText: "Plan Your Flowers"
+  ctaHref: "#contact"
+
+nav:
+  variant: "centered"
+  links:
+    - label: "Services"
+      href: "#services"
+    - label: "Gallery"
+      href: "#gallery"
+    - label: "About"
+      href: "#about"
+    - label: "Contact"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "What We Design"
+      services:
+        - name: "Wedding Floral Design"
+          description: "Ceremony arches, reception centerpieces, bouquets, boutonnieres, and personal flowers. We limit ourselves to one wedding per weekend so every event gets our full attention."
+        - name: "Event Installations & Centerpieces"
+          description: "Corporate events, galas, and private parties. Large-scale installations or intimate table arrangements -- scaled to your space and budget."
+        - name: "Funeral & Memorial Arrangements"
+          description: "Thoughtful, beautiful arrangements for difficult moments. Same-day delivery available for Orlando and Winter Park."
+        - name: "Weekly Fresh Arrangements"
+          description: "Standing orders for restaurants, hotels, and offices. Fresh seasonal flowers delivered weekly, arranged on-site."
+
+  - type: "gallery"
+    data:
+      heading: "Recent Work"
+      images:
+        - src: "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&q=80"
+          alt: "Wedding ceremony arch with flowers"
+        - src: "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=600&q=80"
+          alt: "Bridal bouquet with seasonal flowers"
+        - src: "https://images.unsplash.com/photo-1522057306606-8d84ae561c1f?w=600&q=80"
+          alt: "Reception table centerpiece"
+        - src: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=600&q=80"
+          alt: "Floral arrangement in progress"
+        - src: "https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=600&q=80"
+          alt: "Garden-style arrangement"
+        - src: "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80"
+          alt: "Event floral installation"
+
+  - type: "about"
+    data:
+      heading: "About the Studio"
+      bio: "Stem & Table is a boutique floral studio on Fairbanks Avenue in Winter Park. Owner Lauren Hartwell has been designing for Central Florida weddings since 2017, working primarily with seasonal and locally grown flowers.\n\nWe limit ourselves to one wedding per weekend so every event gets our full attention. If it's not in season, we'll tell you -- and suggest something better."
+      ownerName: "Lauren Hartwell"
+      ownerTitle: "Owner & Lead Designer"
+      image: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Seasonal Availability & Instant Quoting"
+      description: "Select your colors, style, and wedding date. Our system shows what's in season, suggests arrangement options, and generates a ballpark quote before your first consultation. No guesswork, no sticker shock."
+
+  - type: "testimonials"
+    data:
+      heading: "Kind Words"
+      testimonials:
+        - quote: "Lauren understood exactly what we wanted before we could even articulate it. The flowers were the best part of our wedding."
+          name: "Sarah & Tom B."
+          role: "Wedding clients"
+        - quote: "We use Stem & Table for our restaurant's weekly arrangements. Always fresh, always perfect, never late."
+          name: "Chef Daniel M."
+          role: "Thornton Park restaurant"
+        - quote: "She told us the peonies we wanted wouldn't be in season for our date and suggested ranunculus instead. She was right -- they were stunning."
+          name: "Ashley R."
+          role: "Spring wedding"
+
+  - type: "contact"
+    data:
+      heading: "Let's Talk Flowers"
+      subheading: "Consultations are complimentary. Tell us about your event and we'll start building your vision."

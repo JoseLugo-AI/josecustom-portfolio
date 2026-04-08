@@ -1,0 +1,97 @@
+name: "Southpaw Combat Club"
+slug: "southpaw-combat"
+tagline: "Show up. Get better."
+neighborhood: "College Park"
+address: "2240 Edgewater Dr, Orlando, FL 32804"
+phone: "(407) 555-4927"
+email: "train@southpawcombat.com"
+
+theme:
+  primary: "#0F0F0F"
+  secondary: "#1E1E2E"
+  accent: "#7C3AED"
+  bg: "#F5F0FF"
+  text: "#1A1A2E"
+  navBg: "#0F0F0F"
+  fontHeading: "'Bebas Neue', sans-serif"
+  fontBody: "'Inter', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+
+hero:
+  variant: "gradient"
+  headline: "Show Up. Get Better."
+  subheadline: "Brazilian Jiu-Jitsu, Muay Thai, and strength training in College Park. No contracts, no sales pitch. First week is free."
+  image: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&q=80"
+  ctaText: "Start Your Free Week"
+  ctaHref: "#contact"
+
+nav:
+  variant: "classic"
+  links:
+    - label: "Programs"
+      href: "#services"
+    - label: "About"
+      href: "#about"
+    - label: "Schedule"
+      href: "#features"
+    - label: "Join"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "Programs"
+      services:
+        - name: "Brazilian Jiu-Jitsu"
+          description: "Gi and no-gi classes, all levels. Fundamentals class Tuesday/Thursday. Advanced rolling Monday/Wednesday/Friday. Competition team trains Saturday mornings."
+        - name: "Muay Thai Kickboxing"
+          description: "Striking, clinch work, and pad rounds. Learn real technique, not cardio kickboxing. Beginners welcome -- we all started somewhere."
+        - name: "Strength & Conditioning"
+          description: "Functional fitness programmed for fighters and regular humans. Kettlebells, barbell work, bodyweight. No machines, no mirrors."
+        - name: "Competition Team"
+          description: "For members who want to test themselves. Regular team training, tournament prep, and travel support. You don't have to compete -- but the option's there."
+
+  - type: "features"
+    data:
+      heading: "What We Believe"
+      features:
+        - title: "No Contracts"
+          description: "Month-to-month. Stay because you want to, not because you're locked in."
+          icon: "check"
+        - title: "No Ego"
+          description: "Leave it at the door. We train hard but we take care of each other."
+          icon: "shield"
+        - title: "Show Up Consistently"
+          description: "Three times a week changes everything. We'll hold you accountable."
+          icon: "calendar"
+
+  - type: "about"
+    data:
+      heading: "The Coach"
+      bio: "Southpaw opened in College Park in 2020 with 12 members and a rented warehouse. Coach Andre Watts -- former Army combatives instructor, brown belt in BJJ -- built the gym on one principle: train hard, leave your ego at the door.\n\nWe're at 150 members now across all programs. No contracts, no sales pitch. First week is free. You'll know if it's for you."
+      ownerName: "Andre Watts"
+      ownerTitle: "Head Coach & Owner"
+      image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Smart Programming & Member Insights"
+      description: "Our system generates weekly class programming based on training cycles and tracks member attendance patterns. If someone stops showing up, we know before they cancel -- so we can reach out and bring them back."
+
+  - type: "testimonials"
+    data:
+      heading: "From the Mat"
+      testimonials:
+        - quote: "I walked in overweight and out of shape. A year later I competed in my first tournament. Andre believed in me before I did."
+          name: "Mike P."
+          role: "White to blue belt"
+        - quote: "Best gym culture in Orlando. Everyone helps everyone. No tough-guy nonsense."
+          name: "Sara L."
+          role: "Muay Thai, 8 months"
+
+  - type: "contact"
+    data:
+      heading: "Come Train"
+      subheading: "First week free. No credit card, no commitment. Just show up."

@@ -1,0 +1,89 @@
+name: "Foreign Exchange Orlando"
+slug: "foreign-exchange"
+tagline: "Curated. Not mass-produced."
+neighborhood: "Mills 50"
+address: "1608 N Mills Ave, Orlando, FL 32803"
+phone: "(407) 555-2156"
+email: "shop@foreignexchangeorl.com"
+
+theme:
+  primary: "#0A0A0A"
+  secondary: "#1A1A1A"
+  accent: "#FF4D00"
+  bg: "#F5F5F0"
+  text: "#0A0A0A"
+  navBg: "#0A0A0A"
+  fontHeading: "'Space Grotesk', sans-serif"
+  fontBody: "'DM Sans', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap"
+
+hero:
+  variant: "fullbleed"
+  headline: "Curated. Not Mass-Produced."
+  subheadline: "Independent streetwear, vintage sneakers, and local artist collabs on Mills Ave. Everything in the store is hand-picked. If we wouldn't wear it, we don't stock it."
+  image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80"
+  ctaText: "Shop Online"
+  ctaHref: "#services"
+
+nav:
+  variant: "classic"
+  links:
+    - label: "Shop"
+      href: "#services"
+    - label: "About"
+      href: "#about"
+    - label: "Gallery"
+      href: "#gallery"
+    - label: "Contact"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "What We Carry"
+      services:
+        - name: "Curated Streetwear"
+          description: "Independent and international brands you won't find at the mall. Small-run Japanese labels, independent UK designers, and emerging domestic brands."
+        - name: "Vintage & Deadstock Sneakers"
+          description: "Authenticated pre-owned and deadstock kicks. We verify everything in-house. No fakes, no exceptions."
+        - name: "Local Artist Collabs & Exclusives"
+          description: "Limited releases designed with Orlando artists. Screen-printed tees, embroidered caps, and one-off pieces you can only get here."
+        - name: "Online Shop & Nationwide Shipping"
+          description: "Full catalog online with flat-rate shipping. New drops announced on Instagram before they hit the floor."
+
+  - type: "gallery"
+    data:
+      heading: "In Store"
+      images:
+        - src: "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80"
+          alt: "Sneaker wall display"
+        - src: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&q=80"
+          alt: "Clothing rack with streetwear"
+        - src: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80"
+          alt: "Store interior"
+        - src: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80"
+          alt: "Curated accessories"
+        - src: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600&q=80"
+          alt: "Vintage sneaker detail"
+        - src: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80"
+          alt: "Local collab t-shirt"
+
+  - type: "about"
+    data:
+      heading: "The Shop"
+      bio: "Foreign Exchange is an independent streetwear and sneaker shop on Mills Avenue. Owner Tariq Williams opened the store in 2021 after years of reselling online and at Orlando sneaker conventions.\n\nWe carry brands you won't find at the mall -- small-run Japanese labels, independent UK designers, and collabs with Orlando artists. Everything in the store is hand-picked. If we wouldn't wear it, we don't stock it."
+      ownerName: "Tariq Williams"
+      ownerTitle: "Owner & Buyer"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Style Recommendations & Drop Alerts"
+      description: "Our system learns what you like based on past purchases and browsing, then sends personalized alerts when new drops match your style. No spam, no generic newsletters -- just the pieces you'd actually want."
+
+  - type: "contact"
+    data:
+      heading: "Visit the Shop"
+      subheading: "Open Tuesday through Saturday, 11am to 7pm. Sunday 12-5. Closed Mondays."

@@ -1,0 +1,87 @@
+name: "Still Water Tattoo"
+slug: "still-water"
+tagline: "Permanent work. No rush."
+neighborhood: "Ivanhoe Village"
+address: "1827 N Orange Ave, Orlando, FL 32804"
+phone: "(407) 555-8104"
+email: "book@stillwatertattoo.com"
+
+theme:
+  primary: "#0D0D0D"
+  secondary: "#2A2A2A"
+  accent: "#B8860B"
+  bg: "#141414"
+  text: "#E8E0D4"
+  navBg: "#0D0D0D"
+  fontHeading: "'DM Serif Display', serif"
+  fontBody: "'Work Sans', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap"
+
+hero:
+  variant: "fullbleed"
+  headline: "Permanent Work. No Rush."
+  subheadline: "Custom tattoo design in Ivanhoe Village. Every piece starts with a conversation. We book 3-4 weeks out because we don't stack clients."
+  image: "https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=1600&q=80"
+  ctaText: "Book a Consultation"
+  ctaHref: "#contact"
+
+nav:
+  variant: "classic"
+  links:
+    - label: "Work"
+      href: "#gallery"
+    - label: "Artists"
+      href: "#about"
+    - label: "Services"
+      href: "#services"
+    - label: "Book"
+      href: "#contact"
+
+sections:
+  - type: "gallery"
+    data:
+      heading: "Recent Work"
+      images:
+        - src: "https://images.unsplash.com/photo-1590246814883-57c511e76228?w=600&q=80"
+          alt: "Fine line botanical tattoo"
+        - src: "https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=600&q=80"
+          alt: "Black and grey portrait work"
+        - src: "https://images.unsplash.com/photo-1598371839696-5c5bb1fed6e2?w=600&q=80"
+          alt: "Geometric sleeve detail"
+        - src: "https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=600&q=80"
+          alt: "Traditional style tattoo"
+        - src: "https://images.unsplash.com/photo-1542556398-95fb5b9f9304?w=600&q=80"
+          alt: "Watercolor style piece"
+        - src: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&q=80"
+          alt: "Minimalist line work"
+
+  - type: "services"
+    data:
+      heading: "Services"
+      services:
+        - name: "Custom Tattoo Design"
+          description: "All styles -- traditional, fine line, blackwork, watercolor, realism. Every piece is designed specifically for you. No flash walls, no walk-ins."
+        - name: "Cover-Ups & Reworks"
+          description: "Turning old or unwanted tattoos into something you're proud of. We'll assess what's possible and design around what's there."
+        - name: "Fine Art Prints"
+          description: "Original artwork from our artists available as prints. The studio doubles as a small gallery with rotating shows."
+        - name: "Private Bookings"
+          description: "Full-day sessions for larger pieces. Just you and your artist, no distractions."
+
+  - type: "about"
+    data:
+      heading: "The Artists"
+      bio: "Still Water is a two-artist studio on Orange Avenue in Ivanhoe Village. Artists Reina Torres and James Oku focus on custom work only.\n\nEvery piece starts with a consultation where we learn what you want and why. We book 3-4 weeks out because we don't stack clients. The studio doubles as a small gallery showing original work from local artists on a rotating basis."
+      image: "https://images.unsplash.com/photo-1598452963314-b09f397a5c48?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Visual Reference Builder"
+      description: "Describe your idea in words, and our tool generates a mood board with style references, color palettes, and composition options for your artist to work from. Better starting point, faster path to a design you love."
+
+  - type: "contact"
+    data:
+      heading: "Start the Conversation"
+      subheading: "Tell us what you're thinking. We'll get back to you within 48 hours with next steps."

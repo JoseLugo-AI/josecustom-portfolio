@@ -1,0 +1,101 @@
+name: "Masa Madre Bakehouse"
+slug: "masa-madre"
+tagline: "Scratch-made daily. No shortcuts."
+neighborhood: "Curry Ford"
+address: "3245 Curry Ford Rd, Orlando, FL 32806"
+phone: "(407) 555-2819"
+email: "hello@masamadre.com"
+
+theme:
+  primary: "#3D2B1F"
+  secondary: "#F5EDE3"
+  accent: "#C4632A"
+  bg: "#FFFBF5"
+  text: "#2C2420"
+  navBg: "#FFFBF5"
+  fontHeading: "'Playfair Display', serif"
+  fontBody: "'Source Sans 3', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600&display=swap"
+
+hero:
+  variant: "fullbleed"
+  headline: "Scratch-Made Daily. No Shortcuts."
+  subheadline: "Fresh bread, pastries, and custom cakes baked every morning on Curry Ford Road. If it's on the shelf, it was made today."
+  image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&q=80"
+  ctaText: "Order a Custom Cake"
+  ctaHref: "#contact"
+
+nav:
+  variant: "centered"
+  links:
+    - label: "Menu"
+      href: "#services"
+    - label: "About"
+      href: "#about"
+    - label: "Gallery"
+      href: "#gallery"
+    - label: "Contact"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "What We Bake"
+      services:
+        - name: "Fresh-Baked Bread & Pastries"
+          description: "Sourdough, ciabatta, brioche, croissants, and seasonal pastries. Daily rotation -- we bake what's right for the day, not what's left from yesterday."
+        - name: "Custom Cake Orders"
+          description: "Weddings, birthdays, and everything in between. Every cake is designed and decorated in-house. Two weeks notice for custom orders."
+        - name: "Catering Platters"
+          description: "Pastry trays, bread baskets, and dessert spreads for your office, event, or party. We deliver anywhere in East Orlando."
+        - name: "Weekend Brunch Service"
+          description: "Saturday and Sunday, 8am to 1pm. Fresh pastries, egg dishes, and our house-made jams. No reservations needed."
+
+  - type: "gallery"
+    data:
+      heading: "From Our Oven"
+      images:
+        - src: "https://images.unsplash.com/photo-1549931319-a545753467c8?w=600&q=80"
+          alt: "Fresh sourdough loaves"
+        - src: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=600&q=80"
+          alt: "Croissants on cooling rack"
+        - src: "https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=600&q=80"
+          alt: "Custom birthday cake"
+        - src: "https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=600&q=80"
+          alt: "Pastry display case"
+        - src: "https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=600&q=80"
+          alt: "Baker shaping dough"
+        - src: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80"
+          alt: "Cinnamon rolls fresh from oven"
+
+  - type: "about"
+    data:
+      heading: "Our Story"
+      bio: "Masa Madre started in 2019 out of a home kitchen on Curry Ford Road. What began as sourdough loaves sold at the Audubon Park Market grew into a full bakehouse serving East Orlando.\n\nEverything is mixed, shaped, and baked on-site every morning. We source flour from Florida mills when we can and never use preservatives. If it's on the shelf, it was made today."
+      image: "https://images.unsplash.com/photo-1556217477-d325251ece38?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Smart Inventory & Order Forecasting"
+      description: "Our system tracks daily sales patterns, seasonal demand, and custom order volume to predict exactly how much to prep each morning. Less waste, fewer sellouts, better margins."
+
+  - type: "testimonials"
+    data:
+      heading: "What Our Neighbors Say"
+      testimonials:
+        - quote: "Best sourdough in Orlando. I drive across town for it every Saturday."
+          name: "Maria C."
+          role: "Curry Ford regular"
+        - quote: "They did our wedding cake and it was perfect. Simple, elegant, and actually tasted incredible."
+          name: "David & Priya T."
+          role: "Wedding clients"
+        - quote: "The brunch pastries are unreal. My kids ask to go here every weekend."
+          name: "Jason W."
+          role: "Local dad"
+
+  - type: "contact"
+    data:
+      heading: "Come See Us"
+      subheading: "Stop by the bakehouse or drop us a line for custom orders and catering."

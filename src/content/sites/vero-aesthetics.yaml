@@ -1,0 +1,103 @@
+name: "Vero Aesthetics"
+slug: "vero-aesthetics"
+tagline: "Subtle. Precise. You."
+neighborhood: "Winter Park"
+address: "330 S Park Ave, Suite 200, Winter Park, FL 32789"
+phone: "(407) 555-8341"
+email: "hello@veroaesthetics.com"
+
+theme:
+  primary: "#3D2D3C"
+  secondary: "#F3EFF2"
+  accent: "#C08497"
+  bg: "#FDFBFC"
+  text: "#2D2035"
+  navBg: "#FDFBFC"
+  fontHeading: "'Tenor Sans', sans-serif"
+  fontBody: "'Karla', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap"
+
+hero:
+  variant: "fullbleed"
+  headline: "Subtle. Precise. You."
+  subheadline: "Physician-led aesthetics on Park Avenue. Natural-looking results, no sales pressure, and free consultations -- because you should feel confident before you spend a dollar."
+  image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1600&q=80"
+  ctaText: "Book a Free Consultation"
+  ctaHref: "#contact"
+
+nav:
+  variant: "centered"
+  links:
+    - label: "Treatments"
+      href: "#services"
+    - label: "About"
+      href: "#about"
+    - label: "Gallery"
+      href: "#gallery"
+    - label: "Book"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "Treatments"
+      services:
+        - name: "Botox & Dermal Fillers"
+          description: "Precise placement for natural results. We enhance what's there -- we don't change who you are. All injections performed by Dr. Whitfield."
+        - name: "Laser Skin Resurfacing"
+          description: "Address fine lines, sun damage, and uneven tone with medical-grade laser technology. Customized treatment plans for your skin type."
+        - name: "IV Hydration Therapy"
+          description: "Vitamin-infused IV drips for energy, recovery, and immunity. Walk in tired, walk out recharged. No appointment needed."
+        - name: "Chemical Peels & Facials"
+          description: "Medical-grade peels and customized facials. From maintenance to correction, matched to your skin's specific needs."
+
+  - type: "gallery"
+    data:
+      heading: "The Space"
+      images:
+        - src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80"
+          alt: "Treatment room"
+        - src: "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80"
+          alt: "Med spa reception area"
+        - src: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80"
+          alt: "Skincare products display"
+        - src: "https://images.unsplash.com/photo-1519823551278-64ac92734314?w=600&q=80"
+          alt: "Relaxation area"
+        - src: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&q=80"
+          alt: "Consultation room"
+        - src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+          alt: "Treatment in progress"
+
+  - type: "about"
+    data:
+      heading: "About Dr. Whitfield"
+      bio: "Vero Aesthetics is a physician-led med spa on Park Avenue in Winter Park. Dr. Sarah Whitfield, board-certified in family medicine with advanced aesthetics training, opened Vero in 2022 with a focus on natural-looking results.\n\nNo sales pressure, no package upsells during your appointment. We do free consultations because we'd rather you feel confident before you spend a dollar."
+      ownerName: "Dr. Sarah Whitfield"
+      ownerTitle: "Medical Director"
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Smart Consultation & Treatment Matching"
+      description: "Answer a short skin assessment online, and our system recommends treatment options based on your goals, skin type, and budget -- with realistic timelines and expected results. Book your appointment already knowing what to expect."
+
+  - type: "testimonials"
+    data:
+      heading: "What Clients Say"
+      testimonials:
+        - quote: "Dr. Whitfield talked me out of filler I didn't need and suggested a peel instead. Saved me money and I looked better. That's rare."
+          name: "Jennifer H."
+          role: "Regular client"
+        - quote: "The most relaxing med spa experience I've had. No hard sell, no awkward pressure. Just good work."
+          name: "Amanda R."
+          role: "Botox client"
+        - quote: "I was nervous about my first time getting filler. She explained everything and let me decide. Results were exactly what I wanted."
+          name: "Christina M."
+          role: "First-time client"
+
+  - type: "contact"
+    data:
+      heading: "Book Your Consultation"
+      subheading: "Free consultations for all new clients. Let's talk about what you're looking for."

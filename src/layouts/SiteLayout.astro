@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  name: string;
+  tagline: string;
+  theme: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    bg: string;
+    text: string;
+    navBg: string;
+    fontHeading: string;
+    fontBody: string;
+    fontHeadingUrl: string;
+    fontBodyUrl: string;
+  };
+}
+
+const { name, tagline, theme } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{name} | {tagline}</title>
+    <meta name="description" content={`${name} - ${tagline}`} />
+    <meta property="og:title" content={`${name} | ${tagline}`} />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={theme.fontHeadingUrl} rel="stylesheet" />
+    {theme.fontBodyUrl !== theme.fontHeadingUrl && (
+      <link href={theme.fontBodyUrl} rel="stylesheet" />
+    )}
+    <style define:vars={{
+      'site-primary': theme.primary,
+      'site-secondary': theme.secondary,
+      'site-accent': theme.accent,
+      'site-bg': theme.bg,
+      'site-text': theme.text,
+      'site-nav-bg': theme.navBg,
+      'site-font-heading': theme.fontHeading,
+      'site-font-body': theme.fontBody,
+    }}></style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,87 @@
+name: "Aldea & Partners Tax Advisory"
+slug: "aldea-partners"
+tagline: "Clear numbers. Straight answers."
+neighborhood: "Downtown Orlando"
+address: "201 S Orange Ave, Suite 410, Orlando, FL 32801"
+phone: "(407) 555-1748"
+email: "info@aldeapartners.com"
+
+theme:
+  primary: "#1C2331"
+  secondary: "#EDF0F4"
+  accent: "#2563EB"
+  bg: "#FFFFFF"
+  text: "#1E293B"
+  navBg: "#FFFFFF"
+  fontHeading: "'Libre Franklin', sans-serif"
+  fontBody: "'Merriweather Sans', sans-serif"
+  fontHeadingUrl: "https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap"
+  fontBodyUrl: "https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600&display=swap"
+
+hero:
+  variant: "split"
+  headline: "Clear Numbers. Straight Answers."
+  subheadline: "Tax preparation, bookkeeping, and business advisory for Orlando's small business owners and freelancers. We return calls within a business day."
+  image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80"
+  ctaText: "Schedule a Consultation"
+  ctaHref: "#contact"
+
+nav:
+  variant: "classic"
+  links:
+    - label: "Services"
+      href: "#services"
+    - label: "About"
+      href: "#about"
+    - label: "Contact"
+      href: "#contact"
+
+sections:
+  - type: "services"
+    data:
+      heading: "Our Services"
+      services:
+        - name: "Tax Preparation"
+          description: "Individual and business returns. We handle everything from simple W-2s to multi-entity business filings. E-file included, always."
+        - name: "Bookkeeping & Monthly Financials"
+          description: "Monthly reconciliation, P&L statements, and balance sheets. You run your business -- we keep the books clean."
+        - name: "Business Entity Formation"
+          description: "LLC, S-Corp, C-Corp -- we'll help you pick the right structure and file the paperwork. Includes first-year tax planning."
+        - name: "IRS Representation & Resolution"
+          description: "Got a letter from the IRS? Don't panic. We handle audits, payment plans, and penalty abatement on your behalf."
+
+  - type: "features"
+    data:
+      heading: "Why Work With Us"
+      features:
+        - title: "Bilingual Service"
+          description: "We speak English and Spanish. Your comfort level matters when we're talking about your money."
+          icon: "users"
+        - title: "Same-Day Callbacks"
+          description: "Leave a message, get a call back within one business day. Every time."
+          icon: "clock"
+        - title: "No Billing for Quick Questions"
+          description: "Quick question about a receipt or deduction? Just call. We don't nickel-and-dime."
+          icon: "check"
+        - title: "Year-Round Availability"
+          description: "Tax season is busy, but we're here January through December. Your business doesn't stop in April."
+          icon: "calendar"
+
+  - type: "about"
+    data:
+      heading: "About the Firm"
+      bio: "Aldea & Partners is a three-person CPA firm in downtown Orlando founded by Maria Aldea, CPA. We work primarily with small business owners, freelancers, and self-employed professionals who've outgrown TurboTax but don't need a Big Four firm.\n\nWe speak English and Spanish, return calls within a business day, and don't bill for quick questions. Tax season is busy, but we're here year-round."
+      ownerName: "Maria Aldea, CPA"
+      ownerTitle: "Founding Partner"
+      image: "https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=600&q=80"
+
+  - type: "ai-feature"
+    data:
+      heading: "Powered by AI"
+      title: "Secure Document Intake & Extraction"
+      description: "Clients upload tax documents to our encrypted portal. Our AI extracts key data, pre-fills preparation worksheets, and flags missing documents -- all before the first meeting. Less back-and-forth, faster turnaround."
+
+  - type: "contact"
+    data:
+      heading: "Schedule a Consultation"
+      subheading: "First consultation is free. Bring your questions -- we'll bring straight answers."
