@@ -1,9 +1,9 @@
 ---
 /**
  * Foreign Exchange Orlando - Mills 50, Orlando
- * Matched to: oasis-loop / NONSENSE template (pure white bg, HUGE centered bold black sans type,
- * ultra sparse/minimal, centered info blocks with labels, massive whitespace, manifesto at bottom)
- * Colors: black on white, ultra-minimal, orange accent
+ * Inspired by: oasis-loop / NONSENSE template
+ * Our take: ultra-minimal white canvas with bold type, but with streetwear edge -
+ * orange accent pops, asymmetric gallery, hover interactions, attitude in the copy
  */
 import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
@@ -29,7 +29,7 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── Nav - ABOUT left, DIRECTIONS right ── */
+    /* ── Nav ── */
     .nav {
       padding: 1.5rem 2rem;
       display: flex;
@@ -47,10 +47,10 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     }
     .nav a:hover { color: #FF4D00; }
 
-    /* ── Hero - HUGE centered brand name ── */
+    /* ── Hero ── */
     .hero {
       text-align: center;
-      padding: 2rem 2rem 1rem;
+      padding: 3rem 2rem 1.5rem;
     }
     .hero h1 {
       font-family: 'Space Grotesk', sans-serif;
@@ -62,7 +62,7 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       color: #0A0A0A;
     }
     .hero-sub {
-      margin-top: 1rem;
+      margin-top: 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -71,17 +71,25 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       margin-right: auto;
     }
     .hero-sub span {
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       font-weight: 500;
       color: #999;
       letter-spacing: 0.05em;
     }
 
-    /* ── 3-column info row with vertical dividers ── */
+    /* ── Orange accent stripe ── */
+    .accent-stripe {
+      height: 4px;
+      background: #FF4D00;
+      margin: 2rem auto 0;
+      width: 60px;
+    }
+
+    /* ── 3-column info row ── */
     .info-row {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      max-width: 700px;
+      max-width: 720px;
       margin: 3rem auto 0;
       padding: 0 2rem;
     }
@@ -97,7 +105,7 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: #999;
+      color: #FF4D00;
       margin-bottom: 0.6rem;
     }
     .info-cell .value {
@@ -110,66 +118,57 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       line-height: 1.4;
     }
 
-    /* ── Massive whitespace ── */
-    .spacer { height: 10rem; }
-    .spacer-lg { height: 16rem; }
-    .spacer-sm { height: 5rem; }
-
-    /* ── Gallery - sparse grid with hover ── */
+    /* ── Gallery - asymmetric masonry-ish grid ── */
     .gallery {
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 960px;
+      margin: 5rem auto 0;
       padding: 0 2rem;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3px;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 4px;
     }
     .gallery-item {
       position: relative;
       overflow: hidden;
     }
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
     .gallery-item img {
       width: 100%;
-      aspect-ratio: 1;
+      height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease, filter 0.5s ease;
+      transition: transform 0.5s ease;
     }
     .gallery-item:hover img {
       transform: scale(1.05);
     }
     .gallery-label {
       position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(10, 10, 10, 0);
-      transition: background 0.3s;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(10,10,10,0.7), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
+    .gallery-item:hover .gallery-label { opacity: 1; }
     .gallery-label span {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: #fff;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: all 0.3s ease;
-    }
-    .gallery-item:hover .gallery-label {
-      background: rgba(10, 10, 10, 0.45);
-    }
-    .gallery-item:hover .gallery-label span {
-      opacity: 1;
-      transform: translateY(0);
     }
 
-    /* ── Manifesto - big bold text ── */
+    /* ── Manifesto ── */
     .manifesto {
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 6rem 2rem;
+      padding: 5rem 2rem;
     }
     .manifesto p {
       font-family: 'Space Grotesk', sans-serif;
@@ -178,12 +177,25 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       line-height: 1.4;
       color: #0A0A0A;
     }
+    .manifesto p .highlight {
+      color: #FF4D00;
+    }
 
-    /* ── Services - minimal text blocks ── */
+    /* ── Services ── */
     .services-section {
       max-width: 600px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 2rem 4rem;
+    }
+    .services-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #FF4D00;
+      text-align: center;
+      margin-bottom: 2rem;
     }
     .service-item {
       padding: 1.5rem 0;
@@ -209,7 +221,7 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       margin: 0 auto;
     }
 
-    /* ── Newsletter CTA - outlined button ── */
+    /* ── Newsletter CTA ── */
     .newsletter {
       text-align: center;
       padding: 2rem;
@@ -226,16 +238,18 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       transition: all 0.2s;
     }
     .newsletter-btn:hover {
-      background: #0A0A0A;
+      background: #FF4D00;
+      border-color: #FF4D00;
       color: #fff;
     }
 
     /* ── AI section ── */
     .ai-section {
+      background: #0A0A0A;
+      color: #fff;
       text-align: center;
-      padding: 3rem 2rem;
-      max-width: 500px;
-      margin: 0 auto;
+      padding: 4rem 2rem;
+      margin-top: 3rem;
     }
     .ai-section .label {
       font-family: 'Space Grotesk', sans-serif;
@@ -243,31 +257,33 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: #999;
-      margin-bottom: 0.5rem;
+      color: #FF4D00;
+      margin-bottom: 0.75rem;
     }
     .ai-section h3 {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.9rem;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
     .ai-section p {
       font-size: 0.75rem;
-      color: #888;
+      color: rgba(255,255,255,0.5);
       line-height: 1.7;
+      max-width: 450px;
+      margin: 0 auto;
     }
     .ai-badge {
-      margin-top: 1rem;
+      margin-top: 1.25rem;
       font-size: 0.5rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #ccc;
+      color: rgba(255,255,255,0.2);
     }
 
-    /* ── Footer - brand name repeated large, copyright left, social right ── */
+    /* ── Footer ── */
     .footer {
       text-align: center;
       padding: 4rem 2rem 1.5rem;
@@ -312,7 +328,7 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     .footer-bottom a { color: #999; transition: color 0.2s; }
     .footer-bottom a:hover { color: #FF4D00; }
 
-    /* ── Floating CTA badge ── */
+    /* ── Floating badge ── */
     .cta-badge {
       position: fixed;
       bottom: 1rem;
@@ -329,27 +345,13 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     }
     .cta-badge:hover { background: #FF4D00; border-color: #FF4D00; }
 
-    /* ── Text scramble animation ── */
-    @keyframes glitch-in {
-      0% { opacity: 0; transform: translateY(20px) skewX(-5deg); filter: blur(4px); }
-      60% { opacity: 1; transform: translateY(-3px) skewX(1deg); filter: blur(0); }
-      100% { opacity: 1; transform: translateY(0) skewX(0); }
-    }
-    .hero h1 {
-      animation: glitch-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
-    .hero-sub {
-      animation: glitch-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
-    }
-
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .info-row { grid-template-columns: 1fr; gap: 0; }
       .info-cell { border-left: none; border-bottom: 1px solid #E5E5E5; padding: 1.2rem 0; }
       .info-cell:last-child { border-bottom: none; }
-      .gallery { grid-template-columns: repeat(2, 1fr); }
-      .spacer { height: 5rem; }
-      .spacer-lg { height: 8rem; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-row: auto; }
       .hero-sub { flex-direction: column; gap: 0.25rem; }
       .footer-bottom { flex-direction: column; gap: 0.5rem; }
     }
@@ -362,79 +364,69 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     <a href="#contact">Directions</a>
   </nav>
 
-  <!-- Hero - HUGE brand name -->
+  <!-- Hero -->
   <section class="hero">
     <h1>Foreign<br />Exchange</h1>
     <div class="hero-sub">
       <span>A Mills 50 streetwear collective</span>
       <span>@foreignexchangeorl</span>
     </div>
+    <div class="accent-stripe"></div>
   </section>
 
-  <!-- 3-column info row like NONSENSE -->
-  <ScrollReveal client:load>
-    <div class="info-row">
-      <div class="info-cell">
-        <div class="label">What</div>
-        <div class="value">Curated Streetwear<br />&amp; Vintage Sneakers</div>
-      </div>
-      <div class="info-cell">
-        <div class="label">When</div>
-        <div class="value">Tue-Sat 11am-7pm<br />Sun 12-5</div>
-      </div>
-      <div class="info-cell">
-        <div class="label">Where</div>
-        <div class="value">1608 N Mills Ave,<br />Orlando, FL 32803</div>
-      </div>
+  <!-- Info Row - NOT wrapped in ScrollReveal so grid stays intact -->
+  <div class="info-row">
+    <div class="info-cell">
+      <div class="label">What</div>
+      <div class="value">Curated Streetwear<br />&amp; Vintage Sneakers</div>
     </div>
-  </ScrollReveal>
+    <div class="info-cell">
+      <div class="label">When</div>
+      <div class="value">Tue-Sat 11am-7pm<br />Sun 12-5</div>
+    </div>
+    <div class="info-cell">
+      <div class="label">Where</div>
+      <div class="value">1608 N Mills Ave,<br />Orlando, FL 32803</div>
+    </div>
+  </div>
 
-  <div class="spacer-lg"></div>
-
-  <!-- Gallery with hover labels -->
+  <!-- Gallery - asymmetric layout, first image spans 2 rows -->
   <ScrollReveal client:load>
     <div class="gallery">
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80" alt="Sneaker wall display" loading="lazy" />
-        <div class="gallery-label"><span>Kicks</span></div>
+        <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=800&q=80" alt="Sneaker wall display" loading="lazy" />
+        <div class="gallery-label"><span>The Wall</span></div>
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&q=80" alt="Clothing rack with streetwear" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&q=80" alt="Clothing rack with streetwear" loading="lazy" />
         <div class="gallery-label"><span>Streetwear</span></div>
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="Store interior" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=500&q=80" alt="Store interior" loading="lazy" />
         <div class="gallery-label"><span>The Shop</span></div>
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80" alt="Curated accessories" loading="lazy" />
-        <div class="gallery-label"><span>Accessories</span></div>
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600&q=80" alt="Vintage sneaker detail" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=500&q=80" alt="Vintage sneaker detail" loading="lazy" />
         <div class="gallery-label"><span>Deadstock</span></div>
       </div>
       <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Local collab t-shirt" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&q=80" alt="Local collab t-shirt" loading="lazy" />
         <div class="gallery-label"><span>Collabs</span></div>
       </div>
     </div>
   </ScrollReveal>
 
-  <div class="spacer-lg"></div>
-
   <!-- Manifesto -->
   <ScrollReveal client:load>
     <section id="about" class="manifesto">
-      <p>Foreign Exchange is a rebellion against mass production. No trends, no fast fashion -- just curated streetwear, authenticated kicks, and collabs with Orlando artists.</p>
+      <p>Foreign Exchange is a <span class="highlight">rebellion</span> against mass production. No trends, no fast fashion -- just curated streetwear, authenticated kicks, and collabs with Orlando artists.</p>
     </section>
   </ScrollReveal>
-
-  <div class="spacer-sm"></div>
 
   <!-- Services -->
   <ScrollReveal client:load>
     <section class="services-section">
+      <div class="services-heading">What We Carry</div>
       <div class="service-item">
         <h3>Curated Streetwear</h3>
         <p>Independent and international brands you won't find at the mall. Small-run Japanese labels, independent UK designers, and emerging domestic brands.</p>
@@ -454,30 +446,24 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     </section>
   </ScrollReveal>
 
-  <div class="spacer"></div>
-
-  <!-- Newsletter CTA -->
+  <!-- Newsletter -->
   <ScrollReveal client:load>
     <section class="newsletter">
       <a href="mailto:shop@foreignexchangeorl.com" class="newsletter-btn">Sign Up for Drop Alerts</a>
     </section>
   </ScrollReveal>
 
-  <div class="spacer-sm"></div>
-
-  <!-- AI Section -->
+  <!-- AI Section - dark block for contrast -->
   <ScrollReveal client:load>
     <section class="ai-section">
       <div class="label">Powered by AI</div>
       <h3>Style Recs & Drop Alerts</h3>
-      <p>Our system learns what you like based on past purchases and browsing, then sends personalized alerts when new drops match your style. No spam, no generic newsletters -- just the pieces you'd actually want.</p>
+      <p>Our system learns what you like based on past purchases and browsing, then sends personalized alerts when new drops match your style. No spam -- just the pieces you'd actually want.</p>
       <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
     </section>
   </ScrollReveal>
 
-  <div class="spacer"></div>
-
-  <!-- Footer - brand repeated large, bottom row split -->
+  <!-- Footer -->
   <footer id="contact" class="footer">
     <div class="footer-label">A streetwear collective</div>
     <div class="footer-brand">Foreign Exchange</div>
