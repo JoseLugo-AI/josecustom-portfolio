@@ -497,12 +497,20 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       color: inherit;
       opacity: 1;
     }
-    @keyframes text-glow {
-      0% { text-shadow: 0 0 30px rgba(255,77,0,0.5); }
-      100% { text-shadow: 0 0 0px rgba(255,77,0,0); }
+    @keyframes text-glow-in {
+      0% { text-shadow: 0 0 40px rgba(255,77,0,0.6), 0 0 80px rgba(255,77,0,0.2); }
+      100% { text-shadow: 0 0 15px rgba(255,77,0,0.15), 0 0 40px rgba(255,77,0,0.05); }
+    }
+    @keyframes text-breathe {
+      0%, 100% { text-shadow: 0 0 15px rgba(255,77,0,0.12), 0 0 40px rgba(255,77,0,0.04); }
+      50% { text-shadow: 0 0 25px rgba(255,77,0,0.25), 0 0 60px rgba(255,77,0,0.08); }
     }
     .hero h1 .scramble-text.done {
-      animation: text-glow 2s ease-out forwards;
+      animation: text-glow-in 1s ease-out, text-breathe 4s ease-in-out 1s infinite;
+    }
+    .hero-tagline.done {
+      animation: text-breathe 5s ease-in-out 0.5s infinite;
+      text-shadow: 0 0 12px rgba(255,77,0,0.2);
     }
 
     /* ── Responsive ── */
@@ -541,8 +549,8 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     </div>
     <div class="hero-gradient"></div>
     <div class="hero-content">
-      <h1><span class="scramble-text" data-text="Foreign">Foreign</span><br /><span class="scramble-text" data-text="Exchange" data-delay="800">Exchange</span></h1>
-      <div class="hero-tagline scramble-text" data-text="Curated. Not Mass-Produced." data-delay="1800">Curated. Not Mass-Produced.</div>
+      <h1><span class="scramble-text" data-text="Foreign">Foreign</span><br /><span class="scramble-text" data-text="Exchange" data-delay="550">Exchange</span></h1>
+      <div class="hero-tagline scramble-text" data-text="Curated. Not Mass-Produced." data-delay="1200">Curated. Not Mass-Produced.</div>
       <div class="hero-sub">Mills 50 &middot; Orlando, FL &middot; @foreignexchangeorl</div>
       <a href="#drops" class="hero-cta">Shop the Latest</a>
     </div>
@@ -721,8 +729,8 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
           }
 
           let scrambleCount = 0;
-          const maxScrambles = 8 + Math.floor(Math.random() * 6);
-          const charDelay = i * (isHeading ? 100 : 45);
+          const maxScrambles = 6 + Math.floor(Math.random() * 4);
+          const charDelay = i * (isHeading ? 70 : 35);
 
           setTimeout(() => {
             c.el.style.opacity = '1';
@@ -738,12 +746,12 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
                 c.el.classList.remove('scrambling');
                 c.el.classList.add('revealed');
               }
-            }, 80);
+            }, 65);
           }, charDelay);
         });
 
         // Mark as done for glow effect
-        const totalTime = charEls.length * (isHeading ? 100 : 45) + 800;
+        const totalTime = charEls.length * (isHeading ? 70 : 35) + 600;
         setTimeout(() => el.classList.add('done'), totalTime);
       }, delay);
     }
