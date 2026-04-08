@@ -5,7 +5,7 @@
  * full-bleed imagery, scroll animations). Streetwear edge with orange accent.
  */
 import ScrollReveal from '../../components/ScrollReveal.tsx';
-import { TextScramble } from '../../components/TextScramble.tsx';
+import { ParticleText } from '../../components/ParticleText.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -94,14 +94,13 @@ import { TextScramble } from '../../components/TextScramble.tsx';
       text-align: center;
       padding: 6rem 2rem 4rem;
     }
-    .hero-content h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(4rem, 14vw, 10rem);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: -0.04em;
-      line-height: 0.9;
-      color: #fff;
+    .particle-wrapper {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .particle-wrapper canvas {
+      display: block;
     }
     .hero-tagline {
       margin-top: 1.5rem;
@@ -518,36 +517,23 @@ import { TextScramble } from '../../components/TextScramble.tsx';
     </div>
     <div class="hero-gradient"></div>
     <div class="hero-content">
-      <h1>
-        <TextScramble
+      <div class="particle-wrapper">
+        <ParticleText
           client:load
-          as="span"
-          duration={1.2}
-          speed={0.04}
-          characterSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#&"
-          className=""
-          style={{ display: "block" }}
-        >Foreign</TextScramble>
-        <TextScramble
-          client:load
-          as="span"
-          duration={1.2}
-          speed={0.04}
-          delay={600}
-          characterSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#&"
-          className=""
-          style={{ display: "block" }}
-        >Exchange</TextScramble>
-      </h1>
-      <TextScramble
-        client:load
-        as="div"
-        duration={1.0}
-        speed={0.03}
-        delay={1300}
-        characterSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ.!- "
-        className="hero-tagline"
-      >Curated. Not Mass-Produced.</TextScramble>
+          words={["FOREIGN", "EXCHANGE", "CURATED", "AUTHENTIC", "MILLS 50"]}
+          colors={[
+            { r: 255, g: 77, b: 0 },
+            { r: 255, g: 140, b: 0 },
+            { r: 255, g: 255, b: 255 },
+            { r: 255, g: 77, b: 0 },
+            { r: 255, g: 200, b: 100 },
+          ]}
+          font="bold 100px 'Space Grotesk', sans-serif"
+          cycleInterval={200}
+          pixelSteps={5}
+        />
+      </div>
+      <div class="hero-tagline">Curated. Not Mass-Produced.</div>
       <div class="hero-sub">Mills 50 &middot; Orlando, FL &middot; @foreignexchangeorl</div>
       <a href="#drops" class="hero-cta">Shop the Latest</a>
     </div>
