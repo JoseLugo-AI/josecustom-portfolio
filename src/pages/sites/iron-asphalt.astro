@@ -1,0 +1,538 @@
+---
+/**
+ * Iron & Asphalt Customs - SoDo, Orlando
+ * Matched to: busy-patch / VAULT template (dark bg, huge condensed display type,
+ * yellow/blue accent bars, event-lineup-style schedules, grey sections, marquee)
+ */
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iron & Asphalt Customs | Built. Not Bought.</title>
+  <meta name="description" content="Custom motorcycle builds, restorations, and performance tuning in SoDo, Orlando." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: #0D0D0D;
+      color: #E8E0D4;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav - dark with icon like VAULT */
+    .nav {
+      background: #0D0D0D;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .nav-icon {
+      width: 32px;
+      height: 32px;
+      background: #D4382C;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .nav-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #fff;
+    }
+
+    /* Video/Hero block - dark with image like VAULT's YouTube embed */
+    .hero-video {
+      background: #111;
+      padding: 2rem;
+    }
+    .hero-video-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .hero-video img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      background: #D4382C;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-btn::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 18px solid #fff;
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      margin-left: 4px;
+    }
+
+    /* HUGE display type like VAULT */
+    .brand-display {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+    }
+    .brand-display h1 {
+      font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 700;
+      line-height: 0.85;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .brand-sub {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    /* Yellow accent bar - like VAULT's colored sections */
+    .accent-bar-yellow {
+      background: #D4A017;
+      padding: 2.5rem 2rem;
+    }
+    .accent-bar-yellow h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #000;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Blue accent bar */
+    .accent-bar-blue {
+      background: #2563EB;
+      padding: 0.5rem 2rem;
+      text-align: right;
+    }
+    .accent-bar-blue span {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #fff;
+    }
+
+    /* Headliners section - script font like VAULT */
+    .headliners {
+      padding: 3rem 2rem;
+      max-width: 900px;
+    }
+    .headliners h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      text-transform: none;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+    .headliner-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #222;
+    }
+    .headliner-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #666;
+      margin-bottom: 0.25rem;
+    }
+    .headliner-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    /* Full lineup - grey section like VAULT */
+    .lineup-section {
+      background: #1A1A1A;
+      padding: 3rem 2rem;
+    }
+    .lineup-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      text-transform: none;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .lineup-sub {
+      font-size: 0.65rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+    .lineup-grid {
+      max-width: 900px;
+    }
+    .lineup-time-block {
+      margin-bottom: 2rem;
+    }
+    .lineup-time {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #D4382C;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #333;
+    }
+    .lineup-entry {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #aaa;
+      line-height: 1.8;
+    }
+
+    /* Grey about section */
+    .about-grey {
+      background: #2A2A2A;
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .about-grey p {
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      max-width: 600px;
+    }
+    .about-grey .owner {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+    }
+    .about-grey .owner strong { color: #fff; }
+    .about-grey .owner span { color: #666; display: block; }
+
+    /* Marquee - like VAULT bottom ticker */
+    .marquee {
+      background: #D4382C;
+      padding: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-inner {
+      display: inline-block;
+      animation: scroll-left 20s linear infinite;
+    }
+    .marquee-text {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #fff;
+    }
+    .marquee-text span { margin: 0 2rem; opacity: 0.5; }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Pricing section - like VAULT's $32 ticket */
+    .pricing-section {
+      background: #333;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .pricing-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-amount {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-cta {
+      display: inline-block;
+      background: #D4382C;
+      color: #fff;
+      padding: 0.7rem 2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .pricing-cta:hover { opacity: 0.85; }
+
+    /* AI section */
+    .ai-section {
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .ai-section h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .ai-section p {
+      font-size: 0.8rem;
+      color: #666;
+      line-height: 1.7;
+    }
+    .ai-badge {
+      margin-top: 1rem;
+      font-size: 0.55rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #444;
+    }
+
+    /* Gallery row */
+    .gallery-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .gallery-row img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      filter: grayscale(30%) contrast(1.1);
+    }
+
+    /* Footer - like VAULT bottom */
+    .footer {
+      background: #111;
+      padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .footer p {
+      font-size: 0.7rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    .footer a { color: #D4382C; }
+    .footer a:hover { text-decoration: underline; }
+    .footer-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-badge {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: rgba(13,13,13,0.9);
+      border: 1px solid #333;
+      color: #E8E0D4;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .cta-badge:hover { background: #D4382C; border-color: #D4382C; }
+
+    @media (max-width: 768px) {
+      .gallery-row { grid-template-columns: repeat(2, 1fr); }
+      .hero-video img { height: 250px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-icon">I&A</div>
+      <div class="nav-brand">Iron & Asphalt</div>
+    </div>
+  </nav>
+
+  <div class="hero-video">
+    <div class="hero-video-inner">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80" alt="Iron & Asphalt garage" />
+      <div class="hero-video-overlay">
+        <div class="play-btn"></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="brand-display">
+    <h1>Iron &<br />Asphalt</h1>
+    <div class="brand-sub">Custom motorcycle builds, restorations, and performance tuning out of our SoDo garage.</div>
+  </section>
+
+  <div class="accent-bar-yellow">
+    <h2>SoDo Lineup &middot; Services</h2>
+  </div>
+  <div class="accent-bar-blue">
+    <span>All work done in-house</span>
+  </div>
+
+  <section class="headliners">
+    <h2>Headliners</h2>
+    <div class="headliner-item">
+      <div class="headliner-label">Custom</div>
+      <div class="headliner-name">Custom Motorcycle Builds & Restorations</div>
+    </div>
+    <div class="headliner-item">
+      <div class="headliner-label">Performance</div>
+      <div class="headliner-name">Performance Tuning & Dyno Testing</div>
+    </div>
+  </section>
+
+  <section class="lineup-section">
+    <h2>Full Lineup</h2>
+    <div class="lineup-sub">All services &middot; SoDo Garage</div>
+    <div class="lineup-grid">
+      <div class="lineup-time-block">
+        <div class="lineup-time">Custom Work</div>
+        <div class="lineup-entry">
+          Ground-up builds (cafe racers, bobbers, scramblers)<br />
+          Full restorations (frame-off, engine rebuild)<br />
+          Custom fabrication & one-off parts
+        </div>
+      </div>
+      <div class="lineup-time-block">
+        <div class="lineup-time">Performance</div>
+        <div class="lineup-entry">
+          Carburetor tuning & ECU mapping<br />
+          Exhaust upgrades<br />
+          Dyno testing & real-world tuning
+        </div>
+      </div>
+      <div class="lineup-time-block">
+        <div class="lineup-time">Paint & Body</div>
+        <div class="lineup-entry">
+          Custom paint jobs & tank art<br />
+          Bodywork (all in-house)<br />
+          Color matching & restoration finishes
+        </div>
+      </div>
+      <div class="lineup-time-block">
+        <div class="lineup-time">Maintenance</div>
+        <div class="lineup-entry">
+          Oil changes to full engine rebuilds<br />
+          All makes, all models<br />
+          Honest diagnostics, fair pricing
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gallery-row">
+    <img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=600&q=80" alt="Custom cafe racer" />
+    <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&q=80" alt="Engine detail" />
+    <img src="https://images.unsplash.com/photo-1525160354320-d8e92641c563?w=600&q=80" alt="Workshop" />
+    <img src="https://images.unsplash.com/photo-1580310614729-ccd69652491d?w=600&q=80" alt="Custom paint" />
+    <img src="https://images.unsplash.com/photo-1558980664-769d59546b3d?w=600&q=80" alt="Garage" />
+    <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=600&q=80" alt="Finished build" />
+  </div>
+
+  <div class="marquee">
+    <div class="marquee-inner">
+      <span class="marquee-text">Custom Builds <span>&bull;</span> Restorations <span>&bull;</span> Performance Tuning <span>&bull;</span> Paint & Bodywork <span>&bull;</span> SoDo, Orlando <span>&bull;</span> Custom Builds <span>&bull;</span> Restorations <span>&bull;</span> Performance Tuning <span>&bull;</span> Paint & Bodywork <span>&bull;</span> SoDo, Orlando <span>&bull;</span></span>
+    </div>
+  </div>
+
+  <div class="pricing-section">
+    <div class="pricing-label">Estimates start at</div>
+    <div class="pricing-amount">Free</div>
+    <a href="mailto:builds@ironandasphalt.com" class="pricing-cta">Get a Quote</a>
+  </div>
+
+  <div class="about-grey">
+    <p>Iron & Asphalt has been building and restoring bikes out of our SoDo garage since 2016. Owner Marco Reyes spent 10 years turning wrenches at dealerships before going independent.</p>
+    <p>We do everything in-house -- fabrication, paint, electrical, engine work. No subcontractors, no runaround. You talk to the person who's building your machine.</p>
+    <div class="owner">
+      <strong>Marco Reyes</strong>
+      <span>Owner & Lead Builder</span>
+    </div>
+  </div>
+
+  <section class="ai-section">
+    <h3>Photo Estimate Tool</h3>
+    <p>Customers upload photos of their vehicle, and our system generates a preliminary repair estimate with parts pricing before they ever step into the shop. Faster quotes, fewer wasted trips.</p>
+    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p><a href="mailto:builds@ironandasphalt.com">builds@ironandasphalt.com</a><br />
+      1842 S Division Ave, Orlando, FL 32805<br />
+      (407) 555-7463</p>
+      <div class="footer-brand">Iron & Asphalt</div>
+      <p>&copy; 2026 Iron & Asphalt Customs &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a></p>
+    </div>
+  </footer>
+
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+</body>
+</html>

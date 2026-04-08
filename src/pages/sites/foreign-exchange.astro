@@ -1,0 +1,390 @@
+---
+/**
+ * Foreign Exchange Orlando - Mills 50, Orlando
+ * Matched to: oasis-loop / NONSENSE template (pure white bg, HUGE centered bold black sans type,
+ * ultra sparse/minimal, centered info blocks with labels, massive whitespace, manifesto at bottom)
+ */
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foreign Exchange | Curated. Not Mass-Produced.</title>
+  <meta name="description" content="Independent streetwear, vintage sneakers, and local artist collabs on Mills Ave, Orlando." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #fff;
+      color: #0A0A0A;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav - like NONSENSE: ABOUT left, DIRECTIONS right */
+    .nav {
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0A0A0A;
+    }
+
+    /* Hero - HUGE centered bold brand name like NONSENSE */
+    .hero {
+      text-align: center;
+      padding: 2rem 2rem 1rem;
+    }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3.5rem, 12vw, 8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      color: #0A0A0A;
+    }
+    .hero-sub {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-sub span {
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: #999;
+      letter-spacing: 0.05em;
+    }
+
+    /* Centered info blocks - like NONSENSE's WHAT/WHEN/WHERE */
+    .info-block {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .info-block .label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #999;
+      margin-bottom: 0.75rem;
+    }
+    .info-block .value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #0A0A0A;
+    }
+
+    /* Massive whitespace */
+    .spacer {
+      height: 10rem;
+    }
+    .spacer-lg {
+      height: 16rem;
+    }
+    .spacer-sm {
+      height: 5rem;
+    }
+
+    /* Gallery - sparse grid */
+    .gallery {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    /* Manifesto - big bold text at bottom like NONSENSE */
+    .manifesto {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    .manifesto p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.4;
+      color: #0A0A0A;
+    }
+
+    /* Newsletter CTA - outlined button like NONSENSE */
+    .newsletter {
+      text-align: center;
+      padding: 2rem;
+    }
+    .newsletter-btn {
+      display: inline-block;
+      border: 2px solid #0A0A0A;
+      padding: 0.9rem 2.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: all 0.2s;
+    }
+    .newsletter-btn:hover {
+      background: #0A0A0A;
+      color: #fff;
+    }
+
+    /* Services - minimal text blocks */
+    .services-section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .service-item {
+      padding: 1.5rem 0;
+      border-top: 1px solid #E5E5E5;
+      text-align: center;
+    }
+    .service-item:last-child {
+      border-bottom: 1px solid #E5E5E5;
+    }
+    .service-item h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .service-item p {
+      font-size: 0.75rem;
+      color: #888;
+      line-height: 1.6;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    /* AI section */
+    .ai-section {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .ai-section .label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+    .ai-section h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .ai-section p {
+      font-size: 0.75rem;
+      color: #888;
+      line-height: 1.7;
+    }
+    .ai-badge {
+      margin-top: 1rem;
+      font-size: 0.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #ccc;
+    }
+
+    /* Footer - brand name repeated large like NONSENSE */
+    .footer {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-label {
+      font-size: 0.55rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #999;
+      margin-bottom: 0.75rem;
+    }
+    .footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 8vw, 4rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      color: #0A0A0A;
+      margin-bottom: 1rem;
+    }
+    .footer-info {
+      font-size: 0.65rem;
+      color: #999;
+      line-height: 1.8;
+    }
+    .footer-info a { color: #0A0A0A; font-weight: 500; }
+    .footer-info a:hover { text-decoration: underline; }
+    .footer-copy {
+      margin-top: 1.5rem;
+      font-size: 0.55rem;
+      color: #ccc;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .footer-copy a { color: #999; }
+
+    .cta-badge {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: rgba(10,10,10,0.9);
+      border: 1px solid #333;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .cta-badge:hover { background: #0A0A0A; }
+
+    @media (max-width: 768px) {
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .spacer { height: 5rem; }
+      .spacer-lg { height: 8rem; }
+      .hero-sub { flex-direction: column; gap: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="#about">About</a>
+    <a href="#contact">Directions</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Foreign<br />Exchange</h1>
+    <div class="hero-sub">
+      <span>A Mills 50 streetwear collective</span>
+      <span>@foreignexchangeorl</span>
+    </div>
+  </section>
+
+  <div class="info-block">
+    <div class="label">What</div>
+    <div class="value">Curated Streetwear<br />& Vintage Sneakers</div>
+  </div>
+
+  <div class="info-block">
+    <div class="label">When</div>
+    <div class="value">Tue-Sat 11am-7pm<br />Sun 12-5</div>
+  </div>
+
+  <div class="info-block">
+    <div class="label">Where</div>
+    <div class="value">1608 N Mills Ave,<br />Orlando, FL 32803</div>
+  </div>
+
+  <div class="spacer-lg"></div>
+
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80" alt="Sneaker wall display" />
+    <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&q=80" alt="Clothing rack" />
+    <img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&q=80" alt="Store interior" />
+    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80" alt="Accessories" />
+    <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=600&q=80" alt="Vintage sneaker" />
+    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Local collab tee" />
+  </div>
+
+  <div class="spacer-lg"></div>
+
+  <section id="about" class="manifesto">
+    <p>Foreign Exchange is a rebellion against mass production. No trends, no fast fashion -- just curated streetwear, authenticated kicks, and collabs with Orlando artists.</p>
+  </section>
+
+  <div class="spacer-sm"></div>
+
+  <section class="services-section">
+    <div class="service-item">
+      <h3>Curated Streetwear</h3>
+      <p>Independent and international brands you won't find at the mall. Small-run Japanese labels, independent UK designers, and emerging domestic brands.</p>
+    </div>
+    <div class="service-item">
+      <h3>Vintage & Deadstock Sneakers</h3>
+      <p>Authenticated pre-owned and deadstock kicks. We verify everything in-house. No fakes, no exceptions.</p>
+    </div>
+    <div class="service-item">
+      <h3>Local Artist Collabs</h3>
+      <p>Limited releases designed with Orlando artists. Screen-printed tees, embroidered caps, and one-off pieces you can only get here.</p>
+    </div>
+    <div class="service-item">
+      <h3>Online Shop</h3>
+      <p>Full catalog online with flat-rate shipping. New drops announced on Instagram before they hit the floor.</p>
+    </div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <section class="newsletter">
+    <a href="mailto:shop@foreignexchangeorl.com" class="newsletter-btn">Sign Up for Drop Alerts</a>
+  </section>
+
+  <div class="spacer-sm"></div>
+
+  <section class="ai-section">
+    <div class="label">Powered by AI</div>
+    <h3>Style Recs & Drop Alerts</h3>
+    <p>Our system learns what you like based on past purchases and browsing, then sends personalized alerts when new drops match your style. No spam, no generic newsletters -- just the pieces you'd actually want.</p>
+    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <footer id="contact" class="footer">
+    <div class="footer-label">A streetwear collective</div>
+    <div class="footer-brand">Foreign Exchange</div>
+    <div class="footer-info">
+      1608 N Mills Ave, Orlando, FL 32803<br />
+      (407) 555-2156 &middot; <a href="mailto:shop@foreignexchangeorl.com">shop@foreignexchangeorl.com</a>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 Foreign Exchange Orlando &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
+    </div>
+  </footer>
+
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+</body>
+</html>

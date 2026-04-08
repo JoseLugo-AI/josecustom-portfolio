@@ -1,0 +1,410 @@
+---
+/**
+ * Southpaw Combat Club - College Park, Orlando
+ * Matched to: chuck-trek / Movement Studios template (dark hero photo with serif text,
+ * blue/purple gradient accents, marquee ticker, alternating dark/light sections,
+ * purple CTA buttons, founder quotes, gradient CTA section)
+ */
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Southpaw Combat Club | Show Up. Get Better.</title>
+  <meta name="description" content="Brazilian Jiu-Jitsu, Muay Thai, and strength training in College Park, Orlando." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav - dark top with brand right like Movement Studios */
+    .nav {
+      background: #0F0F0F;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-menu {
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #fff;
+      font-style: italic;
+    }
+
+    /* Hero - dark photo with large serif text like Movement Studios */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: #0F0F0F;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&q=80') center/cover;
+      filter: grayscale(100%);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, #0F0F0F 5%, rgba(15,15,15,0.4) 60%, rgba(15,15,15,0.2));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 3rem;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 2rem;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: #6D28D9;
+      color: #fff;
+      padding: 0.8rem 2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .hero-cta:hover { background: #5B21B6; }
+
+    /* Marquee ticker - blue/purple like Movement Studios */
+    .marquee {
+      background: #6D28D9;
+      padding: 0.6rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-inner {
+      display: inline-block;
+      animation: scroll-left 25s linear infinite;
+    }
+    .marquee-text {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+    .marquee-text span { margin: 0 2rem; opacity: 0.5; }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Vision section - large text on dark bg like Movement Studios */
+    .vision-section {
+      background: #0F0F0F;
+      position: relative;
+      overflow: hidden;
+    }
+    .vision-bg {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: grayscale(100%);
+      opacity: 0.6;
+    }
+    .vision-overlay {
+      position: absolute;
+      top: 2rem;
+      left: 3rem;
+    }
+    .vision-overlay h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: #fff;
+    }
+
+    /* White content sections like Movement Studios */
+    .content-section {
+      padding: 5rem 2rem;
+      max-width: 600px;
+    }
+    .content-section h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .content-section p {
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .content-cta {
+      display: inline-block;
+      background: #6D28D9;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .content-cta:hover { background: #5B21B6; }
+
+    /* Programs listed simply */
+    .programs-section {
+      padding: 4rem 2rem;
+      max-width: 600px;
+    }
+    .programs-section h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .programs-section > p {
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .programs-section .content-cta {
+      margin-top: 0.5rem;
+    }
+
+    /* Founders section - like Movement Studios */
+    .founders-section {
+      padding: 5rem 2rem;
+      max-width: 600px;
+    }
+    .founders-section h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+    }
+    .founder-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #1A1A1A;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    .founder-attribution {
+      font-size: 0.75rem;
+      color: #888;
+      margin-bottom: 3rem;
+    }
+    .founder-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #6D28D9;
+      border-top: 2px solid #6D28D9;
+      padding-top: 0.5rem;
+      display: inline-block;
+      margin-bottom: 0.25rem;
+    }
+    .founder-role {
+      font-size: 0.75rem;
+      color: #888;
+    }
+
+    /* Gradient CTA section - like Movement Studios bottom */
+    .gradient-cta {
+      background: linear-gradient(135deg, #C084FC 0%, #818CF8 40%, #60A5FA 100%);
+      padding: 5rem 2rem;
+    }
+    .gradient-cta-inner {
+      max-width: 600px;
+    }
+    .gradient-cta h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 2rem;
+    }
+    .gradient-cta-btn {
+      display: inline-block;
+      background: #1A1A1A;
+      color: #fff;
+      padding: 0.8rem 2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .gradient-cta-btn:hover { opacity: 0.85; }
+
+    /* AI section */
+    .ai-section {
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+    .ai-section h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .ai-section p {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.7;
+    }
+    .ai-badge {
+      margin-top: 1rem;
+      font-size: 0.55rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #ccc;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0F0F0F;
+      color: #888;
+      padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #fff;
+    }
+    .footer-info { font-size: 0.7rem; color: #555; }
+    .footer-info a { color: #6D28D9; }
+    .footer-info a:hover { text-decoration: underline; }
+
+    .cta-badge {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: rgba(15,15,15,0.9);
+      border: 1px solid #333;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .cta-badge:hover { background: #6D28D9; border-color: #6D28D9; }
+
+    @media (max-width: 768px) {
+      .hero-content { padding: 3rem 1.5rem; }
+      .vision-overlay { left: 1.5rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-menu">&#9776;</div>
+    <div class="nav-brand">Southpaw Combat Club.</div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Show up.<br />Get better.</h1>
+      <a href="#contact" class="hero-cta">Start Your Free Week</a>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <div class="marquee-inner">
+      <span class="marquee-text">Brazilian Jiu-Jitsu <span>&bull;</span> Muay Thai <span>&bull;</span> Strength & Conditioning <span>&bull;</span> No Contracts <span>&bull;</span> First Week Free <span>&bull;</span> Brazilian Jiu-Jitsu <span>&bull;</span> Muay Thai <span>&bull;</span> Strength & Conditioning <span>&bull;</span> No Contracts <span>&bull;</span> First Week Free <span>&bull;</span></span>
+    </div>
+  </div>
+
+  <section class="vision-section">
+    <div class="vision-overlay">
+      <h2>Vision</h2>
+    </div>
+    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80" alt="Training" class="vision-bg" />
+  </section>
+
+  <section class="content-section">
+    <h3>Who we are</h3>
+    <p>Southpaw opened in College Park in 2020 with 12 members and a rented warehouse. Coach Andre Watts -- former Army combatives instructor, brown belt in BJJ -- built the gym on one principle: train hard, leave your ego at the door. We're at 150 members now across all programs.</p>
+    <a href="#contact" class="content-cta">About Us</a>
+  </section>
+
+  <section class="programs-section">
+    <h3>Our Programs</h3>
+    <p>Brazilian Jiu-Jitsu (gi and no-gi, all levels), Muay Thai kickboxing, strength and conditioning, and a competition team for members who want to test themselves.</p>
+    <a href="#contact" class="content-cta">Reserve your spot</a>
+  </section>
+
+  <section class="founders-section">
+    <h2>Our Founders</h2>
+    <div class="founder-quote">"Show up three times a week and everything changes. We'll hold you accountable."</div>
+    <div class="founder-attribution">-- Andre Watts</div>
+
+    <div class="founder-name">Andre Watts</div>
+    <div class="founder-role">Head Coach & Owner</div>
+  </section>
+
+  <section class="gradient-cta" id="contact">
+    <div class="gradient-cta-inner">
+      <h2>Whether you're a complete beginner looking to learn self-defense or a competitor ready to sharpen your game, we have programs for you.</h2>
+      <a href="mailto:train@southpawcombat.com" class="gradient-cta-btn">Reserve your spot</a>
+    </div>
+  </section>
+
+  <section class="ai-section">
+    <h3>Smart Programming & Member Insights</h3>
+    <p>Our system generates weekly class programming based on training cycles and tracks member attendance patterns. If someone stops showing up, we know before they cancel -- so we can reach out and bring them back.</p>
+    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">Southpaw Combat Club.</div>
+      <div class="footer-info">
+        2240 Edgewater Dr, Orlando, FL 32804<br />
+        (407) 555-4927 &middot; <a href="mailto:train@southpawcombat.com">train@southpawcombat.com</a><br />
+        &copy; 2026 Southpaw Combat Club &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+</body>
+</html>

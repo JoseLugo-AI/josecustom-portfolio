@@ -1,0 +1,393 @@
+---
+/**
+ * Vero Aesthetics - Winter Park, Orlando
+ * Matched to: crush-strata / Ama Figma template (muted sage green hero, large serif title,
+ * ultra-minimal white space, app/product-focused, clean modern)
+ */
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vero Aesthetics | Subtle. Precise. You.</title>
+  <meta name="description" content="Physician-led aesthetics on Park Avenue, Winter Park. Natural-looking results, no sales pressure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FAFAFA;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav - ultra minimal like Ama */
+    .nav {
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .nav-menu {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #888;
+      cursor: pointer;
+    }
+
+    /* Hero - large serif title with sage green block */
+    .hero {
+      text-align: center;
+      padding: 2rem 2rem 0;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+    .hero-green {
+      background: #A3B18A;
+      border-radius: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 350px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-green img {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Spacious sections - ultra minimal like Ama */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section-center { text-align: center; }
+    .section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.7;
+      max-width: 500px;
+    }
+    .section-center .section-desc { margin: 0 auto; }
+
+    /* Treatment cards - clean minimal */
+    .treatments-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .treatment-card {
+      background: #F0F0F0;
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .treatment-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .treatment-card p {
+      font-size: 0.8rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* Image showcase - sage green blocks */
+    .showcase-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .showcase-item {
+      background: #A3B18A;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 280px;
+    }
+    .showcase-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: multiply;
+      opacity: 0.85;
+    }
+
+    /* About - simple text */
+    .about-section {
+      padding: 6rem 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .about-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+    .about-section p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* Testimonials - clean centered */
+    .testimonials-section {
+      padding: 5rem 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .testimonials-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 3rem;
+    }
+    .testimonial {
+      margin-bottom: 3rem;
+    }
+    .testimonial-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .testimonial-name {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1A1A1A;
+    }
+    .testimonial-role {
+      font-size: 0.7rem;
+      color: #999;
+    }
+
+    /* CTA section */
+    .cta-section {
+      background: #A3B18A;
+      border-radius: 16px;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #1A1A1A;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.9; }
+
+    /* AI Feature */
+    .ai-section {
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+    .ai-section h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    .ai-section p {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.7;
+    }
+    .ai-badge {
+      margin-top: 1rem;
+      font-size: 0.55rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #ccc;
+    }
+
+    /* Footer - minimal */
+    .footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+    .footer-brand {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .footer p {
+      font-size: 0.75rem;
+      color: #999;
+      line-height: 1.8;
+    }
+    .footer a { color: #A3B18A; }
+    .footer a:hover { text-decoration: underline; }
+
+    .cta-badge {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: rgba(26,26,26,0.9);
+      border: 1px solid #333;
+      color: #A3B18A;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .cta-badge:hover { background: #A3B18A; color: #fff; border-color: #A3B18A; }
+
+    @media (max-width: 768px) {
+      .treatments-grid, .showcase-row { grid-template-columns: 1fr; }
+      .hero-green { min-height: 250px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-brand">Vero</div>
+    <div class="nav-menu">Menu</div>
+  </nav>
+
+  <section class="hero">
+    <h1>Browse everything.</h1>
+    <div class="hero-green">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1200&q=80" alt="Vero Aesthetics treatment" />
+    </div>
+  </section>
+
+  <section class="section section-center">
+    <h2>Subtle. Precise. You.</h2>
+    <p class="section-desc">Physician-led aesthetics on Park Avenue in Winter Park. Natural-looking results, no sales pressure, and free consultations -- because you should feel confident before you spend a dollar.</p>
+  </section>
+
+  <div class="showcase-row">
+    <div class="showcase-item">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Treatment room" />
+    </div>
+    <div class="showcase-item">
+      <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80" alt="Med spa reception" />
+    </div>
+  </div>
+
+  <section class="section section-center">
+    <h2>Treatments</h2>
+    <p class="section-desc">Everything we offer is performed or overseen by Dr. Whitfield.</p>
+    <div class="treatments-grid">
+      <div class="treatment-card">
+        <h3>Botox & Fillers</h3>
+        <p>Precise placement for natural results. We enhance what's there -- we don't change who you are.</p>
+      </div>
+      <div class="treatment-card">
+        <h3>Laser Resurfacing</h3>
+        <p>Address fine lines, sun damage, and uneven tone with medical-grade laser technology.</p>
+      </div>
+      <div class="treatment-card">
+        <h3>IV Hydration</h3>
+        <p>Vitamin-infused IV drips for energy, recovery, and immunity. No appointment needed.</p>
+      </div>
+      <div class="treatment-card">
+        <h3>Peels & Facials</h3>
+        <p>Medical-grade peels and customized facials matched to your skin's specific needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>About Dr. Whitfield</h2>
+    <p>Vero Aesthetics is a physician-led med spa on Park Avenue in Winter Park. Dr. Sarah Whitfield, board-certified in family medicine with advanced aesthetics training, opened Vero in 2022 with a focus on natural-looking results.</p>
+    <p>No sales pressure, no package upsells during your appointment. We do free consultations because we'd rather you feel confident before you spend a dollar.</p>
+  </section>
+
+  <section class="testimonials-section">
+    <h2>What Clients Say</h2>
+    <div class="testimonial">
+      <div class="testimonial-quote">"Dr. Whitfield talked me out of filler I didn't need and suggested a peel instead. Saved me money and I looked better."</div>
+      <div class="testimonial-name">Jennifer H.</div>
+      <div class="testimonial-role">Regular client</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-quote">"The most relaxing med spa experience I've had. No hard sell, no awkward pressure. Just good work."</div>
+      <div class="testimonial-name">Amanda R.</div>
+      <div class="testimonial-role">Botox client</div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Book Your Consultation</h2>
+    <a href="mailto:hello@veroaesthetics.com" class="cta-btn">Get Started</a>
+  </div>
+
+  <section class="ai-section">
+    <h3>Smart Treatment Matching</h3>
+    <p>Answer a short skin assessment online, and our system recommends treatment options based on your goals, skin type, and budget -- with realistic timelines and expected results.</p>
+    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-brand">Vero Aesthetics</div>
+    <p>330 S Park Ave, Suite 200, Winter Park, FL 32789<br />
+    (407) 555-8341 &middot; <a href="mailto:hello@veroaesthetics.com">hello@veroaesthetics.com</a></p>
+    <p style="margin-top: 1.5rem;">&copy; 2026 Vero Aesthetics &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a></p>
+  </footer>
+
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+</body>
+</html>

@@ -1,0 +1,492 @@
+---
+/**
+ * Puente Learning Academy - Conway, Orlando
+ * Matched to: snack-petal template (ultra minimal, light gray bg, large centered serif display,
+ * 2x2 info grid What/Who/When/Where, huge whitespace, rounded CTA, dark footer)
+ */
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puente Learning Academy | Two Languages. One Future.</title>
+  <meta name="description" content="Bilingual tutoring for K-8 students in Conway and East Orlando." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #F5F5F0;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav - ultra minimal like snack-petal: just "Menu" top-left */
+    .nav {
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-menu {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1A1A1A;
+      cursor: pointer;
+    }
+
+    /* Divider line */
+    .divider {
+      max-width: 700px;
+      margin: 0 auto;
+      border: none;
+      border-top: 1px solid #D5D5CF;
+    }
+
+    /* Hero - large centered serif display like snack-petal */
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 6rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: #1A1A1A;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    /* Spacious empty area like snack-petal's big whitespace blocks */
+    .spacer {
+      height: 12rem;
+    }
+    .spacer-sm {
+      height: 6rem;
+    }
+
+    /* "What We Do" section - centered heading */
+    .section-heading {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+    }
+    .section-heading h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      color: #1A1A1A;
+    }
+
+    /* 2x2 Info Grid - like snack-petal's What/Who/When/Where */
+    .info-grid {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .info-cell {
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid #D5D5CF;
+    }
+    .info-cell:nth-child(odd) {
+      border-right: 1px solid #D5D5CF;
+    }
+    .info-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .info-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #1A1A1A;
+      margin-bottom: 0.75rem;
+    }
+    .info-cell p {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* Programs section - like snack-petal's results/news area */
+    .programs-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .programs-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .programs-section .sub {
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+    .program-item {
+      padding: 2rem 0;
+      border-top: 1px solid #D5D5CF;
+    }
+    .program-item:last-child {
+      border-bottom: 1px solid #D5D5CF;
+    }
+    .program-item h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .program-item p {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    /* About - simple text like snack-petal */
+    .about-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .about-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+    .about-section p {
+      font-size: 0.85rem;
+      color: #777;
+      line-height: 1.8;
+      max-width: 520px;
+      margin: 0 auto 1rem;
+    }
+    .about-owner {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #999;
+    }
+    .about-owner strong {
+      color: #1A1A1A;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    /* Testimonials - centered simple */
+    .testimonials-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    .testimonials-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .testimonial {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid #D5D5CF;
+    }
+    .testimonial-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.6;
+      color: #333;
+      max-width: 500px;
+      margin: 0 auto 1rem;
+    }
+    .testimonial-name {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #1A1A1A;
+    }
+    .testimonial-role {
+      font-size: 0.7rem;
+      color: #999;
+    }
+
+    /* CTA - big rounded button like snack-petal */
+    .cta-section {
+      text-align: center;
+      padding: 4rem 2rem 6rem;
+    }
+    .cta-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 400;
+      color: #1A1A1A;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 2rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #1A1A1A;
+      color: #F5F5F0;
+      padding: 1.1rem 3rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; }
+
+    /* AI Feature */
+    .ai-section {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+    .ai-section h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    .ai-section p {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.7;
+    }
+    .ai-badge {
+      margin-top: 1rem;
+      font-size: 0.55rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #ccc;
+    }
+
+    /* Footer - dark like snack-petal */
+    .footer {
+      background: #1A1A1A;
+      color: #999;
+      padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: #F5F5F0;
+      margin-bottom: 1rem;
+    }
+    .footer p {
+      font-size: 0.75rem;
+      line-height: 1.8;
+      color: #666;
+    }
+    .footer a { color: #999; }
+    .footer a:hover { text-decoration: underline; }
+    .footer-copy {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #333;
+      font-size: 0.65rem;
+      color: #555;
+    }
+
+    .cta-badge {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: rgba(26,26,26,0.9);
+      border: 1px solid #333;
+      color: #F5F5F0;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .cta-badge:hover { background: #333; }
+
+    @media (max-width: 768px) {
+      .info-grid { grid-template-columns: 1fr; }
+      .info-cell:nth-child(odd) { border-right: none; }
+      .spacer { height: 6rem; }
+      .spacer-sm { height: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-menu">Menu</div>
+    <div></div>
+  </nav>
+
+  <hr class="divider" />
+
+  <section class="hero">
+    <div class="hero-label">Bilingual Education &middot; Conway</div>
+    <h1>Puente Learning Academy</h1>
+    <div class="hero-sub">Two languages. One future.</div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <div class="section-heading">
+    <h2>What We Do</h2>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-cell">
+      <div class="info-label">What</div>
+      <div class="info-title">Bilingual tutoring for K-8</div>
+      <p>Reading, math, and writing instruction in English and Spanish. Small groups, credentialed bilingual tutors.</p>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Who</div>
+      <div class="info-title">All Conway & East Orlando families</div>
+      <p>First- and second-generation Latino households where parents want their kids strong in both languages.</p>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">When</div>
+      <div class="info-title">Monday - Thursday, 3:30-6pm</div>
+      <p>After-school sessions that fit your schedule. Summer enrichment camps available June through July.</p>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Where</div>
+      <div class="info-title">4510 S Conway Rd</div>
+      <p>Orlando, FL 32812. Walk-ins welcome. We'll find the right program for your child.</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <hr class="divider" />
+
+  <section class="programs-section">
+    <h2>Our Programs</h2>
+    <div class="sub">Everything we offer is led by credentialed, bilingual staff.</div>
+    <div class="program-item">
+      <h3>After-School Tutoring (K-8)</h3>
+      <p>Monday through Thursday, 3:30-6pm. Reading, math, and writing instruction in English and Spanish. Small groups, credentialed bilingual tutors.</p>
+    </div>
+    <div class="program-item">
+      <h3>Reading & Math Intervention</h3>
+      <p>Targeted support for students performing below grade level. Structured programs that close gaps without making kids feel behind.</p>
+    </div>
+    <div class="program-item">
+      <h3>Summer Enrichment Camps</h3>
+      <p>Six-week summer program combining academic reinforcement with hands-on STEM projects. Keeps skills sharp without feeling like school.</p>
+    </div>
+    <div class="program-item">
+      <h3>Parent Workshops</h3>
+      <p>Monthly workshops helping parents navigate the school system, understand report cards, and advocate for their children. In Spanish and English.</p>
+    </div>
+  </section>
+
+  <div class="spacer-sm"></div>
+
+  <section class="about-section">
+    <h2>Our Story</h2>
+    <p>Puente was founded by Carmen Delgado, a former Orange County Public Schools teacher who saw too many bilingual kids falling through the cracks.</p>
+    <p>We work with families in Conway, Azalea Park, and Meadow Woods. Our tutors are bilingual, credentialed, and from the community.</p>
+    <div class="about-owner">
+      <strong>Carmen Delgado</strong>
+      Founder & Director
+    </div>
+  </section>
+
+  <div class="spacer-sm"></div>
+
+  <hr class="divider" />
+
+  <section class="testimonials-section">
+    <h2>From Our Families</h2>
+    <div class="testimonial">
+      <div class="testimonial-quote">"My daughter went from dreading reading to asking for books. Carmen and her team changed everything for us."</div>
+      <div class="testimonial-name">Rosa M.</div>
+      <div class="testimonial-role">Parent, Conway</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-quote">"The bilingual approach means my son doesn't have to choose. He's getting stronger in both languages at the same time."</div>
+      <div class="testimonial-name">Eduardo S.</div>
+      <div class="testimonial-role">Parent, Azalea Park</div>
+    </div>
+    <div class="testimonial">
+      <div class="testimonial-quote">"The parent workshops helped me understand how to talk to my child's teacher. That alone was worth it."</div>
+      <div class="testimonial-name">Lucia T.</div>
+      <div class="testimonial-role">Parent, Meadow Woods</div>
+    </div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <section class="ai-section">
+    <h3>Automated Progress Reports</h3>
+    <p>Our system tracks each student's weekly performance and generates bilingual progress reports sent directly to parents. English and Spanish, every Friday, no extra admin time for tutors.</p>
+    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+  </section>
+
+  <div class="spacer-sm"></div>
+
+  <section class="cta-section">
+    <h2>All families are welcome here!</h2>
+    <p>Walk-ins welcome. We'll find the right program for your child.</p>
+    <a href="mailto:info@puentelearning.com" class="cta-btn">Enroll Your Child</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">Puente Learning Academy</div>
+      <p><a href="mailto:info@puentelearning.com">info@puentelearning.com</a><br />
+      4510 S Conway Rd,<br />
+      Orlando, FL 32812<br />
+      (407) 555-6241</p>
+      <div class="footer-copy">
+        &copy; 2026 Puente Learning Academy &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+</body>
+</html>
