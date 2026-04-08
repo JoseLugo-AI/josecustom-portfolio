@@ -16,21 +16,23 @@ interface SiteCard {
 const BASE = "/josecustom-portfolio"
 
 const sites: SiteCard[] = [
-  // Unfinished sites first (these sit at bottom/hidden part of wheel)
+  // Index 0-3: finished sites that appear as you scroll past center (right side, entering from right)
+  { name: "Calor Supply", slug: "calor-supply", neighborhood: "Audubon Park", tagline: "Heat for every athlete.", screenshot: `${BASE}/screenshots/calor-supply.jpg`, done: true },
+  { name: "The Eola Parlor", slug: "eola-parlor", neighborhood: "Thornton Park", tagline: "Your night. Our room.", screenshot: `${BASE}/screenshots/eola-parlor.jpg`, done: true },
+  { name: "Basecamp IT", slug: "basecamp-it", neighborhood: "Downtown", tagline: "IT that just works.", screenshot: `${BASE}/screenshots/basecamp-it.jpg`, done: true },
+  { name: "Masa Madre", slug: "masa-madre", neighborhood: "Curry Ford", tagline: "Scratch-made daily.", screenshot: `${BASE}/screenshots/masa-madre.jpg`, done: true },
+  // Index 4-9: unfinished sites (hidden at bottom of wheel)
   { name: "Iron & Asphalt", slug: "iron-asphalt", neighborhood: "SoDo", tagline: "Built. Not bought.", screenshot: `${BASE}/screenshots/iron-asphalt.jpg`, done: false },
   { name: "Puente Learning", slug: "puente-learning", neighborhood: "Conway", tagline: "Two languages. One future.", screenshot: `${BASE}/screenshots/puente-learning.jpg`, done: false },
   { name: "Southpaw Combat", slug: "southpaw-combat", neighborhood: "College Park", tagline: "Show up. Get better.", screenshot: `${BASE}/screenshots/southpaw-combat.jpg`, done: false },
   { name: "Stem & Table", slug: "stem-table", neighborhood: "Winter Park", tagline: "Flowers. Events. Wonder.", screenshot: `${BASE}/screenshots/stem-table.jpg`, done: false },
   { name: "Still Water Tattoo", slug: "still-water", neighborhood: "Ivanhoe Village", tagline: "Permanent art. Personal story.", screenshot: `${BASE}/screenshots/still-water.jpg`, done: false },
   { name: "Vero Aesthetics", slug: "vero-aesthetics", neighborhood: "Winter Park", tagline: "Beauty. Elevated.", screenshot: `${BASE}/screenshots/vero-aesthetics.jpg`, done: false },
-  // Finished sites last (these sit at top/visible part of wheel)
+  // Index 10: CENTER card (first visible)
   { name: "Johnny's Diner", slug: "", neighborhood: "Curry Ford", tagline: "Breakfast, lunch & dinner.", screenshot: `${BASE}/screenshots/johnnys-diner.jpg`, done: true, externalUrl: "https://johnnysdinercurryford.com/" },
+  // Index 11-12: immediately right of center
   { name: "Aldea Partners", slug: "aldea-partners", neighborhood: "Lake Nona", tagline: "Strategy meets execution.", screenshot: `${BASE}/screenshots/aldea-partners.jpg`, done: true },
   { name: "Foreign Exchange", slug: "foreign-exchange", neighborhood: "Mills 50", tagline: "Curated. Not mass-produced.", screenshot: `${BASE}/screenshots/foreign-exchange.jpg`, done: true },
-  { name: "Calor Supply", slug: "calor-supply", neighborhood: "Audubon Park", tagline: "Heat for every athlete.", screenshot: `${BASE}/screenshots/calor-supply.jpg`, done: true },
-  { name: "The Eola Parlor", slug: "eola-parlor", neighborhood: "Thornton Park", tagline: "Your night. Our room.", screenshot: `${BASE}/screenshots/eola-parlor.jpg`, done: true },
-  { name: "Basecamp IT", slug: "basecamp-it", neighborhood: "Downtown", tagline: "IT that just works.", screenshot: `${BASE}/screenshots/basecamp-it.jpg`, done: true },
-  { name: "Masa Madre", slug: "masa-madre", neighborhood: "Curry Ford", tagline: "Scratch-made daily.", screenshot: `${BASE}/screenshots/masa-madre.jpg`, done: true },
 ]
 
 export function PortfolioGallery() {
