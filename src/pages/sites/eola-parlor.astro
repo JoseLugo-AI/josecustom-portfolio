@@ -1,0 +1,438 @@
+---
+/**
+ * The Eola Parlor - Thornton Park, Orlando
+ * Matched to: floral-manga-rapid template (elegant serif, sticky dark nav,
+ * full-width hero photo, 2x2 card grid, warm cream footer)
+ * Colors: deep charcoal, warm gold, cream - upscale private dining
+ */
+import ScrollReveal from '../../components/ScrollReveal.tsx';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Eola Parlor | Your Night. Our Room.</title>
+  <meta name="description" content="Private dining and cocktail bar in Thornton Park, Orlando. Reservations recommended." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Geist:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;
+      font-weight: 400;
+      background: #fff;
+      color: #2C2825;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Sticky Nav ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(44, 40, 37, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .nav-monogram {
+      font-family: 'Aboreto', serif;
+      font-size: 1.3rem;
+      color: #C9A96E;
+      letter-spacing: -0.02em;
+    }
+    .nav-date {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #C9A96E; }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-title {
+      padding: 6rem 2rem 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-title h1 {
+      font-family: 'Aboreto', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: #2C2825;
+      line-height: 1.05;
+    }
+    .hero-image {
+      flex: 1;
+      width: 100%;
+      position: relative;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 50vh;
+      object-fit: cover;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 2rem;
+    }
+    .hero-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      max-width: 460px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    .hero-overlay .invite {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .hero-overlay .details {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+
+    /* ── Card Grid ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      padding: 4rem 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+    }
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .card:hover img { transform: scale(1.03); }
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(44,40,37,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .card:hover .card-overlay { background: rgba(44,40,37,0.5); }
+    .card-overlay h3 {
+      font-family: 'Aboreto', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 0.06em;
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      text-decoration-color: rgba(255,255,255,0.5);
+    }
+
+    /* ── Full-width photo ── */
+    .full-photo {
+      width: 100%;
+      overflow: hidden;
+    }
+    .full-photo img {
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      object-fit: cover;
+    }
+
+    /* ── Content section ── */
+    .content-section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .content-section h2 {
+      font-family: 'Aboreto', serif;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .content-section p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .content-cta {
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      background: #2C2825;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .content-cta:hover { background: #C9A96E; }
+
+    /* ── AI Section ── */
+    .ai-section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+      text-align: center;
+    }
+    .ai-section h3 {
+      font-size: 0.85rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .ai-section p {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: #888;
+      line-height: 1.7;
+    }
+    .ai-badge {
+      margin-top: 0.75rem;
+      font-size: 0.6rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #bbb;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #F5F0EB;
+      padding: 4rem 2.5rem;
+      text-align: center;
+    }
+    .footer-monogram {
+      font-family: 'Aboreto', serif;
+      font-size: 2.5rem;
+      color: #2C2825;
+      margin-bottom: 1rem;
+    }
+    .footer-info {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: #888;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links a {
+      font-size: 0.7rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #999;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #C9A96E; }
+    .footer-copy {
+      font-size: 0.65rem;
+      color: #bbb;
+    }
+    .footer-copy a { color: #C9A96E; }
+
+    .cta-badge {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: rgba(44,40,37,0.9);
+      border: 1px solid #C9A96E;
+      color: #C9A96E;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .cta-badge:hover { background: #C9A96E; color: #fff; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav { padding: 0.75rem 1.5rem; }
+      .nav-date { display: none; }
+      .nav-links { gap: 1rem; }
+      .hero-title { padding: 5rem 1.5rem 1.5rem; }
+      .card-grid { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+      .content-section { padding: 3rem 1.5rem; }
+      .footer { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Nav -->
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-monogram">EP</div>
+      <div class="nav-date">Thornton Park, Orlando</div>
+    </div>
+    <div class="nav-links">
+      <a href="#menu">Menu</a>
+      <a href="#dining">Private Dining</a>
+      <a href="#bar">The Bar</a>
+      <a href="#reservations">Reservations</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-title">
+      <h1>The Eola Parlor</h1>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Elegant restaurant dining room with warm lighting" loading="eager" />
+      <div class="hero-overlay">
+        <div class="hero-card">
+          <p class="invite">Your night. Our room. An intimate dining experience in the heart of Thornton Park.</p>
+          <p class="details">Thursday - Sunday<br />5:00 PM - Midnight<br />18 E Washington St, Orlando</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Card Grid -->
+  <ScrollReveal client:load>
+    <section class="card-grid">
+      <a class="card" href="#menu">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Beautifully plated fine dining dish" loading="lazy" />
+        <div class="card-overlay"><h3>The Menu</h3></div>
+      </a>
+      <a class="card" href="#dining">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Private dining room with candlelight" loading="lazy" />
+        <div class="card-overlay"><h3>Private Dining</h3></div>
+      </a>
+      <a class="card" href="#bar">
+        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80" alt="Craft cocktail being prepared at bar" loading="lazy" />
+        <div class="card-overlay"><h3>The Bar</h3></div>
+      </a>
+      <a class="card" href="#reservations">
+        <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80" alt="Intimate table setting with flowers" loading="lazy" />
+        <div class="card-overlay"><h3>Events</h3></div>
+      </a>
+    </section>
+  </ScrollReveal>
+
+  <!-- Full-width photo -->
+  <ScrollReveal client:load>
+    <div class="full-photo">
+      <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1200&q=80" alt="Delicate fine dining plate in warm restaurant setting" loading="lazy" />
+    </div>
+  </ScrollReveal>
+
+  <!-- Reservations -->
+  <ScrollReveal client:load>
+    <section class="content-section" id="reservations">
+      <h2>Reservations</h2>
+      <p>The Parlor seats forty. Private dining rooms accommodate parties of eight to sixteen. We recommend booking at least one week in advance for weekend evenings.</p>
+      <a href="tel:4075553920" class="content-cta">Reserve a Table</a>
+    </section>
+  </ScrollReveal>
+
+  <!-- AI Section -->
+  <ScrollReveal client:load>
+    <section class="ai-section">
+      <h3>Intelligent Booking</h3>
+      <p>Our AI concierge handles reservations, dietary preferences, and event coordination. Guests receive personalized menu recommendations based on past visits and seasonal availability.</p>
+      <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+    </section>
+  </ScrollReveal>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-monogram">EP</div>
+    <div class="footer-info">
+      Thursday - Sunday &middot; 5:00 PM - Midnight<br />
+      18 E Washington St &middot; Thornton Park &middot; Orlando, FL<br />
+      (407) 555-3920
+    </div>
+    <div class="footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">Menu</a>
+      <a href="#">Private Events</a>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 The Eola Parlor &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
+    </div>
+  </footer>
+
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+</body>
+</html>
