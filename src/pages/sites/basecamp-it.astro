@@ -1,0 +1,644 @@
+---
+/**
+ * Basecamp IT Solutions - Lake Nona, Orlando
+ * Matched to: feed-work / Etran template (dark slate hero with beam animation,
+ * teal feature cards, stats grid, two-column feature cards, icon row, Manrope font)
+ */
+import BasecampBeams from '../../components/BasecampBeams.tsx';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basecamp IT Solutions | Your Tech. Handled.</title>
+  <meta name="description" content="Managed IT support for small businesses in Lake Nona and greater Orlando." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      background: #fff;
+      color: #1a1a1a;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Hero Section (dark slate, sticky behind content) ── */
+    .hero {
+      background: #0F172A;
+      color: #fff;
+      padding: 0 3rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      position: relative;
+      z-index: 10;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .nav-brand svg { width: 22px; height: 22px; }
+    .nav-cta {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #fff;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+
+    /* ── Hero Content ── */
+    .hero-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 700px;
+      padding: 2rem 0;
+      position: relative;
+      z-index: 10;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #5EEAD4;
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 3rem;
+    }
+
+    /* ── Offerings label ── */
+    .offerings-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1rem;
+    }
+
+    /* ── Green feature cards ── */
+    .offering-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .offering-card {
+      background: #0D9488;
+      border-radius: 6px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .offering-card:hover { background: #5EEAD4; }
+    .offering-card svg {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 1rem;
+      stroke: #000;
+    }
+    .offering-card .card-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #000;
+      line-height: 1.3;
+    }
+
+    /* ── Hero footer links ── */
+    .hero-links {
+      display: flex;
+      gap: 1.5rem;
+      padding-top: 1rem;
+      position: relative;
+      z-index: 10;
+    }
+    .hero-links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+    }
+    .hero-links a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── Scroll content (slides over sticky hero) ── */
+    .scroll-content {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+    }
+
+    /* ── Photo section with badges ── */
+    .photo-section {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+    }
+    .photo-section img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .badge {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .badge svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .badge.top-right { top: 2rem; right: 2rem; }
+    .badge.left-center { top: 50%; left: 2rem; transform: translateY(-50%); }
+    .badge.bottom-center { bottom: 2rem; left: 50%; transform: translateX(-50%); }
+
+    /* ── Tagline ── */
+    .tagline {
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      color: #1a1a1a;
+      line-height: 1.4;
+    }
+
+    /* ── Logo strip ── */
+    .logo-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      padding: 1rem 2rem 2.5rem;
+      flex-wrap: wrap;
+    }
+    .logo-strip span {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #bbb;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Stats section ── */
+    .stats-section {
+      padding: 4rem 3rem;
+      text-align: center;
+    }
+    .stats-section h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    .stats-section h2 em { font-style: italic; }
+    .stats-section .stats-sub {
+      font-size: 0.9rem;
+      color: #888;
+      max-width: 500px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .stat-card {
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .stat-card .stat-value {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+    .stat-card .stat-value svg {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto;
+    }
+    .stat-card .stat-label {
+      font-size: 0.8rem;
+      color: #888;
+      font-weight: 400;
+    }
+
+    /* ── Features section ── */
+    .features-section {
+      padding: 4rem 3rem;
+    }
+    .features-section h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .feature-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .feature-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #f0f0e8;
+    }
+    .feature-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 1rem 0 0.35rem;
+    }
+    .feature-card p {
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* ── Full-width photo ── */
+    .full-photo {
+      margin: 2rem 3rem;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .full-photo img {
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      object-fit: cover;
+    }
+
+    /* ── Bottom section ── */
+    .bottom-section {
+      padding: 4rem 3rem;
+      text-align: center;
+    }
+    .bottom-section h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    .bottom-section .bottom-sub {
+      font-size: 0.9rem;
+      color: #888;
+      max-width: 500px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+    .icon-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .icon-item {
+      text-align: center;
+    }
+    .icon-item svg {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 0.75rem;
+      stroke: #1a1a1a;
+    }
+    .icon-item span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 3rem 3rem 2rem;
+      text-align: center;
+    }
+    .cta-section h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #555;
+      max-width: 400px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background: #0F172A;
+      color: #fff;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: #0B1222; }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 3rem;
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-brand {
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .footer-brand svg { width: 18px; height: 18px; }
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .footer-col .col-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #999;
+      margin-bottom: 0.25rem;
+    }
+    .footer-col a, .footer-col span {
+      font-size: 0.8rem;
+      color: #555;
+      font-weight: 400;
+    }
+    .footer-col a:hover { color: #1a1a1a; }
+    .footer-legal {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-legal a {
+      font-size: 0.75rem;
+      color: #999;
+    }
+    .footer-legal a:hover { color: #555; }
+
+    .cta-badge {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid #0D9488;
+      color: #5EEAD4;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .cta-badge:hover { background: #0D9488; color: #fff; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero { padding: 0 1.5rem 1.5rem; }
+      .offering-cards { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .feature-cards { grid-template-columns: 1fr; }
+      .icon-row { grid-template-columns: repeat(2, 1fr); }
+      .stats-section, .features-section, .bottom-section, .cta-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .full-photo { margin: 2rem 1.5rem; }
+      .footer { padding: 2rem 1.5rem; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <BasecampBeams client:load />
+    <nav class="nav">
+      <div class="nav-brand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        Basecamp IT
+      </div>
+      <a href="#contact" class="nav-cta">Get started</a>
+    </nav>
+
+    <div class="hero-content">
+      <h1>Managed IT<br />Made <em>Simple</em></h1>
+      <p class="subtitle">No contracts. No jargon. No waiting on hold.</p>
+
+      <div class="offerings-label">Our offerings</div>
+      <div class="offering-cards">
+        <div class="offering-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <div class="card-title">Instant<br />Support</div>
+        </div>
+        <div class="offering-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <div class="card-title">Network<br />Management</div>
+        </div>
+        <div class="offering-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <div class="card-title">Advanced<br />Security</div>
+        </div>
+      </div>
+
+      <div class="hero-links">
+        <a href="#contact">Contact</a>
+        <a href="#">Social</a>
+        <a href="#contact">Address</a>
+        <a href="#">Legal Terms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrolling content that slides over the hero -->
+  <div class="scroll-content">
+
+  <!-- Photo with badges -->
+  <section class="photo-section">
+    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80" alt="IT professional working on server infrastructure" loading="lazy" />
+    <div class="badge top-right">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      Network secured!
+    </div>
+    <div class="badge left-center">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      99.9% uptime
+    </div>
+  </section>
+
+  <!-- Tagline -->
+  <div class="tagline">
+    We handle your IT infrastructure<br />so you can focus on your business
+  </div>
+
+  <!-- Logo strip -->
+  <div class="logo-strip">
+    <span>Microsoft</span>
+    <span>Cisco</span>
+    <span>Dell</span>
+    <span>Fortinet</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.5" width="24" height="24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+  </div>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <h2>Get More Done <em>In A Week</em></h2>
+    <p class="stats-sub">Maximize your team's productivity with proactive IT support that eliminates downtime and keeps systems running smoothly.</p>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">2x</div>
+        <div class="stat-label">Faster Issue Resolution</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#0F172A" stroke-width="2"><rect x="6" y="30" width="6" height="12" rx="1"/><rect x="15" y="22" width="6" height="20" rx="1"/><rect x="24" y="14" width="6" height="28" rx="1"/><rect x="33" y="6" width="6" height="36" rx="1"/></svg>
+        </div>
+        <div class="stat-label">Uptime Improvement</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#0F172A" stroke-width="2"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="8"/><line x1="24" y1="6" x2="24" y2="2"/><line x1="24" y1="46" x2="24" y2="42"/><line x1="6" y1="24" x2="2" y2="24"/><line x1="46" y1="24" x2="42" y2="24"/></svg>
+        </div>
+        <div class="stat-label">Centralize Your Systems</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">130%</div>
+        <div class="stat-label">More Productive Teams</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <h2>The Most Reliable IT Partner</h2>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="Server rack in data center" loading="lazy" />
+        <h3>Scale Your Team, Not Your IT Budget</h3>
+        <p>Add users, devices, and locations without adding headcount. Our flat-rate plans grow with you.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80" alt="IT security monitoring dashboard" loading="lazy" />
+        <h3>Proactive Monitoring, Zero Surprises</h3>
+        <p>We catch problems before they become outages. 24/7 monitoring with real-time alerts and rapid response.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-width photo -->
+  <div class="full-photo">
+    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&q=80" alt="Team collaborating in modern office" loading="lazy" />
+  </div>
+
+  <!-- Bottom Section -->
+  <section class="bottom-section">
+    <h2>First Class Support</h2>
+    <p class="bottom-sub">Real-time monitoring, seamless integrations, and advanced tools to keep your business running without interruption.</p>
+    <div class="icon-row">
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 18v3"/><path d="M8 21h8"/></svg>
+        <span>Remote Access</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Secure</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span>Cloud Backup</span>
+      </div>
+      <div class="icon-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Team Plans</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <h3>Call Basecamp IT and let us handle everything from your network to your endpoints.</h3>
+    <a href="tel:4075551234" class="cta-btn">Get started</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      Basecamp IT
+    </div>
+    <div class="footer-col">
+      <span class="col-label">Contact</span>
+      <span>hello@basecampit.com</span>
+    </div>
+    <div class="footer-col">
+      <a href="#">Instagram</a>
+      <a href="#">X</a>
+      <a href="#">LinkedIn</a>
+    </div>
+    <div class="footer-legal">
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Privacy</a>
+      <span style="font-size:0.75rem;color:#999;">|</span>
+      <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
+    </div>
+  </footer>
+
+  </div><!-- end scroll-content -->
+
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+</body>
+</html>
