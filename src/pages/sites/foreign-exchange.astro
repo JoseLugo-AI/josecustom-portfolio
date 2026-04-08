@@ -5,7 +5,7 @@
  * full-bleed imagery, scroll animations). Streetwear edge with orange accent.
  */
 import ScrollReveal from '../../components/ScrollReveal.tsx';
-import { ParticleText } from '../../components/ParticleText.tsx';
+import { TextMarquee } from '../../components/TextMarquee.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -94,13 +94,32 @@ import { ParticleText } from '../../components/ParticleText.tsx';
       text-align: center;
       padding: 6rem 2rem 4rem;
     }
-    .particle-wrapper {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
+    .marquee-wrapper {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
     }
-    .particle-wrapper canvas {
-      display: block;
+    .marquee-top {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(5rem, 14vw, 12rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: #fff;
+      -webkit-text-stroke: 0px;
+    }
+    .marquee-bottom {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.4);
     }
     .hero-tagline {
       margin-top: 1.5rem;
@@ -517,21 +536,19 @@ import { ParticleText } from '../../components/ParticleText.tsx';
     </div>
     <div class="hero-gradient"></div>
     <div class="hero-content">
-      <div class="particle-wrapper">
-        <ParticleText
+      <div class="marquee-wrapper">
+        <TextMarquee
           client:load
-          words={["FOREIGN", "EXCHANGE", "CURATED", "AUTHENTIC", "MILLS 50"]}
-          colors={[
-            { r: 255, g: 77, b: 0 },
-            { r: 255, g: 140, b: 0 },
-            { r: 255, g: 255, b: 255 },
-            { r: 255, g: 77, b: 0 },
-            { r: 255, g: 200, b: 100 },
-          ]}
-          font="bold 100px 'Space Grotesk', sans-serif"
-          cycleInterval={200}
-          pixelSteps={5}
-        />
+          baseVelocity={-3}
+          delay={300}
+          className="marquee-top"
+        >FOREIGN &#x2F;</TextMarquee>
+        <TextMarquee
+          client:load
+          baseVelocity={3}
+          delay={600}
+          className="marquee-bottom"
+        >EXCHANGE &#x2F;</TextMarquee>
       </div>
       <div class="hero-tagline">Curated. Not Mass-Produced.</div>
       <div class="hero-sub">Mills 50 &middot; Orlando, FL &middot; @foreignexchangeorl</div>
