@@ -3,7 +3,9 @@
  * Iron & Asphalt Customs - SoDo, Orlando
  * Matched to: busy-patch / VAULT template (dark bg, huge condensed display type,
  * yellow/blue accent bars, event-lineup-style schedules, grey sections, marquee)
+ * Colors: #0D0D0D dark bg, #D4382C red accent, #D4A017 yellow, #2563EB blue
  */
+import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -28,7 +30,7 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    /* Nav - dark with icon like VAULT */
+    /* ── Nav ── */
     .nav {
       background: #0D0D0D;
       padding: 1rem 2rem;
@@ -62,8 +64,22 @@
       letter-spacing: 0.05em;
       color: #fff;
     }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #666;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #D4382C; }
 
-    /* Video/Hero block - dark with image like VAULT's YouTube embed */
+    /* ── Video/Hero block ── */
     .hero-video {
       background: #111;
       padding: 2rem;
@@ -74,12 +90,15 @@
       position: relative;
       border-radius: 8px;
       overflow: hidden;
+      cursor: pointer;
     }
     .hero-video img {
       width: 100%;
       height: 400px;
       object-fit: cover;
+      transition: transform 0.6s ease;
     }
+    .hero-video-inner:hover img { transform: scale(1.03); }
     .hero-video-overlay {
       position: absolute;
       inset: 0;
@@ -87,7 +106,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.3s;
     }
+    .hero-video-inner:hover .hero-video-overlay { background: rgba(0,0,0,0.15); }
     .play-btn {
       width: 60px;
       height: 60px;
@@ -96,6 +117,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 0 0 rgba(212, 56, 44, 0.4);
+    }
+    .hero-video-inner:hover .play-btn {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 12px rgba(212, 56, 44, 0.15);
     }
     .play-btn::after {
       content: '';
@@ -107,7 +134,7 @@
       margin-left: 4px;
     }
 
-    /* HUGE display type like VAULT */
+    /* ── HUGE display type ── */
     .brand-display {
       text-align: center;
       padding: 3rem 2rem 2rem;
@@ -127,7 +154,7 @@
       letter-spacing: 0.15em;
     }
 
-    /* Yellow accent bar - like VAULT's colored sections */
+    /* ── Accent bars ── */
     .accent-bar-yellow {
       background: #D4A017;
       padding: 2.5rem 2rem;
@@ -140,8 +167,6 @@
       color: #000;
       margin-bottom: 0.5rem;
     }
-
-    /* Blue accent bar */
     .accent-bar-blue {
       background: #2563EB;
       padding: 0.5rem 2rem;
@@ -155,7 +180,7 @@
       color: #fff;
     }
 
-    /* Headliners section - script font like VAULT */
+    /* ── Headliners section ── */
     .headliners {
       padding: 3rem 2rem;
       max-width: 900px;
@@ -172,7 +197,9 @@
     .headliner-item {
       padding: 1.5rem 0;
       border-bottom: 1px solid #222;
+      transition: border-color 0.3s;
     }
+    .headliner-item:hover { border-color: #D4382C; }
     .headliner-label {
       font-family: 'Oswald', sans-serif;
       font-size: 0.6rem;
@@ -188,9 +215,11 @@
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 0.03em;
+      transition: color 0.3s;
     }
+    .headliner-item:hover .headliner-name { color: #D4382C; }
 
-    /* Full lineup - grey section like VAULT */
+    /* ── Full lineup - grey section ── */
     .lineup-section {
       background: #1A1A1A;
       padding: 3rem 2rem;
@@ -212,9 +241,12 @@
     }
     .lineup-grid {
       max-width: 900px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
     .lineup-time-block {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
     .lineup-time {
       font-family: 'Oswald', sans-serif;
@@ -235,28 +267,41 @@
       line-height: 1.8;
     }
 
-    /* Grey about section */
-    .about-grey {
-      background: #2A2A2A;
-      padding: 3rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
+    /* ── Gallery row ── */
+    .gallery-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
     }
-    .about-grey p {
-      font-size: 0.85rem;
-      color: #999;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-      max-width: 600px;
+    .gallery-cell {
+      position: relative;
+      overflow: hidden;
     }
-    .about-grey .owner {
-      margin-top: 1.5rem;
-      font-size: 0.75rem;
+    .gallery-cell img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      filter: grayscale(30%) contrast(1.1);
+      transition: filter 0.5s, transform 0.5s;
     }
-    .about-grey .owner strong { color: #fff; }
-    .about-grey .owner span { color: #666; display: block; }
+    .gallery-cell:hover img {
+      filter: grayscale(0%) contrast(1.05);
+      transform: scale(1.05);
+    }
+    .gallery-cell-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(212, 56, 44, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .gallery-cell:hover .gallery-cell-overlay {
+      background: rgba(212, 56, 44, 0.15);
+    }
 
-    /* Marquee - like VAULT bottom ticker */
+    /* ── Marquee ── */
     .marquee {
       background: #D4382C;
       padding: 0.75rem 0;
@@ -280,7 +325,7 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* Pricing section - like VAULT's $32 ticket */
+    /* ── Pricing section ── */
     .pricing-section {
       background: #333;
       padding: 4rem 2rem;
@@ -310,11 +355,93 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-weight: 600;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .pricing-cta:hover { opacity: 0.85; }
+    .pricing-cta:hover { opacity: 0.85; transform: translateY(-2px); }
 
-    /* AI section */
+    /* ── About grey section ── */
+    .about-grey {
+      background: #2A2A2A;
+      padding: 3rem 2rem;
+    }
+    .about-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      max-width: 600px;
+    }
+    .about-text .owner {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+    }
+    .about-text .owner strong { color: #fff; }
+    .about-text .owner span { color: #666; display: block; }
+    .about-image {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .about-image img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      filter: contrast(1.1);
+    }
+
+    /* ── Testimonials ── */
+    .testimonials {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .testimonials h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      text-transform: none;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: #1A1A1A;
+      border-left: 3px solid #D4382C;
+      padding: 1.5rem;
+      border-radius: 0 4px 4px 0;
+    }
+    .testimonial-card blockquote {
+      font-size: 0.85rem;
+      color: #ccc;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .testimonial-card cite {
+      font-style: normal;
+      font-size: 0.7rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .testimonial-card cite strong {
+      color: #fff;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    /* ── AI section ── */
     .ai-section {
       padding: 3rem 2rem;
       text-align: center;
@@ -343,20 +470,7 @@
       color: #444;
     }
 
-    /* Gallery row */
-    .gallery-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-    .gallery-row img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      filter: grayscale(30%) contrast(1.1);
-    }
-
-    /* Footer - like VAULT bottom */
+    /* ── Footer ── */
     .footer {
       background: #111;
       padding: 3rem 2rem;
@@ -399,9 +513,14 @@
     }
     .cta-badge:hover { background: #D4382C; border-color: #D4382C; }
 
+    /* ── Responsive ── */
     @media (max-width: 768px) {
       .gallery-row { grid-template-columns: repeat(2, 1fr); }
       .hero-video img { height: 250px; }
+      .lineup-grid { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -412,117 +531,188 @@
       <div class="nav-icon">I&A</div>
       <div class="nav-brand">Iron & Asphalt</div>
     </div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
+  <!-- Hero Video Block -->
   <div class="hero-video">
     <div class="hero-video-inner">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80" alt="Iron & Asphalt garage" />
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80" alt="Iron & Asphalt garage" loading="eager" />
       <div class="hero-video-overlay">
         <div class="play-btn"></div>
       </div>
     </div>
   </div>
 
+  <!-- Brand Display -->
   <section class="brand-display">
     <h1>Iron &<br />Asphalt</h1>
     <div class="brand-sub">Custom motorcycle builds, restorations, and performance tuning out of our SoDo garage.</div>
   </section>
 
-  <div class="accent-bar-yellow">
+  <!-- Accent Bars -->
+  <div class="accent-bar-yellow" id="services">
     <h2>SoDo Lineup &middot; Services</h2>
   </div>
   <div class="accent-bar-blue">
     <span>All work done in-house</span>
   </div>
 
-  <section class="headliners">
-    <h2>Headliners</h2>
-    <div class="headliner-item">
-      <div class="headliner-label">Custom</div>
-      <div class="headliner-name">Custom Motorcycle Builds & Restorations</div>
-    </div>
-    <div class="headliner-item">
-      <div class="headliner-label">Performance</div>
-      <div class="headliner-name">Performance Tuning & Dyno Testing</div>
-    </div>
-  </section>
+  <!-- Headliners -->
+  <ScrollReveal client:load>
+    <section class="headliners">
+      <h2>Headliners</h2>
+      <div class="headliner-item">
+        <div class="headliner-label">Custom</div>
+        <div class="headliner-name">Custom Motorcycle Builds & Restorations</div>
+      </div>
+      <div class="headliner-item">
+        <div class="headliner-label">Performance</div>
+        <div class="headliner-name">Performance Tuning & Dyno Testing</div>
+      </div>
+    </section>
+  </ScrollReveal>
 
-  <section class="lineup-section">
-    <h2>Full Lineup</h2>
-    <div class="lineup-sub">All services &middot; SoDo Garage</div>
-    <div class="lineup-grid">
-      <div class="lineup-time-block">
-        <div class="lineup-time">Custom Work</div>
-        <div class="lineup-entry">
-          Ground-up builds (cafe racers, bobbers, scramblers)<br />
-          Full restorations (frame-off, engine rebuild)<br />
-          Custom fabrication & one-off parts
+  <!-- Full Lineup -->
+  <ScrollReveal client:load>
+    <section class="lineup-section">
+      <h2>Full Lineup</h2>
+      <div class="lineup-sub">All services &middot; SoDo Garage</div>
+      <div class="lineup-grid">
+        <div class="lineup-time-block">
+          <div class="lineup-time">Custom Work</div>
+          <div class="lineup-entry">
+            Ground-up builds (cafe racers, bobbers, scramblers)<br />
+            Full restorations (frame-off, engine rebuild)<br />
+            Custom fabrication & one-off parts
+          </div>
+        </div>
+        <div class="lineup-time-block">
+          <div class="lineup-time">Performance</div>
+          <div class="lineup-entry">
+            Carburetor tuning & ECU mapping<br />
+            Exhaust upgrades<br />
+            Dyno testing & real-world tuning
+          </div>
+        </div>
+        <div class="lineup-time-block">
+          <div class="lineup-time">Paint & Body</div>
+          <div class="lineup-entry">
+            Custom paint jobs & tank art<br />
+            Bodywork (all in-house)<br />
+            Color matching & restoration finishes
+          </div>
+        </div>
+        <div class="lineup-time-block">
+          <div class="lineup-time">Maintenance</div>
+          <div class="lineup-entry">
+            Oil changes to full engine rebuilds<br />
+            All makes, all models<br />
+            Honest diagnostics, fair pricing
+          </div>
         </div>
       </div>
-      <div class="lineup-time-block">
-        <div class="lineup-time">Performance</div>
-        <div class="lineup-entry">
-          Carburetor tuning & ECU mapping<br />
-          Exhaust upgrades<br />
-          Dyno testing & real-world tuning
-        </div>
+    </section>
+  </ScrollReveal>
+
+  <!-- Gallery -->
+  <ScrollReveal client:load>
+    <div class="gallery-row" id="gallery">
+      <div class="gallery-cell">
+        <img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=600&q=80" alt="Custom cafe racer" loading="lazy" />
+        <div class="gallery-cell-overlay"></div>
       </div>
-      <div class="lineup-time-block">
-        <div class="lineup-time">Paint & Body</div>
-        <div class="lineup-entry">
-          Custom paint jobs & tank art<br />
-          Bodywork (all in-house)<br />
-          Color matching & restoration finishes
-        </div>
+      <div class="gallery-cell">
+        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&q=80" alt="Engine detail" loading="lazy" />
+        <div class="gallery-cell-overlay"></div>
       </div>
-      <div class="lineup-time-block">
-        <div class="lineup-time">Maintenance</div>
-        <div class="lineup-entry">
-          Oil changes to full engine rebuilds<br />
-          All makes, all models<br />
-          Honest diagnostics, fair pricing
-        </div>
+      <div class="gallery-cell">
+        <img src="https://images.unsplash.com/photo-1525160354320-d8e92641c563?w=600&q=80" alt="Workshop" loading="lazy" />
+        <div class="gallery-cell-overlay"></div>
+      </div>
+      <div class="gallery-cell">
+        <img src="https://images.unsplash.com/photo-1580310614729-ccd69652491d?w=600&q=80" alt="Custom paint" loading="lazy" />
+        <div class="gallery-cell-overlay"></div>
+      </div>
+      <div class="gallery-cell">
+        <img src="https://images.unsplash.com/photo-1558980664-769d59546b3d?w=600&q=80" alt="Garage" loading="lazy" />
+        <div class="gallery-cell-overlay"></div>
+      </div>
+      <div class="gallery-cell">
+        <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=600&q=80" alt="Finished build" loading="lazy" />
+        <div class="gallery-cell-overlay"></div>
       </div>
     </div>
-  </section>
+  </ScrollReveal>
 
-  <div class="gallery-row">
-    <img src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=600&q=80" alt="Custom cafe racer" />
-    <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&q=80" alt="Engine detail" />
-    <img src="https://images.unsplash.com/photo-1525160354320-d8e92641c563?w=600&q=80" alt="Workshop" />
-    <img src="https://images.unsplash.com/photo-1580310614729-ccd69652491d?w=600&q=80" alt="Custom paint" />
-    <img src="https://images.unsplash.com/photo-1558980664-769d59546b3d?w=600&q=80" alt="Garage" />
-    <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=600&q=80" alt="Finished build" />
-  </div>
-
+  <!-- Marquee -->
   <div class="marquee">
     <div class="marquee-inner">
       <span class="marquee-text">Custom Builds <span>&bull;</span> Restorations <span>&bull;</span> Performance Tuning <span>&bull;</span> Paint & Bodywork <span>&bull;</span> SoDo, Orlando <span>&bull;</span> Custom Builds <span>&bull;</span> Restorations <span>&bull;</span> Performance Tuning <span>&bull;</span> Paint & Bodywork <span>&bull;</span> SoDo, Orlando <span>&bull;</span></span>
     </div>
   </div>
 
-  <div class="pricing-section">
-    <div class="pricing-label">Estimates start at</div>
-    <div class="pricing-amount">Free</div>
-    <a href="mailto:builds@ironandasphalt.com" class="pricing-cta">Get a Quote</a>
-  </div>
-
-  <div class="about-grey">
-    <p>Iron & Asphalt has been building and restoring bikes out of our SoDo garage since 2016. Owner Marco Reyes spent 10 years turning wrenches at dealerships before going independent.</p>
-    <p>We do everything in-house -- fabrication, paint, electrical, engine work. No subcontractors, no runaround. You talk to the person who's building your machine.</p>
-    <div class="owner">
-      <strong>Marco Reyes</strong>
-      <span>Owner & Lead Builder</span>
+  <!-- Pricing -->
+  <ScrollReveal client:load>
+    <div class="pricing-section">
+      <div class="pricing-label">Estimates start at</div>
+      <div class="pricing-amount">Free</div>
+      <a href="mailto:builds@ironandasphalt.com" class="pricing-cta">Get a Quote</a>
     </div>
-  </div>
+  </ScrollReveal>
 
-  <section class="ai-section">
-    <h3>Photo Estimate Tool</h3>
-    <p>Customers upload photos of their vehicle, and our system generates a preliminary repair estimate with parts pricing before they ever step into the shop. Faster quotes, fewer wasted trips.</p>
-    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
-  </section>
+  <!-- Testimonials -->
+  <ScrollReveal client:load>
+    <section class="testimonials">
+      <h2>From Our Clients</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <blockquote>"Marco took my grandfather's old Honda from a rusted frame to a showroom piece. The attention to detail is insane."</blockquote>
+          <cite><strong>Carlos R.</strong>Restoration client</cite>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Honest shop. They told me what I actually needed, not what would run up the bill. Hard to find that."</blockquote>
+          <cite><strong>James K.</strong>Regular maintenance</cite>
+        </div>
+      </div>
+    </section>
+  </ScrollReveal>
 
-  <footer class="footer">
+  <!-- About -->
+  <ScrollReveal client:load>
+    <div class="about-grey" id="about">
+      <div class="about-inner">
+        <div class="about-text">
+          <p>Iron & Asphalt has been building and restoring bikes out of our SoDo garage since 2016. Owner Marco Reyes spent 10 years turning wrenches at dealerships before going independent.</p>
+          <p>We do everything in-house -- fabrication, paint, electrical, engine work. No subcontractors, no runaround. You talk to the person who's building your machine.</p>
+          <div class="owner">
+            <strong>Marco Reyes</strong>
+            <span>Owner & Lead Builder</span>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80" alt="Marco Reyes in the shop" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </ScrollReveal>
+
+  <!-- AI Section -->
+  <ScrollReveal client:load>
+    <section class="ai-section">
+      <h3>Photo Estimate Tool</h3>
+      <p>Customers upload photos of their vehicle, and our system generates a preliminary repair estimate with parts pricing before they ever step into the shop. Faster quotes, fewer wasted trips.</p>
+      <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+    </section>
+  </ScrollReveal>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
     <div class="footer-inner">
       <p><a href="mailto:builds@ironandasphalt.com">builds@ironandasphalt.com</a><br />
       1842 S Division Ave, Orlando, FL 32805<br />
