@@ -5,6 +5,7 @@
  * full-bleed imagery, scroll animations). Streetwear edge with orange accent.
  */
 import ScrollReveal from '../../components/ScrollReveal.tsx';
+import { TextScramble } from '../../components/TextScramble.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -481,38 +482,6 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       background-size: 256px 256px;
     }
 
-    /* ── Scramble text ── */
-    .scramble-text {
-      display: inline-block;
-    }
-    .scramble-text .char {
-      display: inline-block;
-      transition: color 0.3s ease, opacity 0.4s ease;
-    }
-    .scramble-text .char.scrambling {
-      color: #FF4D00;
-      opacity: 0.7;
-    }
-    .scramble-text .char.revealed {
-      color: inherit;
-      opacity: 1;
-    }
-    @keyframes text-glow-in {
-      0% { text-shadow: 0 0 40px rgba(255,77,0,0.6), 0 0 80px rgba(255,77,0,0.2); }
-      100% { text-shadow: 0 0 15px rgba(255,77,0,0.15), 0 0 40px rgba(255,77,0,0.05); }
-    }
-    @keyframes text-breathe {
-      0%, 100% { text-shadow: 0 0 15px rgba(255,77,0,0.12), 0 0 40px rgba(255,77,0,0.04); }
-      50% { text-shadow: 0 0 25px rgba(255,77,0,0.25), 0 0 60px rgba(255,77,0,0.08); }
-    }
-    .hero h1 .scramble-text.done {
-      animation: text-glow-in 1s ease-out, text-breathe 4s ease-in-out 1s infinite;
-    }
-    .hero-tagline.done {
-      animation: text-breathe 5s ease-in-out 0.5s infinite;
-      text-shadow: 0 0 12px rgba(255,77,0,0.2);
-    }
-
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .info-strip { grid-template-columns: 1fr; gap: 0; padding: 2rem; }
@@ -549,8 +518,36 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     </div>
     <div class="hero-gradient"></div>
     <div class="hero-content">
-      <h1><span class="scramble-text" data-text="Foreign">Foreign</span><br /><span class="scramble-text" data-text="Exchange" data-delay="550">Exchange</span></h1>
-      <div class="hero-tagline scramble-text" data-text="Curated. Not Mass-Produced." data-delay="1200">Curated. Not Mass-Produced.</div>
+      <h1>
+        <TextScramble
+          client:load
+          as="span"
+          duration={1.2}
+          speed={0.04}
+          characterSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#&"
+          className=""
+          style={{ display: "block" }}
+        >Foreign</TextScramble>
+        <TextScramble
+          client:load
+          as="span"
+          duration={1.2}
+          speed={0.04}
+          delay={600}
+          characterSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#&"
+          className=""
+          style={{ display: "block" }}
+        >Exchange</TextScramble>
+      </h1>
+      <TextScramble
+        client:load
+        as="div"
+        duration={1.0}
+        speed={0.03}
+        delay={1300}
+        characterSet="ABCDEFGHIJKLMNOPQRSTUVWXYZ.!- "
+        className="hero-tagline"
+      >Curated. Not Mass-Produced.</TextScramble>
       <div class="hero-sub">Mills 50 &middot; Orlando, FL &middot; @foreignexchangeorl</div>
       <a href="#drops" class="hero-cta">Shop the Latest</a>
     </div>
@@ -698,66 +695,6 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
         heroContent.style.opacity = 1 - progress * 1.2;
       }
     }, { passive: true });
-
-    // ── Text scramble/decode effect ──
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&';
-
-    function scrambleElement(el) {
-      const finalText = el.getAttribute('data-text');
-      const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
-      const isHeading = el.closest('h1');
-
-      // Wrap each character in a span
-      el.innerHTML = '';
-      const charEls = [];
-      for (let i = 0; i < finalText.length; i++) {
-        const span = document.createElement('span');
-        span.className = 'char';
-        span.textContent = finalText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
-        span.style.opacity = '0.3';
-        el.appendChild(span);
-        charEls.push({ el: span, final: finalText[i] });
-      }
-
-      // Animate: each letter scrambles then resolves left to right
-      setTimeout(() => {
-        charEls.forEach((c, i) => {
-          if (c.final === ' ') {
-            c.el.textContent = '\u00A0';
-            c.el.style.opacity = '1';
-            return;
-          }
-
-          let scrambleCount = 0;
-          const maxScrambles = 6 + Math.floor(Math.random() * 4);
-          const charDelay = i * (isHeading ? 70 : 35);
-
-          setTimeout(() => {
-            c.el.style.opacity = '1';
-            c.el.classList.add('scrambling');
-
-            const interval = setInterval(() => {
-              c.el.textContent = chars[Math.floor(Math.random() * chars.length)];
-              scrambleCount++;
-
-              if (scrambleCount >= maxScrambles) {
-                clearInterval(interval);
-                c.el.textContent = c.final;
-                c.el.classList.remove('scrambling');
-                c.el.classList.add('revealed');
-              }
-            }, 65);
-          }, charDelay);
-        });
-
-        // Mark as done for glow effect
-        const totalTime = charEls.length * (isHeading ? 70 : 35) + 600;
-        setTimeout(() => el.classList.add('done'), totalTime);
-      }, delay);
-    }
-
-    // Run on load
-    document.querySelectorAll('.scramble-text').forEach(scrambleElement);
   </script>
 
 </body>
