@@ -539,14 +539,31 @@ import { TextMarquee } from '../../components/TextMarquee.tsx';
           client:load
           baseVelocity={-3}
           delay={300}
-          className="marquee-top"
-        >FOREIGN &#x2F;</TextMarquee>
+          style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: "clamp(6rem, 16vw, 14rem)",
+            fontWeight: 700,
+            textTransform: "uppercase" as const,
+            letterSpacing: "-0.05em",
+            lineHeight: 1,
+            color: "#fff",
+          }}
+        >FOREIGN /</TextMarquee>
         <TextMarquee
           client:load
           baseVelocity={3}
           delay={600}
-          className="marquee-bottom"
-        >EXCHANGE &#x2F;</TextMarquee>
+          style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: "clamp(4rem, 11vw, 9.5rem)",
+            fontWeight: 700,
+            textTransform: "uppercase" as const,
+            letterSpacing: "-0.03em",
+            lineHeight: 1,
+            color: "transparent",
+            WebkitTextStroke: "2px rgba(255,255,255,0.35)",
+          }}
+        >EXCHANGE /</TextMarquee>
       </div>
       <div class="hero-tagline">Curated. Not Mass-Produced.</div>
       <div class="hero-sub">Mills 50 &middot; Orlando, FL &middot; @foreignexchangeorl</div>

@@ -19,6 +19,7 @@ interface TextMarqueeProps {
   children: string
   baseVelocity?: number
   className?: string
+  style?: React.CSSProperties
   scrollDependent?: boolean
   delay?: number
 }
@@ -27,6 +28,7 @@ function TextMarquee({
   children,
   baseVelocity = -5,
   className,
+  style,
   scrollDependent = true,
   delay = 0,
 }: TextMarqueeProps) {
@@ -90,6 +92,7 @@ function TextMarquee({
             style={{
               display: "inline-block",
               paddingRight: "0.3em",
+              ...style,
             }}
           >
             {children}
