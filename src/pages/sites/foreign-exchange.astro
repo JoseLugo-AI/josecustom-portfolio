@@ -481,6 +481,28 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       background-size: 256px 256px;
     }
 
+    /* ── Scramble text ── */
+    .scramble-text {
+      display: inline-block;
+    }
+    .scramble-text .char {
+      display: inline-block;
+      transition: color 0.1s;
+    }
+    .scramble-text .char.scrambling {
+      color: #FF4D00;
+    }
+    .scramble-text .char.revealed {
+      color: inherit;
+    }
+    @keyframes text-glow {
+      0% { text-shadow: 0 0 20px rgba(255,77,0,0.6); }
+      100% { text-shadow: 0 0 0px rgba(255,77,0,0); }
+    }
+    .hero h1 .scramble-text.done {
+      animation: text-glow 1.5s ease-out forwards;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .info-strip { grid-template-columns: 1fr; gap: 0; padding: 2rem; }
@@ -517,8 +539,8 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     </div>
     <div class="hero-gradient"></div>
     <div class="hero-content">
-      <h1>Foreign<br />Exchange</h1>
-      <div class="hero-tagline">Curated. Not Mass-Produced.</div>
+      <h1><span class="scramble-text" data-text="Foreign">Foreign</span><br /><span class="scramble-text" data-text="Exchange" data-delay="400">Exchange</span></h1>
+      <div class="hero-tagline scramble-text" data-text="Curated. Not Mass-Produced." data-delay="900">Curated. Not Mass-Produced.</div>
       <div class="hero-sub">Mills 50 &middot; Orlando, FL &middot; @foreignexchangeorl</div>
       <a href="#drops" class="hero-cta">Shop the Latest</a>
     </div>
@@ -653,19 +675,79 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
 
   <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">josecustom.ai</a>
 
-  <!-- Scroll-triggered parallax on hero -->
   <script>
-    const hero = document.querySelector('.hero-bg img');
+    // ── Parallax on hero ──
+    const heroBg = document.querySelector('.hero-bg img');
     const heroContent = document.querySelector('.hero-content');
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       if (y < window.innerHeight) {
         const progress = y / window.innerHeight;
-        hero.style.transform = `scale(${1 + progress * 0.15}) translateY(${y * 0.3}px)`;
+        heroBg.style.transform = `scale(${1 + progress * 0.15}) translateY(${y * 0.3}px)`;
         heroContent.style.transform = `translateY(${y * 0.4}px)`;
         heroContent.style.opacity = 1 - progress * 1.2;
       }
     }, { passive: true });
+
+    // ── Text scramble/decode effect ──
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&';
+
+    function scrambleElement(el) {
+      const finalText = el.getAttribute('data-text');
+      const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+      const isHeading = el.closest('h1');
+
+      // Wrap each character in a span
+      el.innerHTML = '';
+      const charEls = [];
+      for (let i = 0; i < finalText.length; i++) {
+        const span = document.createElement('span');
+        span.className = 'char';
+        span.textContent = finalText[i] === ' ' ? '\u00A0' : chars[Math.floor(Math.random() * chars.length)];
+        span.style.opacity = '0.3';
+        el.appendChild(span);
+        charEls.push({ el: span, final: finalText[i] });
+      }
+
+      // Animate: each letter scrambles then resolves left to right
+      setTimeout(() => {
+        charEls.forEach((c, i) => {
+          if (c.final === ' ') {
+            c.el.textContent = '\u00A0';
+            c.el.style.opacity = '1';
+            return;
+          }
+
+          let scrambleCount = 0;
+          const maxScrambles = 4 + Math.floor(Math.random() * 4);
+          const charDelay = i * (isHeading ? 50 : 25);
+
+          setTimeout(() => {
+            c.el.style.opacity = '1';
+            c.el.classList.add('scrambling');
+
+            const interval = setInterval(() => {
+              c.el.textContent = chars[Math.floor(Math.random() * chars.length)];
+              scrambleCount++;
+
+              if (scrambleCount >= maxScrambles) {
+                clearInterval(interval);
+                c.el.textContent = c.final;
+                c.el.classList.remove('scrambling');
+                c.el.classList.add('revealed');
+              }
+            }, 50);
+          }, charDelay);
+        });
+
+        // Mark as done for glow effect
+        const totalTime = charEls.length * (isHeading ? 50 : 25) + 400;
+        setTimeout(() => el.classList.add('done'), totalTime);
+      }, delay);
+    }
+
+    // Run on load
+    document.querySelectorAll('.scramble-text').forEach(scrambleElement);
   </script>
 
 </body>
