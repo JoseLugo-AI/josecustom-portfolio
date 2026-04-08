@@ -1,0 +1,850 @@
+---
+/**
+ * Aldea & Partners Tax Advisory - Downtown Orlando
+ * Matched to: only-tomato template (two-column section layout,
+ * mesh gradient hero via WebGL shaders, Rethink Sans medium weight)
+ */
+import AldeaHero from '../../components/AldeaHero.tsx';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aldea & Partners | Tax Advisory - Orlando, FL</title>
+  <meta name="description" content="Tax preparation, bookkeeping, and business advisory for Orlando small business owners and freelancers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Rethink Sans', ui-sans-serif, system-ui, sans-serif;
+      font-weight: 500;
+      background: #fff;
+      color: #1a1a1a;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Layout ── */
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── Fixed Top Nav ── */
+    .topnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .topnav-row1 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+    }
+    .topnav-brand {
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .topnav-brand svg { width: 18px; height: 18px; }
+    .topnav-actions {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .topnav-actions a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #555;
+      transition: color 0.2s;
+    }
+    .topnav-actions a:hover { color: #1a1a1a; }
+    .topnav-row2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem 0.85rem;
+    }
+    .topnav-row2 a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .topnav-row2 a sup {
+      font-size: 0.55rem;
+      color: #999;
+      margin-left: 1px;
+    }
+    .topnav-row2 a:hover { color: #FA9819; }
+
+    /* ── Main Content ── */
+    .main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Hero styles handled by AldeaHero React component */
+
+    /* ── Content area ── */
+    .content {
+      padding: 0 3rem 0 3rem;
+      max-width: 960px;
+    }
+
+    /* ── Two-column section: title left, body right ── */
+    .section {
+      padding: 2.5rem 0 5rem;
+    }
+    .section-header {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    .section-title {
+      flex: 0 0 280px;
+    }
+    .section-title .num {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 600;
+      color: #FA9819;
+      margin-right: 0.75rem;
+    }
+    .section-title .name {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .section-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .section-body p {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p strong {
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    /* ── Full-width content below header ── */
+    .section-full {
+      margin-top: 2rem;
+    }
+
+    /* ── Intro section (Brand Guidelines) ── */
+    .intro {
+      padding: 4rem 0 3rem;
+    }
+    .intro .section-title .name {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      line-height: 1.15;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid #e8e8e8;
+      margin-bottom: 1rem;
+    }
+    .toc .section-title .name {
+      font-size: 1.1rem;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .toc-list li {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .toc-list li span {
+      color: #1a1a1a;
+      margin-right: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* ── Photos ── */
+    .photo {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: linear-gradient(145deg, #f0ebe3 0%, #e0d8cc 50%, #d5cdc0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b5a99a;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    img.photo {
+      display: block;
+    }
+    .photo.portrait {
+      aspect-ratio: 3 / 4;
+      max-width: 100%;
+    }
+    .photo.square { aspect-ratio: 16 / 9; }
+    .photo.tall { aspect-ratio: 3 / 4; max-width: 50%; }
+
+    /* ── Personality keywords image ── */
+    .keywords-block {
+      background: #ecedf0;
+      border-radius: 12px;
+      padding: 4rem 3rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .keywords-block .word {
+      display: block;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .keywords-block .word.orange { color: #FA9819; }
+    .keywords-block .word.navy { color: #1C2331; }
+    .keywords-block .word.blue { color: #3A5A7C; }
+
+    /* ── Tone & Voice sub-section ── */
+    .subsection-header {
+      display: flex;
+      gap: 3rem;
+      padding: 2.5rem 0 0;
+    }
+    .subsection-title {
+      flex: 0 0 280px;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .subsection-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .value-block {
+      margin-bottom: 2rem;
+    }
+    .value-block .label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+    }
+    .value-block p {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* ── Sample Copy ── */
+    .copy-block {
+      margin-bottom: 2rem;
+    }
+    .copy-block .headline {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.4rem;
+    }
+    .copy-block p {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ── Logo displays ── */
+    .logo-display {
+      border-radius: 12px;
+      padding: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      min-height: 280px;
+    }
+    .logo-display.orange { background: #FA9819; }
+    .logo-display.light { background: #f3f1ee; }
+    .logo-display.dark { background: #1a1a1a; }
+    .logo-display .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .logo-display .wordmark svg { width: 44px; height: 44px; }
+
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .logo-grid .logo-display { min-height: 200px; padding: 3rem; }
+    .logo-grid .logo-display .wordmark { font-size: 1.5rem; }
+    .logo-grid .logo-display .wordmark svg { width: 28px; height: 28px; }
+
+    .incorrect-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .incorrect-item { text-align: center; }
+    .incorrect-item .logo-display {
+      min-height: 140px;
+      padding: 2rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .incorrect-item .logo-display::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid #e74c3c;
+      border-radius: 12px;
+      opacity: 0.3;
+    }
+    .incorrect-item .wordmark { font-size: 1rem !important; }
+    .incorrect-item .wordmark svg { width: 20px !important; height: 20px !important; }
+    .incorrect-item p { font-size: 0.75rem; color: #999; }
+
+    /* ── Color Palette ── */
+    .palette-label {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 2.5rem 0 1.5rem;
+    }
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .swatch { text-align: left; }
+    .swatch-color {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      margin-bottom: 0.75rem;
+    }
+    .swatch-color.bordered { border: 1px solid #d0d0d0; }
+    .swatch-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .swatch-hex {
+      font-size: 0.8rem;
+      color: #999;
+      font-weight: 500;
+    }
+
+    .gradient-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .gradient-card {
+      border-radius: 12px;
+      aspect-ratio: 2.2;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+    }
+    .gradient-card span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    /* ── Typography ── */
+    .type-hero {
+      background: #f3f1ee;
+      border-radius: 12px;
+      padding: 4rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .type-hero .big {
+      font-size: clamp(5rem, 10vw, 8rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #1a1a1a;
+    }
+    .type-pair {
+      display: flex;
+      gap: 3rem;
+      padding: 2rem 0;
+      border-top: 1px solid #e8e8e8;
+    }
+    .type-pair .item { flex: 1; }
+    .type-pair .label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #999;
+      margin-bottom: 0.4rem;
+    }
+    .type-pair .face {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .sizing-block {
+      padding: 1.5rem 0;
+      border-top: 1px solid #e8e8e8;
+    }
+    .sizing-block .sample { margin-bottom: 0.75rem; color: #1a1a1a; }
+    .sizing-block .sample.lg {
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .sizing-block .sample.md {
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .sizing-block .sample.sm {
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.7;
+      color: #555;
+    }
+    .sizing-meta {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .sizing-meta span {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #bbb;
+    }
+
+    /* ── Art Direction ── */
+    .art-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .art-card .photo { margin-bottom: 0.75rem; aspect-ratio: 4/3; }
+    .art-card h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .art-card p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 4rem;
+      padding: 3rem 3rem;
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .footer-brand svg { width: 16px; height: 16px; }
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #666;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #1a1a1a; }
+    .footer-copy {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e8e8e8;
+    }
+    .footer-copy span, .footer-copy a {
+      font-size: 0.7rem;
+      color: #999;
+      font-weight: 500;
+    }
+    .footer-copy a:hover { color: #555; }
+
+    .cta-badge {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+      background: rgba(26,26,26,0.9);
+      border: 1px solid #333;
+      color: #FA9819;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .cta-badge:hover { background: #FA9819; color: #fff; border-color: #FA9819; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .topnav-row2 { display: none; }
+      .topnav-row1 { padding: 0.75rem 1.5rem; }
+      .content { padding: 0 1.5rem; }
+      .section-header, .subsection-header { flex-direction: column; gap: 1rem; }
+      .section-title, .subsection-title { flex: none; }
+      .palette { grid-template-columns: repeat(2, 1fr); }
+      .logo-grid { grid-template-columns: 1fr; }
+      .incorrect-grid { grid-template-columns: 1fr 1fr; }
+      .art-grid { grid-template-columns: 1fr; }
+      .gradient-grid { grid-template-columns: 1fr; }
+      .footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Fixed Top Nav -->
+    <nav class="topnav">
+      <div class="topnav-row1">
+        <div class="topnav-brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18M3 15h12"/></svg>
+          Aldea & Partners
+        </div>
+        <div class="topnav-actions">
+          <a href="#contact">Schedule a Call</a>
+          <a href="mailto:info@aldeapartners.com">Email Us</a>
+        </div>
+      </div>
+      <div class="topnav-row2">
+        <a href="#services">Services<sup>01</sup></a>
+        <a href="#approach">Our Approach<sup>02</sup></a>
+        <a href="#team">The Team<sup>03</sup></a>
+        <a href="#ai">AI Integration<sup>04</sup></a>
+        <a href="#contact">Contact<sup>05</sup></a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main">
+
+      <!-- Hero: animated WebGL mesh gradient -->
+      <AldeaHero client:load />
+
+      <div class="content">
+
+        <!-- Intro -->
+        <div class="intro section">
+          <div class="section-header">
+            <div class="section-title">
+              <span class="name">Clear Numbers.<br />Straight Answers.</span>
+            </div>
+            <div class="section-body">
+              <p>Aldea & Partners is a three-person CPA firm in downtown Orlando. We work with small business owners, freelancers, and self-employed professionals who've outgrown TurboTax but don't need a Big Four firm.</p>
+              <p>We speak English and Spanish, return calls within a business day, and don't bill for quick questions. Tax season is busy, but we're here year-round.</p>
+              <p>Founded by Maria Aldea, CPA, on a simple belief: every small business owner deserves a financial partner who speaks their language, answers their calls, and treats their business like it matters.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOC -->
+        <div class="toc section">
+          <div class="section-header">
+            <div class="section-title">
+              <span class="name">Contents</span>
+            </div>
+            <div class="section-body">
+              <ul class="toc-list">
+                <li><span>01</span> Services</li>
+                <li><span>02</span> Our Approach</li>
+                <li><span>03</span> The Team</li>
+                <li><span>04</span> AI Integration</li>
+                <li><span>05</span> Contact</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 01 Services -->
+        <section id="services" class="section">
+          <div class="section-header">
+            <div class="section-title">
+              <span class="num">01</span>
+              <span class="name">Services</span>
+            </div>
+            <div class="section-body">
+              <p>We handle the financial complexity so Orlando's small business owners and freelancers can focus on what they do best. From annual tax filing to year-round bookkeeping, every engagement starts with understanding your business first.</p>
+            </div>
+          </div>
+          <div class="subsection-header">
+            <div class="subsection-title"></div>
+            <div class="subsection-body">
+              <img class="photo portrait" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Business professional reviewing financial documents in modern office" loading="lazy" />
+            </div>
+          </div>
+          <div class="subsection-header">
+            <div class="subsection-title">Tax Preparation</div>
+            <div class="subsection-body">
+              <p>Individual and business returns. We handle everything from simple W-2s to multi-entity business filings. E-file included, always. We stay current on Florida-specific deductions and federal changes so you don't have to.</p>
+            </div>
+          </div>
+          <div class="subsection-header">
+            <div class="subsection-title">Bookkeeping</div>
+            <div class="subsection-body">
+              <p>Monthly reconciliation, P&L statements, and balance sheets. You run your business. We keep the books clean, accurate, and ready when you need them. No surprises at year-end.</p>
+            </div>
+          </div>
+          <div class="subsection-header">
+            <div class="subsection-title">Entity Formation</div>
+            <div class="subsection-body">
+              <p>LLC, S-Corp, C-Corp. We'll help you pick the right structure and file the paperwork. Includes first-year tax planning so your entity works for you from day one.</p>
+            </div>
+          </div>
+          <div class="subsection-header">
+            <div class="subsection-title">IRS Representation</div>
+            <div class="subsection-body">
+              <p>Got a letter from the IRS? Don't panic. We handle audits, payment plans, and penalty abatement on your behalf. Most issues have straightforward solutions.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02 Our Approach -->
+        <section id="approach" class="section">
+          <div class="section-header">
+            <div class="section-title">
+              <span class="num">02</span>
+              <span class="name">Our Approach</span>
+            </div>
+            <div class="section-body">
+              <p>We communicate like a trusted advisor, not a faceless institution. No jargon, no runaround. Through clear and intentional language, we make financial planning feel approachable and stress-free.</p>
+            </div>
+          </div>
+          <div class="section-full">
+            <div class="keywords-block">
+              <span class="word navy">Precise</span>
+              <span class="word orange">Bilingual</span>
+              <span class="word blue">Approachable</span>
+              <span class="word orange">Reliable</span>
+            </div>
+          </div>
+          <div class="subsection-header">
+            <div class="subsection-title">Our Promise</div>
+            <div class="subsection-body">
+              <div class="value-block">
+                <div class="label">Same-day callbacks</div>
+                <p>Leave a message, get a call back within one business day. Every time. Your questions matter and so does your time.</p>
+              </div>
+              <div class="value-block">
+                <div class="label">Bilingual service</div>
+                <p>We speak English and Spanish. Your comfort level matters when we're talking about your money.</p>
+              </div>
+              <div class="value-block">
+                <div class="label">No billing for quick questions</div>
+                <p>Quick question about a receipt or deduction? Just call. We don't nickel-and-dime. It's part of the relationship.</p>
+              </div>
+              <div class="value-block">
+                <div class="label">Year-round availability</div>
+                <p>Tax season is busy, but we're here January through December. Your business doesn't stop in April and neither do we.</p>
+              </div>
+            </div>
+          </div>
+          <div class="subsection-header">
+            <div class="subsection-title">Sample Client Scenarios</div>
+            <div class="subsection-body">
+              <div class="copy-block">
+                <div class="headline">Freelancer outgrowing spreadsheets</div>
+                <p>You've been tracking income in a spreadsheet and doing your own taxes. It worked when you had 3 clients. Now you have 15 and you missed a quarterly estimate. We take over the books, set up proper tracking, and file quarterly so you never get behind.</p>
+              </div>
+              <div class="copy-block">
+                <div class="headline">New LLC owner with questions</div>
+                <p>You just formed an LLC but you're not sure if S-Corp election makes sense. We run the numbers, show you the tax savings, and handle the filing. No guesswork, just math.</p>
+              </div>
+              <div class="copy-block">
+                <div class="headline">IRS letter landed in the mailbox</div>
+                <p>A CP2000 notice says you owe $4,200. Before you pay, call us. Half the time these are wrong. We review, respond, and negotiate on your behalf.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03 The Team -->
+        <section id="team" class="section">
+          <div class="section-header">
+            <div class="section-title">
+              <span class="num">03</span>
+              <span class="name">The Team</span>
+            </div>
+            <div class="section-body">
+              <p>Aldea & Partners is a small team by design. Three people who know your name, your business, and your goals. No call centers, no rotating staff. The person who answers the phone is the person who does the work.</p>
+            </div>
+          </div>
+          <div class="section-full">
+            <div class="logo-display orange">
+              <div class="wordmark" style="color:#fff;">
+                <svg viewBox="0 0 64 64" fill="none"><rect x="4" y="4" width="56" height="56" rx="12" stroke="#fff" stroke-width="3"/><path d="M22 44V20l10 12 10-12v24" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Aldea & Partners
+              </div>
+            </div>
+          </div>
+          <div class="subsection-header">
+            <div class="subsection-title">Maria Aldea, CPA</div>
+            <div class="subsection-body">
+              <p>Founder. 12 years in public accounting. Worked at mid-size firms before starting Aldea & Partners because she wanted to build real relationships with real business owners, not just process returns on a conveyor belt.</p>
+            </div>
+          </div>
+          <div class="section-full" style="margin-top:1.5rem;">
+            <div class="logo-grid">
+              <div class="logo-display dark">
+                <div class="wordmark" style="color:#fff;">
+                  <svg viewBox="0 0 64 64" fill="none"><rect x="4" y="4" width="56" height="56" rx="12" stroke="#fff" stroke-width="3"/><path d="M22 44V20l10 12 10-12v24" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Aldea & Partners
+                </div>
+              </div>
+              <div class="logo-display light">
+                <div class="wordmark">
+                  <svg viewBox="0 0 64 64" fill="none"><rect x="4" y="4" width="56" height="56" rx="12" stroke="#1a1a1a" stroke-width="3"/><path d="M22 44V20l10 12 10-12v24" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Aldea & Partners
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 AI Integration -->
+        <section id="ai" class="section">
+          <div class="section-header">
+            <div class="section-title">
+              <span class="num">04</span>
+              <span class="name">AI Integration</span>
+            </div>
+            <div class="section-body">
+              <p>We use AI to eliminate the tedious parts of tax preparation and bookkeeping, so our team spends more time advising and less time on data entry. Every tool we use is secure, compliant, and reviewed by a human before anything goes out.</p>
+              <p>Technology should make your accountant faster, not replace them. That's the line we hold.</p>
+            </div>
+          </div>
+          <div class="section-full">
+            <div class="palette-label">How AI Works at Aldea</div>
+            <div class="subsection-header" style="padding-top:0;">
+              <div class="subsection-title">Document Intake</div>
+              <div class="subsection-body">
+                <p>Clients upload tax documents to our encrypted portal. AI extracts key data, pre-fills worksheets, and flags missing documents before the first meeting. Less back-and-forth, faster turnaround.</p>
+              </div>
+            </div>
+            <div class="subsection-header">
+              <div class="subsection-title">Categorization</div>
+              <div class="subsection-body">
+                <p>Bank transactions are automatically categorized and matched to the correct accounts. Our team reviews and corrects exceptions. The AI learns your business over time.</p>
+              </div>
+            </div>
+            <div class="subsection-header">
+              <div class="subsection-title">Anomaly Detection</div>
+              <div class="subsection-body">
+                <p>Unusual charges, duplicate transactions, and potential audit flags are surfaced automatically. We catch problems months before tax season, not during it.</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-full" style="margin-top:2rem;">
+            <div style="font-size:0.65rem;font-weight:500;color:#bbb;text-transform:uppercase;letter-spacing:0.1em;">AI-Ready Architecture by josecustom.ai</div>
+          </div>
+        </section>
+
+        <!-- 05 Contact -->
+        <section id="contact" class="section">
+          <div class="section-header">
+            <div class="section-title">
+              <span class="num">05</span>
+              <span class="name">Contact</span>
+            </div>
+            <div class="section-body">
+              <div class="value-block">
+                <div class="label">Address</div>
+                <p>201 S Orange Ave, Suite 410<br />Orlando, FL 32801</p>
+              </div>
+              <div class="value-block">
+                <div class="label">Phone</div>
+                <p>(407) 555-1748</p>
+              </div>
+              <div class="value-block">
+                <div class="label">Email</div>
+                <p><a href="mailto:info@aldeapartners.com" style="color:#FA9819;">info@aldeapartners.com</a></p>
+              </div>
+              <div class="value-block">
+                <div class="label">Hours</div>
+                <p>Mon - Fri: 9am - 6pm<br />Sat: By appointment</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M8 16V8l4 5 4-5v8"/></svg>
+          Aldea & Partners
+        </div>
+        <div class="footer-links">
+          <a href="#contact">Schedule a Call</a>
+          <a href="mailto:info@aldeapartners.com">Email Us</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 Aldea & Partners Tax Advisory</span>
+          <span>
+            <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
+          </span>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+</body>
+</html>
