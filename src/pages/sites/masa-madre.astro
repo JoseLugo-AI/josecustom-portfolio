@@ -1,9 +1,11 @@
 ---
 /**
  * Masa Madre Bakehouse - Curry Ford, Orlando
- * Matched to: path-act Figma template (centered single-column, decorative display type,
- * warm cream bg, pill-shaped images, timeline sections, teal footer, poster aesthetic)
+ * Inspired by: path-act template (warm cream, poster aesthetic, pill images, timeline)
+ * Our take: warm artisan feel with scroll animations, parallax bread hero,
+ * interactive gallery, staggered timeline reveals
  */
+import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -14,7 +16,7 @@
   <meta name="description" content="Fresh bread, pastries, and custom cakes baked every morning on Curry Ford Road, Orlando." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;800;900&family=Roboto:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,700&family=Roboto+Condensed:wght@700;800;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -23,11 +25,12 @@
       background: #FBEAD6;
       color: #2C2C2C;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    /* ─── Nav: minimal centered, like path-act ─── */
+    /* ── Nav ── */
     .nav {
       text-align: center;
       padding: 1.5rem 1.5rem 1rem;
@@ -46,14 +49,18 @@
       color: #2C2C2C;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: #7AA4AD; }
+    .nav-links a:hover { color: #C4632A; }
 
-    /* ─── Hero: big decorative display type, poster-like ─── */
+    /* ── Hero ── */
     .hero {
       text-align: center;
       padding: 3rem 1.5rem 2rem;
       max-width: 800px;
       margin: 0 auto;
+    }
+    @keyframes emblem-in {
+      0% { transform: scale(0.5) rotate(-180deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
     }
     .hero-emblem {
       width: 100px;
@@ -69,6 +76,7 @@
       font-weight: 900;
       color: #2C2C2C;
       border: 3px solid #2C2C2C;
+      animation: emblem-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
     }
     .hero h1 {
       font-family: 'Playfair Display', serif;
@@ -85,18 +93,19 @@
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      color: #666;
+      color: #999;
       margin-bottom: 2rem;
     }
     .hero-desc {
       max-width: 520px;
-      margin: 0 auto 2.5rem;
+      margin: 0 auto;
       font-size: 1rem;
       line-height: 1.7;
-      color: #444;
+      color: #666;
+      font-style: italic;
     }
 
-    /* ─── Decorative divider (SVG-like separator) ─── */
+    /* ── Ornament divider ── */
     .ornament {
       text-align: center;
       padding: 1.5rem 0;
@@ -105,33 +114,38 @@
       letter-spacing: 0.5em;
     }
 
-    /* ─── Featured image: large with heavy border-radius (pill/circle) ─── */
+    /* ── Featured image with parallax wrapper ── */
     .featured-img {
       max-width: 700px;
-      margin: 0 auto;
+      margin: 2rem auto 0;
       padding: 0 1.5rem;
+      overflow: hidden;
     }
     .featured-img img {
       width: 100%;
       height: 360px;
       object-fit: cover;
       border-radius: 3000px;
+      transition: transform 0.4s ease;
+    }
+    .featured-img:hover img {
+      transform: scale(1.03);
     }
 
-    /* ─── Info block: centered uppercase bold details ─── */
+    /* ── Info blocks ── */
     .info-block {
       text-align: center;
-      padding: 4rem 1.5rem;
+      padding: 3.5rem 1.5rem;
       max-width: 700px;
       margin: 0 auto;
     }
     .info-block h2 {
       font-family: 'Roboto Condensed', sans-serif;
-      font-size: clamp(0.8rem, 2vw, 1rem);
+      font-size: clamp(0.75rem, 1.8vw, 0.9rem);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #2C2C2C;
+      letter-spacing: 0.15em;
+      color: #C4632A;
       margin-bottom: 0.5rem;
     }
     .info-block p {
@@ -144,32 +158,54 @@
       line-height: 1.4;
     }
 
-    /* ─── Gallery: horizontal pill-shaped cards ─── */
+    /* ── Gallery: circular cards with hover ── */
     .gallery-section {
       padding: 3rem 1.5rem;
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     .gallery-scroll {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 1.5rem;
     }
     .gallery-card {
       text-align: center;
+      transition: transform 0.3s ease;
     }
-    .gallery-card img {
+    .gallery-card:hover { transform: translateY(-6px); }
+    .gallery-card-img {
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-bottom: 0.75rem;
+    }
+    .gallery-card-img img {
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
-      border-radius: 3000px;
-      margin-bottom: 0.75rem;
+      border-radius: 50%;
+      transition: transform 0.5s ease;
+    }
+    .gallery-card:hover .gallery-card-img img {
+      transform: scale(1.08);
+    }
+    .gallery-card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 0 rgba(196, 99, 42, 0);
+      transition: box-shadow 0.3s;
+    }
+    .gallery-card:hover .gallery-card-img::after {
+      box-shadow: inset 0 0 0 4px rgba(196, 99, 42, 0.4);
     }
     .gallery-card-label {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #888;
+      color: #C4632A;
     }
     .gallery-card-title {
       font-family: 'Roboto Condensed', sans-serif;
@@ -179,87 +215,115 @@
       color: #2C2C2C;
     }
 
-    /* ─── Timeline / Agenda style sections ─── */
+    /* ── Timeline / Menu ── */
     .timeline-section {
       max-width: 700px;
       margin: 0 auto;
       padding: 4rem 1.5rem;
     }
     .timeline-section h2 {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       text-align: center;
       margin-bottom: 3rem;
       color: #2C2C2C;
     }
     .timeline-item {
       padding: 1.5rem 0;
-      border-top: 1px solid rgba(44,44,44,0.15);
+      border-top: 1px solid rgba(44,44,44,0.12);
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.5rem;
+      align-items: start;
     }
+    .timeline-item:last-child { border-bottom: 1px solid rgba(44,44,44,0.12); }
     .timeline-time {
       font-family: 'Roboto Condensed', sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #999;
-      margin-bottom: 0.25rem;
+      letter-spacing: 0.12em;
+      color: #C4632A;
+      padding-top: 0.15rem;
     }
     .timeline-title {
       font-family: 'Roboto Condensed', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       color: #2C2C2C;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
     .timeline-desc {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1.7;
-      color: #555;
+      color: #777;
     }
 
-    /* ─── About: full-width text block, centered ─── */
+    /* ── About ── */
     .about-section {
       max-width: 700px;
       margin: 0 auto;
       padding: 4rem 1.5rem;
-      text-align: center;
     }
     .about-section h2 {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
+      text-align: center;
       margin-bottom: 2rem;
       color: #2C2C2C;
     }
-    .about-section p {
-      font-size: 0.95rem;
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 0.9rem;
       line-height: 1.8;
-      color: #444;
-      margin-bottom: 1.25rem;
-      text-align: left;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+    .about-image {
+      border-radius: 3000px;
+      overflow: hidden;
+    }
+    .about-image img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
     }
 
-    /* ─── AI Feature: dark accent block ─── */
+    /* ── AI Feature: dark accent ── */
     .ai-section {
       background: #2C2C2C;
       color: #FBEAD6;
       text-align: center;
       padding: 5rem 1.5rem;
     }
-    .ai-section h2 {
+    .ai-section .label {
       font-family: 'Roboto Condensed', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #C4632A;
+      margin-bottom: 0.75rem;
+    }
+    .ai-section h2 {
+      font-family: 'Playfair Display', serif;
       font-size: clamp(1.2rem, 3vw, 1.8rem);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       margin-bottom: 1.5rem;
       color: #FBEAD6;
     }
@@ -268,19 +332,19 @@
       margin: 0 auto;
       font-size: 0.9rem;
       line-height: 1.7;
-      color: rgba(251,234,214,0.65);
+      color: rgba(251,234,214,0.55);
     }
     .ai-badge {
       margin-top: 2rem;
       font-family: 'Roboto Condensed', sans-serif;
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: rgba(251,234,214,0.3);
+      color: rgba(251,234,214,0.25);
     }
 
-    /* ─── Testimonials: centered quotes ─── */
+    /* ── Testimonials ── */
     .testimonials-section {
       max-width: 650px;
       margin: 0 auto;
@@ -288,11 +352,11 @@
       text-align: center;
     }
     .testimonials-section h2 {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       margin-bottom: 3rem;
       color: #2C2C2C;
     }
@@ -302,7 +366,7 @@
     }
     .testimonial-quote {
       font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-style: italic;
       color: #2C2C2C;
       line-height: 1.6;
@@ -311,17 +375,17 @@
     .testimonial-name {
       font-family: 'Roboto Condensed', sans-serif;
       font-weight: 700;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: #2C2C2C;
+      color: #C4632A;
     }
     .testimonial-role {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: #999;
     }
 
-    /* ─── Contact: centered ─── */
+    /* ── Contact ── */
     .contact-section {
       max-width: 500px;
       margin: 0 auto;
@@ -329,39 +393,45 @@
       text-align: center;
     }
     .contact-section h2 {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       margin-bottom: 1.5rem;
       color: #2C2C2C;
     }
     .contact-details {
       margin-bottom: 2rem;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 2;
-      color: #555;
+      color: #777;
     }
     .contact-details strong {
       font-family: 'Roboto Condensed', sans-serif;
       font-weight: 700;
-      color: #2C2C2C;
+      color: #C4632A;
       text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
     }
     .contact-form input, .contact-form textarea {
       width: 100%;
       padding: 0.9rem 1rem;
-      border: 1px solid rgba(44,44,44,0.15);
-      background: transparent;
+      border: 2px solid rgba(44,44,44,0.1);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.5);
       font-family: 'Roboto', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #2C2C2C;
       margin-bottom: 0.75rem;
+      transition: border-color 0.2s;
     }
-    .contact-form input::placeholder, .contact-form textarea::placeholder { color: #AAA; }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: #C4632A;
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: #bbb; }
     .contact-form textarea { resize: none; height: 100px; }
     .contact-form button {
       width: 100%;
@@ -369,17 +439,18 @@
       color: #FBEAD6;
       border: none;
       padding: 1rem;
+      border-radius: 6px;
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
     }
-    .contact-form button:hover { background: #444; }
+    .contact-form button:hover { background: #C4632A; transform: translateY(-2px); }
 
-    /* ─── Footer: teal/blue-grey contrast block (key path-act element) ─── */
+    /* ── Footer: teal ── */
     .footer {
       background: #7AA4AD;
       color: #fff;
@@ -414,13 +485,13 @@
       border-top: 1px solid rgba(255,255,255,0.2);
       display: flex;
       justify-content: space-between;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       color: rgba(255,255,255,0.5);
     }
     .footer-bottom a { color: rgba(255,255,255,0.7); }
-    .footer-bottom a:hover { color: #fff; text-decoration: underline; }
+    .footer-bottom a:hover { color: #fff; }
 
-    /* CTA badge */
+    /* ── CTA badge ── */
     .cta-badge {
       position: fixed;
       bottom: 1rem;
@@ -431,15 +502,17 @@
       padding: 0.5rem 1rem;
       border-radius: 999px;
       font-size: 0.7rem;
-      letter-spacing: 0.05em;
       backdrop-filter: blur(8px);
       transition: background 0.2s;
     }
-    .cta-badge:hover { background: #7AA4AD; }
+    .cta-badge:hover { background: #C4632A; }
 
-    /* Responsive */
+    /* ── Responsive ── */
     @media (max-width: 768px) {
       .gallery-scroll { grid-template-columns: repeat(2, 1fr); }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image { max-width: 300px; margin: 0 auto; }
       .footer-inner { flex-direction: column; gap: 1.5rem; }
       .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
@@ -451,11 +524,12 @@
   <nav class="nav">
     <div class="nav-links">
       <a href="#menu">What We Bake</a>
-      <a href="#contact">Contact Us</a>
+      <a href="#about">Our Story</a>
+      <a href="#contact">Visit Us</a>
     </div>
   </nav>
 
-  <!-- Hero: big decorative poster-style title -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-emblem">M</div>
     <h1>Masa<br />Madre</h1>
@@ -463,137 +537,191 @@
     <p class="hero-desc">We invite you to our scratch kitchen, where flour, water, and time come together every morning into bread worth driving across town for.</p>
   </section>
 
-  <!-- Featured image with pill shape -->
-  <div class="featured-img">
-    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=80" alt="Fresh bread from the oven" />
-  </div>
-
-  <!-- Info block: details centered -->
-  <div class="info-block">
-    <h2>Open Tuesday - Saturday</h2>
-    <p>7:00 AM - 4:00 PM</p>
-  </div>
-
-  <div class="ornament">&bull; &bull; &bull;</div>
-
-  <div class="info-block" style="padding-top: 0;">
-    <h2>Curry Ford Road</h2>
-    <p>3245 Curry Ford Rd, Orlando, FL 32806</p>
-  </div>
-
-  <div class="ornament">&bull; &bull; &bull;</div>
-
-  <div class="info-block" style="padding-top: 0;">
-    <h2>Custom Orders By</h2>
-    <p>hello@masamadre.com</p>
-  </div>
-
-  <!-- Gallery: circular/pill image cards -->
-  <section class="gallery-section">
-    <div class="gallery-scroll">
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1549931319-a545753467c8?w=600&q=80" alt="Sourdough loaves" />
-        <div class="gallery-card-label">Daily Bake</div>
-        <div class="gallery-card-title">Sourdough</div>
-      </div>
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=600&q=80" alt="Croissants" />
-        <div class="gallery-card-label">Pastry</div>
-        <div class="gallery-card-title">Croissants</div>
-      </div>
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=600&q=80" alt="Custom cake" />
-        <div class="gallery-card-label">Custom</div>
-        <div class="gallery-card-title">Celebration Cakes</div>
-      </div>
-      <div class="gallery-card">
-        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80" alt="Cinnamon rolls" />
-        <div class="gallery-card-label">Weekend</div>
-        <div class="gallery-card-title">Cinnamon Rolls</div>
-      </div>
+  <!-- Featured image -->
+  <ScrollReveal client:load>
+    <div class="featured-img">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=80" alt="Fresh bread from the oven" loading="eager" />
     </div>
-  </section>
+  </ScrollReveal>
 
-  <!-- Menu: timeline/agenda style -->
+  <!-- Info blocks -->
+  <ScrollReveal client:load>
+    <div class="info-block">
+      <h2>Open Tuesday - Saturday</h2>
+      <p>7:00 AM - 4:00 PM</p>
+    </div>
+  </ScrollReveal>
+
+  <div class="ornament">&bull; &bull; &bull;</div>
+
+  <ScrollReveal client:load>
+    <div class="info-block" style="padding-top: 0;">
+      <h2>Curry Ford Road</h2>
+      <p>3245 Curry Ford Rd, Orlando, FL 32806</p>
+    </div>
+  </ScrollReveal>
+
+  <div class="ornament">&bull; &bull; &bull;</div>
+
+  <ScrollReveal client:load>
+    <div class="info-block" style="padding-top: 0;">
+      <h2>Custom Orders By</h2>
+      <p>hello@masamadre.com</p>
+    </div>
+  </ScrollReveal>
+
+  <!-- Gallery -->
+  <ScrollReveal client:load>
+    <section class="gallery-section">
+      <div class="gallery-scroll">
+        <div class="gallery-card">
+          <div class="gallery-card-img">
+            <img src="https://images.unsplash.com/photo-1549931319-a545753467c8?w=600&q=80" alt="Sourdough loaves" loading="lazy" />
+          </div>
+          <div class="gallery-card-label">Daily Bake</div>
+          <div class="gallery-card-title">Sourdough</div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card-img">
+            <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=600&q=80" alt="Croissants" loading="lazy" />
+          </div>
+          <div class="gallery-card-label">Pastry</div>
+          <div class="gallery-card-title">Croissants</div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card-img">
+            <img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=600&q=80" alt="Custom cake" loading="lazy" />
+          </div>
+          <div class="gallery-card-label">Custom</div>
+          <div class="gallery-card-title">Celebration Cakes</div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card-img">
+            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80" alt="Cinnamon rolls" loading="lazy" />
+          </div>
+          <div class="gallery-card-label">Weekend</div>
+          <div class="gallery-card-title">Cinnamon Rolls</div>
+        </div>
+      </div>
+    </section>
+  </ScrollReveal>
+
+  <!-- Menu Timeline -->
   <section id="menu" class="timeline-section">
     <h2>What We Bake</h2>
-    <div class="timeline-item">
-      <div class="timeline-time">Daily &middot; 7am</div>
-      <div class="timeline-title">Fresh-Baked Bread & Pastries</div>
-      <div class="timeline-desc">Sourdough, ciabatta, brioche, croissants, and seasonal pastries. Daily rotation -- we bake what's right for the day, not what's left from yesterday.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-time">2 Weeks Notice</div>
-      <div class="timeline-title">Custom Cake Orders</div>
-      <div class="timeline-desc">Weddings, birthdays, and everything in between. Every cake is designed and decorated in-house.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-time">Events & Offices</div>
-      <div class="timeline-title">Catering Platters</div>
-      <div class="timeline-desc">Pastry trays, bread baskets, and dessert spreads for your office, event, or party. We deliver anywhere in East Orlando.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-time">Sat & Sun &middot; 8am - 1pm</div>
-      <div class="timeline-title">Weekend Brunch</div>
-      <div class="timeline-desc">Fresh pastries, egg dishes, and our house-made jams. No reservations needed.</div>
-    </div>
+    <ScrollReveal client:load>
+      <div class="timeline-item">
+        <div class="timeline-time">Daily &middot; 7am</div>
+        <div>
+          <div class="timeline-title">Fresh-Baked Bread & Pastries</div>
+          <div class="timeline-desc">Sourdough, ciabatta, brioche, croissants, and seasonal pastries. Daily rotation -- we bake what's right for the day, not what's left from yesterday.</div>
+        </div>
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:load delay={0.1}>
+      <div class="timeline-item">
+        <div class="timeline-time">2 Weeks Notice</div>
+        <div>
+          <div class="timeline-title">Custom Cake Orders</div>
+          <div class="timeline-desc">Weddings, birthdays, and everything in between. Every cake is designed and decorated in-house.</div>
+        </div>
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:load delay={0.2}>
+      <div class="timeline-item">
+        <div class="timeline-time">Events & Offices</div>
+        <div>
+          <div class="timeline-title">Catering Platters</div>
+          <div class="timeline-desc">Pastry trays, bread baskets, and dessert spreads for your office, event, or party. We deliver anywhere in East Orlando.</div>
+        </div>
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:load delay={0.3}>
+      <div class="timeline-item">
+        <div class="timeline-time">Sat & Sun &middot; 8am</div>
+        <div>
+          <div class="timeline-title">Weekend Brunch</div>
+          <div class="timeline-desc">Fresh pastries, egg dishes, and our house-made jams. No reservations needed.</div>
+        </div>
+      </div>
+    </ScrollReveal>
   </section>
 
-  <!-- About: centered full-width text block -->
-  <section class="about-section">
-    <h2>About Masa Madre</h2>
-    <p>Masa Madre started in 2019 out of a home kitchen on Curry Ford Road. What began as sourdough loaves sold at the Audubon Park Market grew into a full bakehouse serving East Orlando.</p>
-    <p>Everything is mixed, shaped, and baked on-site every morning. We source flour from Florida mills when we can and never use preservatives. If it's on the shelf, it was made today.</p>
-    <p>Over the years, what started as a weekend hobby has grown into a kitchen that feeds hundreds of families each week. We honor the process -- slow fermentation, real butter, no shortcuts -- because the results speak for themselves.</p>
-  </section>
+  <!-- About -->
+  <ScrollReveal client:load>
+    <section id="about" class="about-section">
+      <h2>About Masa Madre</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Masa Madre started in 2019 out of a home kitchen on Curry Ford Road. What began as sourdough loaves sold at the Audubon Park Market grew into a full bakehouse serving East Orlando.</p>
+          <p>Everything is mixed, shaped, and baked on-site every morning. We source flour from Florida mills when we can and never use preservatives. If it's on the shelf, it was made today.</p>
+          <p>Over the years, what started as a weekend hobby has grown into a kitchen that feeds hundreds of families each week. We honor the process -- slow fermentation, real butter, no shortcuts.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1556217477-d325251ece38?w=600&q=80" alt="Baker shaping dough" loading="lazy" />
+        </div>
+      </div>
+    </section>
+  </ScrollReveal>
 
   <!-- AI Feature -->
-  <section class="ai-section">
-    <h2>Smart Inventory & Order Forecasting</h2>
-    <p>Our system tracks daily sales patterns, seasonal demand, and custom order volume to predict exactly how much to prep each morning. Less waste, fewer sellouts, better margins.</p>
-    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
-  </section>
+  <ScrollReveal client:load>
+    <section class="ai-section">
+      <div class="label">Powered by AI</div>
+      <h2>Smart Inventory & Order Forecasting</h2>
+      <p>Our system tracks daily sales patterns, seasonal demand, and custom order volume to predict exactly how much to prep each morning. Less waste, fewer sellouts, better margins.</p>
+      <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+    </section>
+  </ScrollReveal>
 
   <!-- Testimonials -->
   <section class="testimonials-section">
     <h2>Our Neighbors</h2>
-    <div class="testimonial">
-      <div class="testimonial-quote">"Best sourdough in Orlando. I drive across town for it every Saturday."</div>
-      <div class="testimonial-name">Maria C.</div>
-      <div class="testimonial-role">Curry Ford regular</div>
-    </div>
-    <div class="testimonial">
-      <div class="testimonial-quote">"They did our wedding cake and it was perfect. Simple, elegant, and actually tasted incredible."</div>
-      <div class="testimonial-name">David & Priya T.</div>
-      <div class="testimonial-role">Wedding clients</div>
-    </div>
-    <div class="testimonial">
-      <div class="testimonial-quote">"The brunch pastries are unreal. My kids ask to go here every weekend."</div>
-      <div class="testimonial-name">Jason W.</div>
-      <div class="testimonial-role">Local dad</div>
-    </div>
+    <ScrollReveal client:load>
+      <div class="testimonial">
+        <div class="testimonial-quote">"Best sourdough in Orlando. I drive across town for it every Saturday."</div>
+        <div class="testimonial-name">Maria C.</div>
+        <div class="testimonial-role">Curry Ford regular</div>
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:load delay={0.1}>
+      <div class="testimonial">
+        <div class="testimonial-quote">"They did our wedding cake and it was perfect. Simple, elegant, and actually tasted incredible."</div>
+        <div class="testimonial-name">David & Priya T.</div>
+        <div class="testimonial-role">Wedding clients</div>
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:load delay={0.2}>
+      <div class="testimonial">
+        <div class="testimonial-quote">"The brunch pastries are unreal. My kids ask to go here every weekend."</div>
+        <div class="testimonial-name">Jason W.</div>
+        <div class="testimonial-role">Local dad</div>
+      </div>
+    </ScrollReveal>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="contact-section">
-    <h2>Come See Us</h2>
-    <div class="contact-details">
-      <strong>Address</strong><br />
-      3245 Curry Ford Rd, Orlando, FL 32806<br /><br />
-      <strong>Phone</strong><br />
-      (407) 555-2819<br /><br />
-      <strong>Email</strong><br />
-      hello@masamadre.com
-    </div>
-    <form class="contact-form" onsubmit="return false;">
-      <input type="text" placeholder="Your Name" />
-      <input type="email" placeholder="Email Address" />
-      <textarea placeholder="Your Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+  <ScrollReveal client:load>
+    <section id="contact" class="contact-section">
+      <h2>Come See Us</h2>
+      <div class="contact-details">
+        <strong>Address</strong><br />
+        3245 Curry Ford Rd, Orlando, FL 32806<br /><br />
+        <strong>Phone</strong><br />
+        (407) 555-2819<br /><br />
+        <strong>Email</strong><br />
+        hello@masamadre.com
+      </div>
+      <form class="contact-form" onsubmit="return false;">
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Email Address" />
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </ScrollReveal>
 
-  <!-- Footer: teal contrast (key path-act design element) -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-col">
@@ -618,7 +746,21 @@
     </div>
   </footer>
 
-  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">josecustom.ai</a>
+
+  <!-- Parallax on featured bread image -->
+  <script>
+    const breadImg = document.querySelector('.featured-img img');
+    if (breadImg) {
+      window.addEventListener('scroll', () => {
+        const rect = breadImg.getBoundingClientRect();
+        const centerY = rect.top + rect.height / 2;
+        const viewCenter = window.innerHeight / 2;
+        const offset = (centerY - viewCenter) * 0.08;
+        breadImg.style.transform = `translateY(${offset}px)`;
+      }, { passive: true });
+    }
+  </script>
 
 </body>
 </html>
