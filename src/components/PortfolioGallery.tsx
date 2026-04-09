@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { RadialScrollGallery } from "./RadialScrollGallery"
 
 interface SiteCard {
@@ -33,14 +33,6 @@ const sites: SiteCard[] = [
 ]
 
 export function PortfolioGallery() {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener("resize", check)
-    return () => window.removeEventListener("resize", check)
-  }, [])
 
   const handleSelect = (index: number) => {
     const site = sites[index]
@@ -53,8 +45,7 @@ export function PortfolioGallery() {
     }
   }
 
-  const cardW = isMobile ? 160 : 200
-  const cardH = isMobile ? 220 : 280
+  const [cardW, cardH] = typeof window !== "undefined" && window.innerWidth < 768 ? [140, 195] : [200, 280]
 
   const renderCard = (site: SiteCard, index: number, isActive = false) => (
     <div
@@ -64,7 +55,7 @@ export function PortfolioGallery() {
         width: cardW,
         minWidth: cardW,
         height: cardH,
-        borderRadius: isMobile ? 10 : 12,
+        borderRadius: cardW < 160 ? 10 : 12,
         overflow: "hidden",
         border: "1px solid rgba(255,255,255,0.08)",
         background: "#111",
@@ -97,11 +88,11 @@ export function PortfolioGallery() {
           loading="lazy"
         />
       </div>
-      <div style={{ padding: isMobile ? "10px 12px" : "12px 14px" }}>
+      <div style={{ padding: cardW < 160 ? "10px 12px" : "12px 14px" }}>
         <div
           style={{
             fontFamily: "'Orbitron', sans-serif",
-            fontSize: isMobile ? "0.6rem" : "0.7rem",
+            fontSize: cardW < 160 ? "0.6rem" : "0.7rem",
             fontWeight: 700,
             color: "#fff",
             marginBottom: 2,
@@ -113,7 +104,7 @@ export function PortfolioGallery() {
         </div>
         <div
           style={{
-            fontSize: isMobile ? "0.5rem" : "0.55rem",
+            fontSize: cardW < 160 ? "0.5rem" : "0.55rem",
             color: "rgba(255,255,255,0.4)",
           }}
         >
@@ -164,54 +155,7 @@ export function PortfolioGallery() {
     </div>
   )
 
-  // Mobile: horizontal scroll strip
-  if (isMobile) {
-    return (
-      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "2rem 0 3rem" }}>
-        <div style={{ textAlign: "center", padding: "0 1.5rem 2rem" }}>
-          <a href="https://josecustom.ai" style={{ color: "#1E90FF", fontSize: "0.75rem", fontWeight: 500, display: "inline-block", marginBottom: "1rem" }}>&larr; josecustom.ai</a>
-          <h1
-            style={{
-              fontFamily: "'Orbitron', sans-serif",
-              fontSize: "2rem",
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
-              background: "linear-gradient(135deg, #fff 0%, #1E90FF 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              marginBottom: "0.5rem",
-            }}
-          >
-            Portfolio
-          </h1>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            gap: "1rem",
-            overflowX: "auto",
-            padding: "0 1.5rem 1rem",
-            scrollSnapType: "x mandatory",
-            WebkitOverflowScrolling: "touch",
-            msOverflowStyle: "none",
-            scrollbarWidth: "none",
-          }}
-        >
-          {sites.map((site, index) => (
-            <div key={site.slug || site.name} style={{ scrollSnapAlign: "center", flexShrink: 0 }}>
-              {renderCard(site, index)}
-            </div>
-          ))}
-        </div>
-        <div style={{ textAlign: "center", marginTop: "0.75rem", fontSize: "0.6rem", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
-          Swipe to browse &rarr;
-        </div>
-      </div>
-    )
-  }
-
-  // Desktop: radial scroll wheel as full-viewport hero
+  // Radial scroll wheel as full-viewport hero (desktop + mobile)
   return (
     <RadialScrollGallery
       baseRadius={420}
