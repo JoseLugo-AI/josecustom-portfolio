@@ -13,7 +13,7 @@ interface SiteCard {
   externalUrl?: string
 }
 
-const BASE = "/josecustom-portfolio"
+const BASE = ""
 
 const sites: SiteCard[] = [
   // Wheel order: index 10=1st(center), 9=2nd, 8=3rd, 7=4th, 6=5th, 5=6th, 4=7th, then 3,2,1,0,12,11
