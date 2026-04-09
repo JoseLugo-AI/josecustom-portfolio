@@ -59,11 +59,11 @@ export function PortfolioGallery() {
   return (
     <RadialScrollGallery
       baseRadius={420}
-      mobileRadius={160}
-      scrollDuration={isMobile ? 1500 : 2000}
-      visiblePercentage={isMobile ? 38 : 42}
+      mobileRadius={150}
+      scrollDuration={isMobile ? 1200 : 2000}
+      visiblePercentage={isMobile ? 55 : 42}
       onItemSelect={handleSelect}
-      style={{ minHeight: isMobile ? "500px" : "700px" } as React.CSSProperties}
+      style={{ minHeight: isMobile ? "420px" : "700px" } as React.CSSProperties}
     >
       {(hoveredIndex) =>
         sites.map((site, index) => {
