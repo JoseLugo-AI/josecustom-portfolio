@@ -18,9 +18,9 @@ const BASE = ""
 const sites: SiteCard[] = [
   // Wheel order: index 10=1st(center), 9=2nd, 8=3rd, 7=4th, 6=5th, 5=6th, 4=7th, then 3,2,1,0,12,11
   /* 0  */ { name: "Still Water Tattoo", slug: "still-water", neighborhood: "Ivanhoe Village", tagline: "Permanent art. Personal story.", screenshot: `${BASE}/screenshots/still-water.jpg`, done: false },
-  /* 1  */ { name: "Stem & Table", slug: "stem-table", neighborhood: "Winter Park", tagline: "Flowers. Events. Wonder.", screenshot: `${BASE}/screenshots/stem-table.jpg`, done: false },
-  /* 2  */ { name: "Southpaw Combat", slug: "southpaw-combat", neighborhood: "College Park", tagline: "Show up. Get better.", screenshot: `${BASE}/screenshots/southpaw-combat.jpg`, done: false },
-  /* 3  */ { name: "Puente Learning", slug: "puente-learning", neighborhood: "Conway", tagline: "Two languages. One future.", screenshot: `${BASE}/screenshots/puente-learning.jpg`, done: false },
+  /* 1  */ { name: "Southpaw Combat", slug: "southpaw-combat", neighborhood: "College Park", tagline: "Show up. Get better.", screenshot: `${BASE}/screenshots/southpaw-combat.jpg`, done: false },
+  /* 2  */ { name: "Stem & Table", slug: "stem-table", neighborhood: "Winter Park", tagline: "Flowers. Events. Wonder.", screenshot: `${BASE}/screenshots/stem-table.jpg`, done: true },
+  /* 3  */ { name: "Puente Learning", slug: "puente-learning", neighborhood: "Conway", tagline: "Two languages. One future.", screenshot: `${BASE}/screenshots/puente-learning.jpg`, done: true },
   /* 4  = 7th spot */ { name: "Masa Madre", slug: "masa-madre", neighborhood: "Curry Ford", tagline: "Scratch-made daily.", screenshot: `${BASE}/screenshots/masa-madre.jpg`, done: true },
   /* 5  = 6th spot */ { name: "Basecamp IT", slug: "basecamp-it", neighborhood: "Downtown", tagline: "IT that just works.", screenshot: `${BASE}/screenshots/basecamp-it.jpg`, done: true },
   /* 6  = 5th spot */ { name: "The Eola Parlor", slug: "eola-parlor", neighborhood: "Thornton Park", tagline: "Your night. Our room.", screenshot: `${BASE}/screenshots/eola-parlor.jpg`, done: true },
