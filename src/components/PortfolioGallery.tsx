@@ -125,19 +125,6 @@ export function PortfolioGallery() {
 
   const centerOverlay = (
     <div style={{ textAlign: "center", pointerEvents: "auto" }}>
-      <a
-        href="https://josecustom.ai"
-        style={{
-          color: "#1E90FF",
-          fontSize: "0.85rem",
-          fontWeight: 500,
-          display: "inline-block",
-          marginBottom: "1.5rem",
-          transition: "opacity 0.2s",
-        }}
-      >
-        &larr; josecustom.ai
-      </a>
       <h1
         style={{
           fontFamily: "'Orbitron', sans-serif",
