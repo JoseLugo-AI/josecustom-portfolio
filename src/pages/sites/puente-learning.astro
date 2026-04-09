@@ -4,6 +4,7 @@
  * Matched to: snack-petal template (ultra minimal, light gray bg, large centered serif display,
  * 2x2 info grid What/Who/When/Where, huge whitespace, rounded CTA, dark footer)
  */
+import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -39,6 +40,10 @@
       font-weight: 500;
       color: #1A1A1A;
       cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .nav-menu:hover {
+      color: #5B7F5E;
     }
 
     /* Divider line */
@@ -156,6 +161,12 @@
     .program-item {
       padding: 2rem 0;
       border-top: 1px solid #D5D5CF;
+      border-left: 3px solid transparent;
+      padding-left: 1rem;
+      transition: border-left-color 0.3s ease;
+    }
+    .program-item:hover {
+      border-left-color: #5B7F5E;
     }
     .program-item:last-child {
       border-bottom: 1px solid #D5D5CF;
@@ -267,9 +278,12 @@
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 500;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .cta-btn:hover { opacity: 0.85; }
+    .cta-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
 
     /* AI Feature */
     .ai-section {
@@ -319,8 +333,14 @@
       line-height: 1.8;
       color: #666;
     }
-    .footer a { color: #999; }
-    .footer a:hover { text-decoration: underline; }
+    .footer a {
+      color: #999;
+      transition: color 0.3s ease;
+    }
+    .footer a:hover {
+      color: #F5F5F0;
+      text-decoration: underline;
+    }
     .footer-copy {
       margin-top: 2rem;
       padding-top: 1.5rem;
@@ -370,108 +390,126 @@
 
   <div class="spacer"></div>
 
-  <div class="section-heading">
-    <h2>What We Do</h2>
-  </div>
+  <ScrollReveal client:visible>
+    <div class="section-heading">
+      <h2>What We Do</h2>
+    </div>
 
-  <div class="info-grid">
-    <div class="info-cell">
-      <div class="info-label">What</div>
-      <div class="info-title">Bilingual tutoring for K-8</div>
-      <p>Reading, math, and writing instruction in English and Spanish. Small groups, credentialed bilingual tutors.</p>
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="info-label">What</div>
+        <div class="info-title">Bilingual tutoring for K-8</div>
+        <p>Reading, math, and writing instruction in English and Spanish. Small groups, credentialed bilingual tutors.</p>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Who</div>
+        <div class="info-title">All Conway & East Orlando families</div>
+        <p>First- and second-generation Latino households where parents want their kids strong in both languages.</p>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">When</div>
+        <div class="info-title">Monday - Thursday, 3:30-6pm</div>
+        <p>After-school sessions that fit your schedule. Summer enrichment camps available June through July.</p>
+      </div>
+      <div class="info-cell">
+        <div class="info-label">Where</div>
+        <div class="info-title">4510 S Conway Rd</div>
+        <p>Orlando, FL 32812. Walk-ins welcome. We'll find the right program for your child.</p>
+      </div>
     </div>
-    <div class="info-cell">
-      <div class="info-label">Who</div>
-      <div class="info-title">All Conway & East Orlando families</div>
-      <p>First- and second-generation Latino households where parents want their kids strong in both languages.</p>
-    </div>
-    <div class="info-cell">
-      <div class="info-label">When</div>
-      <div class="info-title">Monday - Thursday, 3:30-6pm</div>
-      <p>After-school sessions that fit your schedule. Summer enrichment camps available June through July.</p>
-    </div>
-    <div class="info-cell">
-      <div class="info-label">Where</div>
-      <div class="info-title">4510 S Conway Rd</div>
-      <p>Orlando, FL 32812. Walk-ins welcome. We'll find the right program for your child.</p>
-    </div>
-  </div>
+  </ScrollReveal>
 
   <div class="spacer"></div>
 
   <hr class="divider" />
 
-  <section class="programs-section">
-    <h2>Our Programs</h2>
-    <div class="sub">Everything we offer is led by credentialed, bilingual staff.</div>
-    <div class="program-item">
-      <h3>After-School Tutoring (K-8)</h3>
-      <p>Monday through Thursday, 3:30-6pm. Reading, math, and writing instruction in English and Spanish. Small groups, credentialed bilingual tutors.</p>
-    </div>
-    <div class="program-item">
-      <h3>Reading & Math Intervention</h3>
-      <p>Targeted support for students performing below grade level. Structured programs that close gaps without making kids feel behind.</p>
-    </div>
-    <div class="program-item">
-      <h3>Summer Enrichment Camps</h3>
-      <p>Six-week summer program combining academic reinforcement with hands-on STEM projects. Keeps skills sharp without feeling like school.</p>
-    </div>
-    <div class="program-item">
-      <h3>Parent Workshops</h3>
-      <p>Monthly workshops helping parents navigate the school system, understand report cards, and advocate for their children. In Spanish and English.</p>
-    </div>
-  </section>
+  <ScrollReveal client:visible>
+    <section class="programs-section">
+      <h2>Our Programs</h2>
+      <div class="sub">Everything we offer is led by credentialed, bilingual staff.</div>
+      <div class="program-item">
+        <h3>After-School Tutoring (K-8)</h3>
+        <p>Monday through Thursday, 3:30-6pm. Reading, math, and writing instruction in English and Spanish. Small groups, credentialed bilingual tutors.</p>
+      </div>
+      <div class="program-item">
+        <h3>Reading & Math Intervention</h3>
+        <p>Targeted support for students performing below grade level. Structured programs that close gaps without making kids feel behind.</p>
+      </div>
+      <div class="program-item">
+        <h3>Summer Enrichment Camps</h3>
+        <p>Six-week summer program combining academic reinforcement with hands-on STEM projects. Keeps skills sharp without feeling like school.</p>
+      </div>
+      <div class="program-item">
+        <h3>Parent Workshops</h3>
+        <p>Monthly workshops helping parents navigate the school system, understand report cards, and advocate for their children. In Spanish and English.</p>
+      </div>
+    </section>
+  </ScrollReveal>
 
   <div class="spacer-sm"></div>
 
-  <section class="about-section">
-    <h2>Our Story</h2>
-    <p>Puente was founded by Carmen Delgado, a former Orange County Public Schools teacher who saw too many bilingual kids falling through the cracks.</p>
-    <p>We work with families in Conway, Azalea Park, and Meadow Woods. Our tutors are bilingual, credentialed, and from the community.</p>
-    <div class="about-owner">
-      <strong>Carmen Delgado</strong>
-      Founder & Director
-    </div>
-  </section>
+  <ScrollReveal client:visible>
+    <section class="about-section">
+      <h2>Our Story</h2>
+      <p>Puente was founded by Carmen Delgado, a former Orange County Public Schools teacher who saw too many bilingual kids falling through the cracks.</p>
+      <p>We work with families in Conway, Azalea Park, and Meadow Woods. Our tutors are bilingual, credentialed, and from the community.</p>
+      <div class="about-owner">
+        <strong>Carmen Delgado</strong>
+        Founder & Director
+      </div>
+    </section>
+  </ScrollReveal>
 
   <div class="spacer-sm"></div>
 
   <hr class="divider" />
 
-  <section class="testimonials-section">
-    <h2>From Our Families</h2>
-    <div class="testimonial">
-      <div class="testimonial-quote">"My daughter went from dreading reading to asking for books. Carmen and her team changed everything for us."</div>
-      <div class="testimonial-name">Rosa M.</div>
-      <div class="testimonial-role">Parent, Conway</div>
-    </div>
-    <div class="testimonial">
-      <div class="testimonial-quote">"The bilingual approach means my son doesn't have to choose. He's getting stronger in both languages at the same time."</div>
-      <div class="testimonial-name">Eduardo S.</div>
-      <div class="testimonial-role">Parent, Azalea Park</div>
-    </div>
-    <div class="testimonial">
-      <div class="testimonial-quote">"The parent workshops helped me understand how to talk to my child's teacher. That alone was worth it."</div>
-      <div class="testimonial-name">Lucia T.</div>
-      <div class="testimonial-role">Parent, Meadow Woods</div>
-    </div>
-  </section>
+  <ScrollReveal client:visible>
+    <section class="testimonials-section">
+      <h2>From Our Families</h2>
+      <ScrollReveal client:visible delay={0.1}>
+        <div class="testimonial">
+          <div class="testimonial-quote">"My daughter went from dreading reading to asking for books. Carmen and her team changed everything for us."</div>
+          <div class="testimonial-name">Rosa M.</div>
+          <div class="testimonial-role">Parent, Conway</div>
+        </div>
+      </ScrollReveal>
+      <ScrollReveal client:visible delay={0.2}>
+        <div class="testimonial">
+          <div class="testimonial-quote">"The bilingual approach means my son doesn't have to choose. He's getting stronger in both languages at the same time."</div>
+          <div class="testimonial-name">Eduardo S.</div>
+          <div class="testimonial-role">Parent, Azalea Park</div>
+        </div>
+      </ScrollReveal>
+      <ScrollReveal client:visible delay={0.3}>
+        <div class="testimonial">
+          <div class="testimonial-quote">"The parent workshops helped me understand how to talk to my child's teacher. That alone was worth it."</div>
+          <div class="testimonial-name">Lucia T.</div>
+          <div class="testimonial-role">Parent, Meadow Woods</div>
+        </div>
+      </ScrollReveal>
+    </section>
+  </ScrollReveal>
 
   <div class="spacer"></div>
 
-  <section class="ai-section">
-    <h3>Automated Progress Reports</h3>
-    <p>Our system tracks each student's weekly performance and generates bilingual progress reports sent directly to parents. English and Spanish, every Friday, no extra admin time for tutors.</p>
-    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
-  </section>
+  <ScrollReveal client:visible>
+    <section class="ai-section">
+      <h3>Automated Progress Reports</h3>
+      <p>Our system tracks each student's weekly performance and generates bilingual progress reports sent directly to parents. English and Spanish, every Friday, no extra admin time for tutors.</p>
+      <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+    </section>
+  </ScrollReveal>
 
   <div class="spacer-sm"></div>
 
-  <section class="cta-section">
-    <h2>All families are welcome here!</h2>
-    <p>Walk-ins welcome. We'll find the right program for your child.</p>
-    <a href="mailto:info@puentelearning.com" class="cta-btn">Enroll Your Child</a>
-  </section>
+  <ScrollReveal client:visible>
+    <section class="cta-section">
+      <h2>All families are welcome here!</h2>
+      <p>Walk-ins welcome. We'll find the right program for your child.</p>
+      <a href="mailto:info@puentelearning.com" class="cta-btn">Enroll Your Child</a>
+    </section>
+  </ScrollReveal>
 
   <footer class="footer">
     <div class="footer-inner">

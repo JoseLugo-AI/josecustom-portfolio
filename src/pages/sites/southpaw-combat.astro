@@ -5,6 +5,7 @@
  * blue/purple gradient accents, marquee ticker, alternating dark/light sections,
  * purple CTA buttons, founder quotes, gradient CTA section)
  */
+import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -40,14 +41,18 @@
       color: #fff;
       font-size: 1.2rem;
       cursor: pointer;
+      transition: color 0.3s;
     }
+    .nav-menu:hover { color: #C084FC; }
     .nav-brand {
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
       font-weight: 400;
       color: #fff;
       font-style: italic;
+      transition: color 0.3s;
     }
+    .nav-brand:hover { color: #C084FC; }
 
     /* Hero - dark photo with large serif text like Movement Studios */
     .hero {
@@ -91,9 +96,13 @@
       padding: 0.8rem 2rem;
       font-size: 0.75rem;
       font-weight: 600;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     }
-    .hero-cta:hover { background: #5B21B6; }
+    .hero-cta:hover {
+      background: #5B21B6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(109, 40, 217, 0.35);
+    }
 
     /* Marquee ticker - blue/purple like Movement Studios */
     .marquee {
@@ -169,9 +178,13 @@
       padding: 0.7rem 1.5rem;
       font-size: 0.7rem;
       font-weight: 600;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     }
-    .content-cta:hover { background: #5B21B6; }
+    .content-cta:hover {
+      background: #5B21B6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(109, 40, 217, 0.35);
+    }
 
     /* Programs listed simply */
     .programs-section {
@@ -226,6 +239,12 @@
       padding-top: 0.5rem;
       display: inline-block;
       margin-bottom: 0.25rem;
+      transition: border-color 0.4s, padding-top 0.3s;
+    }
+    .founder-name:hover {
+      border-top-width: 3px;
+      border-color: #C084FC;
+      padding-top: 0.4rem;
     }
     .founder-role {
       font-size: 0.75rem;
@@ -255,9 +274,13 @@
       padding: 0.8rem 2rem;
       font-size: 0.75rem;
       font-weight: 600;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
     }
-    .gradient-cta-btn:hover { opacity: 0.85; }
+    .gradient-cta-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
 
     /* AI section */
     .ai-section {
@@ -305,8 +328,14 @@
       color: #fff;
     }
     .footer-info { font-size: 0.7rem; color: #555; }
-    .footer-info a { color: #6D28D9; }
-    .footer-info a:hover { text-decoration: underline; }
+    .footer-info a {
+      color: #6D28D9;
+      transition: color 0.3s;
+    }
+    .footer-info a:hover {
+      color: #C084FC;
+      text-decoration: underline;
+    }
 
     .cta-badge {
       position: fixed;
@@ -359,26 +388,32 @@
     <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80" alt="Training" class="vision-bg" />
   </section>
 
-  <section class="content-section">
-    <h3>Who we are</h3>
-    <p>Southpaw opened in College Park in 2020 with 12 members and a rented warehouse. Coach Andre Watts -- former Army combatives instructor, brown belt in BJJ -- built the gym on one principle: train hard, leave your ego at the door. We're at 150 members now across all programs.</p>
-    <a href="#contact" class="content-cta">About Us</a>
-  </section>
+  <ScrollReveal client:load>
+    <section class="content-section">
+      <h3>Who we are</h3>
+      <p>Southpaw opened in College Park in 2020 with 12 members and a rented warehouse. Coach Andre Watts -- former Army combatives instructor, brown belt in BJJ -- built the gym on one principle: train hard, leave your ego at the door. We're at 150 members now across all programs.</p>
+      <a href="#contact" class="content-cta">About Us</a>
+    </section>
+  </ScrollReveal>
 
-  <section class="programs-section">
-    <h3>Our Programs</h3>
-    <p>Brazilian Jiu-Jitsu (gi and no-gi, all levels), Muay Thai kickboxing, strength and conditioning, and a competition team for members who want to test themselves.</p>
-    <a href="#contact" class="content-cta">Reserve your spot</a>
-  </section>
+  <ScrollReveal client:load delay={0.1}>
+    <section class="programs-section">
+      <h3>Our Programs</h3>
+      <p>Brazilian Jiu-Jitsu (gi and no-gi, all levels), Muay Thai kickboxing, strength and conditioning, and a competition team for members who want to test themselves.</p>
+      <a href="#contact" class="content-cta">Reserve your spot</a>
+    </section>
+  </ScrollReveal>
 
-  <section class="founders-section">
-    <h2>Our Founders</h2>
-    <div class="founder-quote">"Show up three times a week and everything changes. We'll hold you accountable."</div>
-    <div class="founder-attribution">-- Andre Watts</div>
+  <ScrollReveal client:load delay={0.1}>
+    <section class="founders-section">
+      <h2>Our Founders</h2>
+      <div class="founder-quote">"Show up three times a week and everything changes. We'll hold you accountable."</div>
+      <div class="founder-attribution">-- Andre Watts</div>
 
-    <div class="founder-name">Andre Watts</div>
-    <div class="founder-role">Head Coach & Owner</div>
-  </section>
+      <div class="founder-name">Andre Watts</div>
+      <div class="founder-role">Head Coach & Owner</div>
+    </section>
+  </ScrollReveal>
 
   <section class="gradient-cta" id="contact">
     <div class="gradient-cta-inner">
@@ -387,11 +422,13 @@
     </div>
   </section>
 
-  <section class="ai-section">
-    <h3>Smart Programming & Member Insights</h3>
-    <p>Our system generates weekly class programming based on training cycles and tracks member attendance patterns. If someone stops showing up, we know before they cancel -- so we can reach out and bring them back.</p>
-    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
-  </section>
+  <ScrollReveal client:load>
+    <section class="ai-section">
+      <h3>Smart Programming & Member Insights</h3>
+      <p>Our system generates weekly class programming based on training cycles and tracks member attendance patterns. If someone stops showing up, we know before they cancel -- so we can reach out and bring them back.</p>
+      <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+    </section>
+  </ScrollReveal>
 
   <footer class="footer">
     <div class="footer-inner">

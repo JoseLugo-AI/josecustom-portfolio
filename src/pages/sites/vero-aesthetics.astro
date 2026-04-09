@@ -4,6 +4,7 @@
  * Matched to: crush-strata / Ama Figma template (muted sage green hero, large serif title,
  * ultra-minimal white space, app/product-focused, clean modern)
  */
+import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -25,7 +26,7 @@
       -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+    a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
 
     /* Nav - ultra minimal like Ama */
     .nav {
@@ -38,13 +39,17 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
+      transition: opacity 0.3s ease;
     }
+    .nav-brand:hover { opacity: 0.6; }
     .nav-menu {
       font-size: 0.75rem;
       font-weight: 500;
       color: #888;
       cursor: pointer;
+      transition: color 0.3s ease;
     }
+    .nav-menu:hover { color: #1A1A1A; }
 
     /* Hero - large serif title with sage green block */
     .hero {
@@ -101,7 +106,7 @@
     }
     .section-center .section-desc { margin: 0 auto; }
 
-    /* Treatment cards - clean minimal */
+    /* Treatment cards - clean minimal with hover */
     .treatments-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -112,6 +117,13 @@
       background: #F0F0F0;
       border-radius: 12px;
       padding: 2rem;
+      border: 1px solid transparent;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .treatment-card:hover {
+      border-color: #A3B18A;
+      box-shadow: 0 8px 24px rgba(163, 177, 138, 0.15);
+      transform: translateY(-3px);
     }
     .treatment-card h3 {
       font-family: 'DM Serif Display', serif;
@@ -146,6 +158,11 @@
       object-fit: cover;
       mix-blend-mode: multiply;
       opacity: 0.85;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .showcase-item:hover img {
+      opacity: 1;
+      transform: scale(1.03);
     }
 
     /* About - simple text */
@@ -182,6 +199,10 @@
     }
     .testimonial {
       margin-bottom: 3rem;
+      transition: transform 0.3s ease;
+    }
+    .testimonial:hover {
+      transform: translateY(-2px);
     }
     .testimonial-quote {
       font-family: 'DM Serif Display', serif;
@@ -225,9 +246,14 @@
       border-radius: 8px;
       font-size: 0.8rem;
       font-weight: 600;
-      transition: opacity 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
     }
-    .cta-btn:hover { opacity: 0.9; }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      background: #1A1A1A;
+      color: #fff;
+    }
 
     /* AI Feature */
     .ai-section {
@@ -254,7 +280,9 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: #ccc;
+      transition: color 0.3s ease;
     }
+    .ai-badge:hover { color: #A3B18A; }
 
     /* Footer - minimal */
     .footer {
@@ -273,8 +301,11 @@
       color: #999;
       line-height: 1.8;
     }
-    .footer a { color: #A3B18A; }
-    .footer a:hover { text-decoration: underline; }
+    .footer a {
+      color: #A3B18A;
+      transition: color 0.3s ease, opacity 0.3s ease;
+    }
+    .footer a:hover { opacity: 0.7; }
 
     .cta-badge {
       position: fixed;
@@ -288,9 +319,9 @@
       border-radius: 999px;
       font-size: 0.7rem;
       backdrop-filter: blur(8px);
-      transition: all 0.2s;
+      transition: all 0.3s ease;
     }
-    .cta-badge:hover { background: #A3B18A; color: #fff; border-color: #A3B18A; }
+    .cta-badge:hover { background: #A3B18A; color: #fff; border-color: #A3B18A; transform: translateY(-2px); }
 
     @media (max-width: 768px) {
       .treatments-grid, .showcase-row { grid-template-columns: 1fr; }
@@ -312,73 +343,87 @@
     </div>
   </section>
 
-  <section class="section section-center">
-    <h2>Subtle. Precise. You.</h2>
-    <p class="section-desc">Physician-led aesthetics on Park Avenue in Winter Park. Natural-looking results, no sales pressure, and free consultations -- because you should feel confident before you spend a dollar.</p>
-  </section>
+  <ScrollReveal client:visible>
+    <section class="section section-center">
+      <h2>Subtle. Precise. You.</h2>
+      <p class="section-desc">Physician-led aesthetics on Park Avenue in Winter Park. Natural-looking results, no sales pressure, and free consultations -- because you should feel confident before you spend a dollar.</p>
+    </section>
+  </ScrollReveal>
 
-  <div class="showcase-row">
-    <div class="showcase-item">
-      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Treatment room" />
-    </div>
-    <div class="showcase-item">
-      <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80" alt="Med spa reception" />
-    </div>
-  </div>
-
-  <section class="section section-center">
-    <h2>Treatments</h2>
-    <p class="section-desc">Everything we offer is performed or overseen by Dr. Whitfield.</p>
-    <div class="treatments-grid">
-      <div class="treatment-card">
-        <h3>Botox & Fillers</h3>
-        <p>Precise placement for natural results. We enhance what's there -- we don't change who you are.</p>
+  <ScrollReveal client:visible delay={0.1}>
+    <div class="showcase-row">
+      <div class="showcase-item">
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Treatment room" />
       </div>
-      <div class="treatment-card">
-        <h3>Laser Resurfacing</h3>
-        <p>Address fine lines, sun damage, and uneven tone with medical-grade laser technology.</p>
-      </div>
-      <div class="treatment-card">
-        <h3>IV Hydration</h3>
-        <p>Vitamin-infused IV drips for energy, recovery, and immunity. No appointment needed.</p>
-      </div>
-      <div class="treatment-card">
-        <h3>Peels & Facials</h3>
-        <p>Medical-grade peels and customized facials matched to your skin's specific needs.</p>
+      <div class="showcase-item">
+        <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80" alt="Med spa reception" />
       </div>
     </div>
-  </section>
+  </ScrollReveal>
 
-  <section class="about-section">
-    <h2>About Dr. Whitfield</h2>
-    <p>Vero Aesthetics is a physician-led med spa on Park Avenue in Winter Park. Dr. Sarah Whitfield, board-certified in family medicine with advanced aesthetics training, opened Vero in 2022 with a focus on natural-looking results.</p>
-    <p>No sales pressure, no package upsells during your appointment. We do free consultations because we'd rather you feel confident before you spend a dollar.</p>
-  </section>
+  <ScrollReveal client:visible>
+    <section class="section section-center">
+      <h2>Treatments</h2>
+      <p class="section-desc">Everything we offer is performed or overseen by Dr. Whitfield.</p>
+      <div class="treatments-grid">
+        <div class="treatment-card">
+          <h3>Botox & Fillers</h3>
+          <p>Precise placement for natural results. We enhance what's there -- we don't change who you are.</p>
+        </div>
+        <div class="treatment-card">
+          <h3>Laser Resurfacing</h3>
+          <p>Address fine lines, sun damage, and uneven tone with medical-grade laser technology.</p>
+        </div>
+        <div class="treatment-card">
+          <h3>IV Hydration</h3>
+          <p>Vitamin-infused IV drips for energy, recovery, and immunity. No appointment needed.</p>
+        </div>
+        <div class="treatment-card">
+          <h3>Peels & Facials</h3>
+          <p>Medical-grade peels and customized facials matched to your skin's specific needs.</p>
+        </div>
+      </div>
+    </section>
+  </ScrollReveal>
 
-  <section class="testimonials-section">
-    <h2>What Clients Say</h2>
-    <div class="testimonial">
-      <div class="testimonial-quote">"Dr. Whitfield talked me out of filler I didn't need and suggested a peel instead. Saved me money and I looked better."</div>
-      <div class="testimonial-name">Jennifer H.</div>
-      <div class="testimonial-role">Regular client</div>
+  <ScrollReveal client:visible>
+    <section class="about-section">
+      <h2>About Dr. Whitfield</h2>
+      <p>Vero Aesthetics is a physician-led med spa on Park Avenue in Winter Park. Dr. Sarah Whitfield, board-certified in family medicine with advanced aesthetics training, opened Vero in 2022 with a focus on natural-looking results.</p>
+      <p>No sales pressure, no package upsells during your appointment. We do free consultations because we'd rather you feel confident before you spend a dollar.</p>
+    </section>
+  </ScrollReveal>
+
+  <ScrollReveal client:visible>
+    <section class="testimonials-section">
+      <h2>What Clients Say</h2>
+      <div class="testimonial">
+        <div class="testimonial-quote">"Dr. Whitfield talked me out of filler I didn't need and suggested a peel instead. Saved me money and I looked better."</div>
+        <div class="testimonial-name">Jennifer H.</div>
+        <div class="testimonial-role">Regular client</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-quote">"The most relaxing med spa experience I've had. No hard sell, no awkward pressure. Just good work."</div>
+        <div class="testimonial-name">Amanda R.</div>
+        <div class="testimonial-role">Botox client</div>
+      </div>
+    </section>
+  </ScrollReveal>
+
+  <ScrollReveal client:visible>
+    <div class="cta-section">
+      <h2>Book Your Consultation</h2>
+      <a href="mailto:hello@veroaesthetics.com" class="cta-btn">Get Started</a>
     </div>
-    <div class="testimonial">
-      <div class="testimonial-quote">"The most relaxing med spa experience I've had. No hard sell, no awkward pressure. Just good work."</div>
-      <div class="testimonial-name">Amanda R.</div>
-      <div class="testimonial-role">Botox client</div>
-    </div>
-  </section>
+  </ScrollReveal>
 
-  <div class="cta-section">
-    <h2>Book Your Consultation</h2>
-    <a href="mailto:hello@veroaesthetics.com" class="cta-btn">Get Started</a>
-  </div>
-
-  <section class="ai-section">
-    <h3>Smart Treatment Matching</h3>
-    <p>Answer a short skin assessment online, and our system recommends treatment options based on your goals, skin type, and budget -- with realistic timelines and expected results.</p>
-    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
-  </section>
+  <ScrollReveal client:visible delay={0.15}>
+    <section class="ai-section">
+      <h3>Smart Treatment Matching</h3>
+      <p>Answer a short skin assessment online, and our system recommends treatment options based on your goals, skin type, and budget -- with realistic timelines and expected results.</p>
+      <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+    </section>
+  </ScrollReveal>
 
   <footer class="footer">
     <div class="footer-brand">Vero Aesthetics</div>

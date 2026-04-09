@@ -4,6 +4,7 @@
  * Matched to: grit-editor / Our Blooms template (huge decorative serif title with trademark,
  * monogram nav, numbered services with big standalone numbers, image strip, gradient footer)
  */
+import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -39,12 +40,16 @@
       font-size: 1.3rem;
       font-weight: 700;
       color: #2D4A3E;
+      transition: color 0.3s ease;
     }
+    .nav-monogram:hover { color: #9B6B4A; }
     .nav-hamburger {
       font-size: 1.2rem;
       color: #2D4A3E;
       cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
+    .nav-hamburger:hover { color: #9B6B4A; transform: scale(1.1); }
 
     /* HUGE decorative serif title like Our Blooms */
     .hero-title {
@@ -77,7 +82,9 @@
       width: 100%;
       height: 500px;
       object-fit: cover;
+      transition: transform 0.6s ease;
     }
+    .hero-image:hover img { transform: scale(1.02); }
     .hero-badge {
       position: absolute;
       top: 1rem;
@@ -90,7 +97,9 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       line-height: 1.3;
+      transition: background 0.3s ease, transform 0.3s ease;
     }
+    .hero-badge:hover { background: #B8860B; transform: scale(1.05); }
 
     /* Who we are intro - centered text like Our Blooms */
     .intro-section {
@@ -123,9 +132,14 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      transition: all 0.2s;
+      transition: all 0.3s ease;
     }
-    .intro-btn:hover { background: #2D4A3E; color: #FDFAF6; }
+    .intro-btn:hover {
+      background: #2D4A3E;
+      color: #FDFAF6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(45, 74, 62, 0.25);
+    }
 
     /* Image strip - 4 thumbnails like Our Blooms */
     .image-strip {
@@ -136,10 +150,17 @@
       margin: 0 auto;
       padding: 0 2rem;
     }
-    .image-strip img {
+    .image-strip-item {
+      overflow: hidden;
+    }
+    .image-strip-item img {
       width: 100%;
       aspect-ratio: 1;
       object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .image-strip-item:hover img {
+      transform: scale(1.08);
     }
 
     /* "What We Do" heading - bold uppercase like Our Blooms */
@@ -167,6 +188,13 @@
       padding: 3rem 2rem;
       max-width: 600px;
       margin: 0 auto;
+      transition: transform 0.3s ease, background 0.3s ease;
+      border-radius: 8px;
+      cursor: default;
+    }
+    .numbered-service:hover {
+      transform: translateY(-4px);
+      background: rgba(213, 207, 199, 0.12);
     }
     .service-number {
       font-family: 'Cormorant Garamond', serif;
@@ -175,12 +203,21 @@
       color: #D5CFC7;
       line-height: 1;
       margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+    .numbered-service:hover .service-number {
+      color: #9B6B4A;
     }
     .service-divider {
       width: 40px;
       height: 1px;
       background: #D5CFC7;
       margin: 1.5rem auto;
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+    .numbered-service:hover .service-divider {
+      width: 60px;
+      background: #9B6B4A;
     }
     .numbered-service h3 {
       font-family: 'Nunito Sans', sans-serif;
@@ -247,7 +284,9 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: #ccc;
+      transition: color 0.3s ease;
     }
+    .ai-badge:hover { color: #9B6B4A; }
 
     /* Footer - gradient fade with monogram like Our Blooms */
     .footer {
@@ -266,7 +305,9 @@
       font-size: 3rem;
       font-weight: 700;
       color: #2D4A3E;
+      transition: color 0.3s ease;
     }
+    .footer-monogram:hover { color: #9B6B4A; }
     .footer-right {
       text-align: right;
     }
@@ -279,15 +320,22 @@
       font-size: 0.65rem;
       color: #aaa;
     }
-    .footer-links a { color: #9B6B4A; }
-    .footer-links a:hover { text-decoration: underline; }
+    .footer-links a {
+      color: #9B6B4A;
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover { text-decoration: underline; color: #2D4A3E; }
     .footer-copy {
       text-align: center;
       margin-top: 2rem;
       font-size: 0.6rem;
       color: #bbb;
     }
-    .footer-copy a { color: #9B6B4A; }
+    .footer-copy a {
+      color: #9B6B4A;
+      transition: color 0.3s ease;
+    }
+    .footer-copy a:hover { color: #2D4A3E; }
 
     .cta-badge {
       position: fixed;
@@ -301,9 +349,14 @@
       border-radius: 999px;
       font-size: 0.7rem;
       backdrop-filter: blur(8px);
-      transition: all 0.2s;
+      transition: all 0.3s ease;
     }
-    .cta-badge:hover { background: #9B6B4A; border-color: #9B6B4A; }
+    .cta-badge:hover {
+      background: #9B6B4A;
+      border-color: #9B6B4A;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(155, 107, 74, 0.35);
+    }
 
     @media (max-width: 768px) {
       .image-strip { grid-template-columns: repeat(2, 1fr); }
@@ -320,65 +373,99 @@
     <div class="nav-hamburger">&#9776;</div>
   </nav>
 
-  <section class="hero-title">
-    <h1>Stem &<br />Table<sup>&reg;</sup></h1>
-  </section>
+  <ScrollReveal client:visible>
+    <section class="hero-title">
+      <h1>Stem &<br />Table<sup>&reg;</sup></h1>
+    </section>
+  </ScrollReveal>
 
-  <div class="hero-image">
-    <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80" alt="Seasonal floral arrangement" />
-    <div class="hero-badge">New<br />10% Off Your<br />First Order</div>
-  </div>
+  <ScrollReveal client:visible delay={0.15}>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80" alt="Seasonal floral arrangement" />
+      <div class="hero-badge">New<br />10% Off Your<br />First Order</div>
+    </div>
+  </ScrollReveal>
 
-  <section class="intro-section">
-    <div class="intro-label">Who We Are</div>
-    <p>We're Stem & Table<sup>&reg;</sup> and we're here to help you find your floral story.</p>
-    <a href="#contact" class="intro-btn">About Us</a>
-  </section>
+  <ScrollReveal client:visible delay={0.1}>
+    <section class="intro-section">
+      <div class="intro-label">Who We Are</div>
+      <p>We're Stem & Table<sup>&reg;</sup> and we're here to help you find your floral story.</p>
+      <a href="#contact" class="intro-btn">About Us</a>
+    </section>
+  </ScrollReveal>
 
   <div class="image-strip">
-    <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=400&q=80" alt="Wedding arch" />
-    <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=400&q=80" alt="Bridal bouquet" />
-    <img src="https://images.unsplash.com/photo-1522057306606-8d84ae561c1f?w=400&q=80" alt="Centerpiece" />
-    <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=400&q=80" alt="In progress" />
+    <ScrollReveal client:visible delay={0}>
+      <div class="image-strip-item">
+        <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=400&q=80" alt="Wedding arch" />
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:visible delay={0.1}>
+      <div class="image-strip-item">
+        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=400&q=80" alt="Bridal bouquet" />
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:visible delay={0.2}>
+      <div class="image-strip-item">
+        <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Centerpiece" />
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:visible delay={0.3}>
+      <div class="image-strip-item">
+        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=400&q=80" alt="In progress" />
+      </div>
+    </ScrollReveal>
   </div>
 
-  <div class="section-heading">
-    <h2>What We Do</h2>
-    <p>We bring a touch of that simple magic into your world.</p>
-  </div>
+  <ScrollReveal client:visible>
+    <div class="section-heading">
+      <h2>What We Do</h2>
+      <p>We bring a touch of that simple magic into your world.</p>
+    </div>
+  </ScrollReveal>
 
-  <div class="numbered-service">
-    <div class="service-number">1</div>
-    <div class="service-divider"></div>
-    <h3>Wedding Floral Design</h3>
-    <p>Ceremony arches, reception centerpieces, bouquets, boutonnieres, and personal flowers. We limit ourselves to one wedding per weekend so every event gets our full attention.</p>
-  </div>
+  <ScrollReveal client:visible delay={0.1}>
+    <div class="numbered-service">
+      <div class="service-number">1</div>
+      <div class="service-divider"></div>
+      <h3>Wedding Floral Design</h3>
+      <p>Ceremony arches, reception centerpieces, bouquets, boutonnieres, and personal flowers. We limit ourselves to one wedding per weekend so every event gets our full attention.</p>
+    </div>
+  </ScrollReveal>
 
-  <div class="numbered-service">
-    <div class="service-number">2</div>
-    <div class="service-divider"></div>
-    <h3>Event Installations & Centerpieces</h3>
-    <p>Corporate events, galas, and private parties. Large-scale installations or intimate table arrangements -- scaled to your space and budget.</p>
-  </div>
+  <ScrollReveal client:visible delay={0.15}>
+    <div class="numbered-service">
+      <div class="service-number">2</div>
+      <div class="service-divider"></div>
+      <h3>Event Installations & Centerpieces</h3>
+      <p>Corporate events, galas, and private parties. Large-scale installations or intimate table arrangements -- scaled to your space and budget.</p>
+    </div>
+  </ScrollReveal>
 
-  <div class="numbered-service">
-    <div class="service-number">3</div>
-    <div class="service-divider"></div>
-    <h3>Weekly Fresh Arrangements</h3>
-    <p>Standing orders for restaurants, hotels, and offices. Fresh seasonal flowers delivered weekly, arranged on-site. If it's not in season, we'll tell you -- and suggest something better.</p>
-  </div>
+  <ScrollReveal client:visible delay={0.2}>
+    <div class="numbered-service">
+      <div class="service-number">3</div>
+      <div class="service-divider"></div>
+      <h3>Weekly Fresh Arrangements</h3>
+      <p>Standing orders for restaurants, hotels, and offices. Fresh seasonal flowers delivered weekly, arranged on-site. If it's not in season, we'll tell you -- and suggest something better.</p>
+    </div>
+  </ScrollReveal>
 
-  <section class="grow-section" id="contact">
-    <div class="grow-label">Grow With Us</div>
-    <p>Discover how we can add a touch of natural beauty to your next event.</p>
-    <a href="mailto:flowers@stemandtable.com" class="intro-btn">About Us</a>
-  </section>
+  <ScrollReveal client:visible delay={0.1}>
+    <section class="grow-section" id="contact">
+      <div class="grow-label">Grow With Us</div>
+      <p>Discover how we can add a touch of natural beauty to your next event.</p>
+      <a href="mailto:flowers@stemandtable.com" class="intro-btn">About Us</a>
+    </section>
+  </ScrollReveal>
 
-  <section class="ai-section">
-    <h3>Seasonal Availability & Instant Quoting</h3>
-    <p>Select your colors, style, and wedding date. Our system shows what's in season, suggests arrangement options, and generates a ballpark quote before your first consultation. No guesswork, no sticker shock.</p>
-    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
-  </section>
+  <ScrollReveal client:visible delay={0.15}>
+    <section class="ai-section">
+      <h3>Seasonal Availability & Instant Quoting</h3>
+      <p>Select your colors, style, and wedding date. Our system shows what's in season, suggests arrangement options, and generates a ballpark quote before your first consultation. No guesswork, no sticker shock.</p>
+      <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+    </section>
+  </ScrollReveal>
 
   <footer class="footer">
     <div class="footer-inner">

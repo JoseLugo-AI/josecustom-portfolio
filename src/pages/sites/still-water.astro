@@ -4,6 +4,7 @@
  * Matched to: nature-slam / Véloce Figma template (white/cream bg, bold condensed black uppercase,
  * asymmetric product layouts, yellow nav accent, minimal product-forward)
  */
+import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -50,9 +51,21 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: #1A1A1A;
-      transition: color 0.2s;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #D4A017;
+      transition: width 0.3s ease;
     }
     .nav-links a:hover { color: #D4A017; }
+    .nav-links a:hover::after { width: 100%; }
 
     /* Hero - bold condensed type, left-aligned like Véloce */
     .hero {
@@ -78,9 +91,14 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      transition: opacity 0.2s;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     }
-    .hero-cta:hover { opacity: 0.8; }
+    .hero-cta:hover {
+      background: #D4A017;
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(212, 160, 23, 0.3);
+    }
 
     /* Large manifesto text - like Véloce's big description */
     .manifesto {
@@ -106,6 +124,11 @@
       letter-spacing: 0.1em;
       border-bottom: 2px solid #1A1A1A;
       padding-bottom: 2px;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    .manifesto .cta-link:hover {
+      color: #D4A017;
+      border-color: #D4A017;
     }
 
     /* Product/Service cards - asymmetric like Véloce product showcase */
@@ -125,14 +148,41 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 1rem;
+      transition: background 0.3s ease;
     }
-    .showcase-card img {
-      width: 100%;
+    .showcase-card:hover .showcase-card-badge {
+      background: #e6b422;
+    }
+
+    /* Image container with hover overlay */
+    .showcase-img-wrap {
+      position: relative;
+      overflow: hidden;
       max-width: 500px;
-      height: 350px;
-      object-fit: cover;
       margin-bottom: 1rem;
     }
+    .showcase-img-wrap img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .showcase-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(212, 160, 23, 0.15), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    .showcase-img-wrap:hover img {
+      transform: scale(1.05);
+    }
+    .showcase-img-wrap:hover::after {
+      opacity: 1;
+    }
+
     .showcase-card-title {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 1.8rem;
@@ -161,10 +211,15 @@
       letter-spacing: 0.1em;
       border-bottom: 1px solid #1A1A1A;
       padding-bottom: 2px;
+      transition: color 0.3s ease, border-color 0.3s ease, padding-bottom 0.3s ease;
+    }
+    .showcase-card .cta-link:hover {
+      color: #D4A017;
+      border-color: #D4A017;
     }
     /* Alternate: image right */
     .showcase-card.right { display: flex; flex-direction: row-reverse; gap: 2rem; align-items: flex-start; }
-    .showcase-card.right img { margin-bottom: 0; }
+    .showcase-card.right .showcase-img-wrap { margin-bottom: 0; }
 
     /* Big stacked type section - like Véloce's product name stacking */
     .stacked-type {
@@ -181,6 +236,15 @@
       line-height: 0.95;
       letter-spacing: -0.03em;
       margin-bottom: 2rem;
+    }
+    .stacked-type h2 span {
+      display: block;
+      transition: color 0.3s ease, transform 0.3s ease;
+      transform-origin: left center;
+    }
+    .stacked-type h2 span:hover {
+      color: #D4A017;
+      transform: translateX(8px);
     }
     .stacked-type p {
       font-size: 0.85rem;
@@ -218,7 +282,9 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: #ccc;
+      transition: color 0.3s ease;
     }
+    .ai-badge:hover { color: #D4A017; }
 
     /* Footer - like Véloce's dark footer */
     .footer {
@@ -244,8 +310,11 @@
       color: #888;
       line-height: 1.8;
     }
-    .footer-col a { color: #D4A017; }
-    .footer-col a:hover { text-decoration: underline; }
+    .footer-col a {
+      color: #D4A017;
+      transition: color 0.3s ease, opacity 0.3s ease;
+    }
+    .footer-col a:hover { text-decoration: underline; opacity: 0.8; }
     .footer-bottom {
       max-width: 900px;
       margin: 2rem auto 0;
@@ -268,13 +337,13 @@
       border-radius: 999px;
       font-size: 0.7rem;
       backdrop-filter: blur(8px);
-      transition: all 0.2s;
+      transition: all 0.3s ease;
     }
-    .cta-badge:hover { background: #D4A017; color: #000; border-color: #D4A017; }
+    .cta-badge:hover { background: #D4A017; color: #000; border-color: #D4A017; transform: translateY(-2px); }
 
     @media (max-width: 768px) {
       .showcase-card.right { flex-direction: column; }
-      .showcase-card.right img { margin-bottom: 1rem; }
+      .showcase-card.right .showcase-img-wrap { margin-bottom: 1rem; }
       .footer-inner { flex-direction: column; gap: 1.5rem; }
       .nav-links { display: none; }
     }
@@ -296,65 +365,85 @@
     <a href="#contact" class="hero-cta">Book a Consultation</a>
   </section>
 
-  <section class="manifesto">
-    <p>Still Water is the custom tattoo studio for intentional work. Every piece starts with a conversation, designed for your body and your story, without compromising the craft of permanent art.</p>
-    <a href="#about" class="cta-link">About Us</a>
-  </section>
+  <ScrollReveal client:visible>
+    <section class="manifesto">
+      <p>Still Water is the custom tattoo studio for intentional work. Every piece starts with a conversation, designed for your body and your story, without compromising the craft of permanent art.</p>
+      <a href="#about" class="cta-link">About Us</a>
+    </section>
+  </ScrollReveal>
 
   <section id="work" class="showcase">
-    <div class="showcase-card">
-      <div class="showcase-card-badge">Custom</div>
-      <img src="https://images.unsplash.com/photo-1590246814883-57c511e76228?w=800&q=80" alt="Fine line botanical tattoo" />
-      <div class="showcase-card-title">Fine Line</div>
-      <div class="showcase-card-desc">Delicate botanical and geometric work. Precision placement for pieces that age beautifully.</div>
-      <a href="#contact" class="cta-link">Book This Style</a>
-    </div>
-
-    <div class="showcase-card right">
-      <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=800&q=80" alt="Black and grey portrait" />
-      <div>
-        <div class="showcase-card-title">Blackwork</div>
-        <div class="showcase-card-desc">Bold black and grey work. Portraits, traditional, and custom compositions built for impact.</div>
+    <ScrollReveal client:visible>
+      <div class="showcase-card">
+        <div class="showcase-card-badge">Custom</div>
+        <div class="showcase-img-wrap">
+          <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fine line botanical tattoo" />
+        </div>
+        <div class="showcase-card-title">Fine Line</div>
+        <div class="showcase-card-desc">Delicate botanical and geometric work. Precision placement for pieces that age beautifully.</div>
         <a href="#contact" class="cta-link">Book This Style</a>
       </div>
-    </div>
+    </ScrollReveal>
 
-    <div class="showcase-card">
-      <img src="https://images.unsplash.com/photo-1598371839696-5c5bb1fed6e2?w=800&q=80" alt="Geometric sleeve" />
-      <div class="showcase-card-title">Cover-Ups</div>
-      <div class="showcase-card-desc">Turning old or unwanted tattoos into something you're proud of. We design around what's there.</div>
-      <a href="#contact" class="cta-link">Book This Style</a>
-    </div>
-  </section>
-
-  <section id="about" class="stacked-type">
-    <div class="stacked-type-inner">
-      <h2>Fine Line<br />Blackwork<br />Custom<br />Ivanhoe Village</h2>
-      <p>Still Water is a two-artist studio on Orange Avenue in Ivanhoe Village. Artists Reina Torres and James Oku focus on custom work only. We book 3-4 weeks out because we don't stack clients.</p>
-      <p>The studio doubles as a small gallery showing original work from local artists on a rotating basis.</p>
-    </div>
-  </section>
-
-  <section class="ai-section">
-    <h2>Visual Reference Builder</h2>
-    <p>Describe your idea in words, and our tool generates a mood board with style references, color palettes, and composition options for your artist to work from.</p>
-    <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
-  </section>
-
-  <footer id="contact" class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">Still Water</div>
-      <div class="footer-col">
-        <p><a href="mailto:book@stillwatertattoo.com">book@stillwatertattoo.com</a><br />
-        (407) 555-8104<br />
-        1827 N Orange Ave<br />
-        Orlando, FL 32804</p>
+    <ScrollReveal client:visible delay={0.15}>
+      <div class="showcase-card right">
+        <div class="showcase-img-wrap">
+          <img src="https://images.pexels.com/photos/4123051/pexels-photo-4123051.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Black and grey portrait tattoo" />
+        </div>
+        <div>
+          <div class="showcase-card-title">Blackwork</div>
+          <div class="showcase-card-desc">Bold black and grey work. Portraits, traditional, and custom compositions built for impact.</div>
+          <a href="#contact" class="cta-link">Book This Style</a>
+        </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2026 Still Water Tattoo &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" style="color:#D4A017;">Built by josecustom.ai</a>
-    </div>
-  </footer>
+    </ScrollReveal>
+
+    <ScrollReveal client:visible delay={0.3}>
+      <div class="showcase-card">
+        <div class="showcase-img-wrap">
+          <img src="https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tattoo cover-up work" />
+        </div>
+        <div class="showcase-card-title">Cover-Ups</div>
+        <div class="showcase-card-desc">Turning old or unwanted tattoos into something you're proud of. We design around what's there.</div>
+        <a href="#contact" class="cta-link">Book This Style</a>
+      </div>
+    </ScrollReveal>
+  </section>
+
+  <ScrollReveal client:visible>
+    <section id="about" class="stacked-type">
+      <div class="stacked-type-inner">
+        <h2><span>Fine Line</span><span>Blackwork</span><span>Custom</span><span>Ivanhoe Village</span></h2>
+        <p>Still Water is a two-artist studio on Orange Avenue in Ivanhoe Village. Artists Reina Torres and James Oku focus on custom work only. We book 3-4 weeks out because we don't stack clients.</p>
+        <p>The studio doubles as a small gallery showing original work from local artists on a rotating basis.</p>
+      </div>
+    </section>
+  </ScrollReveal>
+
+  <ScrollReveal client:visible delay={0.1}>
+    <section class="ai-section">
+      <h2>Visual Reference Builder</h2>
+      <p>Describe your idea in words, and our tool generates a mood board with style references, color palettes, and composition options for your artist to work from.</p>
+      <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
+    </section>
+  </ScrollReveal>
+
+  <ScrollReveal client:visible delay={0.1}>
+    <footer id="contact" class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">Still Water</div>
+        <div class="footer-col">
+          <p><a href="mailto:book@stillwatertattoo.com">book@stillwatertattoo.com</a><br />
+          (407) 555-8104<br />
+          1827 N Orange Ave<br />
+          Orlando, FL 32804</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Still Water Tattoo &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" style="color:#D4A017;">Built by josecustom.ai</a>
+      </div>
+    </footer>
+  </ScrollReveal>
 
   <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
 
