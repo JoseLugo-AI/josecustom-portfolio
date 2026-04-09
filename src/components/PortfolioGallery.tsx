@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { RadialScrollGallery } from "./RadialScrollGallery"
 
 interface SiteCard {
@@ -33,6 +33,15 @@ const sites: SiteCard[] = [
 ]
 
 export function PortfolioGallery() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
+  }, [])
+
   const handleSelect = (index: number) => {
     const site = sites[index]
     if (site) {
@@ -44,14 +53,17 @@ export function PortfolioGallery() {
     }
   }
 
+  const cardW = isMobile ? 130 : 200
+  const cardH = isMobile ? 185 : 280
+
   return (
     <RadialScrollGallery
       baseRadius={420}
-      mobileRadius={200}
-      scrollDuration={2000}
-      visiblePercentage={42}
+      mobileRadius={160}
+      scrollDuration={isMobile ? 1500 : 2000}
+      visiblePercentage={isMobile ? 38 : 42}
       onItemSelect={handleSelect}
-      style={{ minHeight: "700px" } as React.CSSProperties}
+      style={{ minHeight: isMobile ? "500px" : "700px" } as React.CSSProperties}
     >
       {(hoveredIndex) =>
         sites.map((site, index) => {
@@ -60,9 +72,9 @@ export function PortfolioGallery() {
             <div
               key={site.slug || site.name}
               style={{
-                width: 200,
-                height: 280,
-                borderRadius: 12,
+                width: cardW,
+                height: cardH,
+                borderRadius: isMobile ? 8 : 12,
                 overflow: "hidden",
                 border: "1px solid rgba(255,255,255,0.08)",
                 background: "#111",
@@ -97,15 +109,15 @@ export function PortfolioGallery() {
                   <div
                     style={{
                       position: "absolute" as const,
-                      top: 8,
-                      right: 8,
+                      top: 4,
+                      right: 4,
                       background: "rgba(0,0,0,0.7)",
                       color: "#888",
-                      fontSize: "0.5rem",
+                      fontSize: isMobile ? "0.4rem" : "0.5rem",
                       fontWeight: 700,
                       textTransform: "uppercase" as const,
                       letterSpacing: "0.1em",
-                      padding: "3px 8px",
+                      padding: "2px 6px",
                       borderRadius: 4,
                     }}
                   >
@@ -113,11 +125,11 @@ export function PortfolioGallery() {
                   </div>
                 )}
               </div>
-              <div style={{ padding: "12px 14px" }}>
+              <div style={{ padding: isMobile ? "8px 10px" : "12px 14px" }}>
                 <div
                   style={{
                     fontFamily: "'Orbitron', sans-serif",
-                    fontSize: "0.7rem",
+                    fontSize: isMobile ? "0.55rem" : "0.7rem",
                     fontWeight: 700,
                     color: "#fff",
                     marginBottom: 2,
@@ -129,7 +141,7 @@ export function PortfolioGallery() {
                 </div>
                 <div
                   style={{
-                    fontSize: "0.55rem",
+                    fontSize: isMobile ? "0.45rem" : "0.55rem",
                     color: "rgba(255,255,255,0.4)",
                   }}
                 >
