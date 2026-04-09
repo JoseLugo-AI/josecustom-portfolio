@@ -58,11 +58,10 @@ function useResponsiveValue(baseValue: number, mobileValue: number) {
 export interface RadialScrollGalleryProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   children: (hoveredIndex: number | null) => ReactNode[]
-  scrollDuration?: number
   visiblePercentage?: number
   baseRadius?: number
   mobileRadius?: number
-  startTrigger?: string
+  centerContent?: ReactNode
   onItemSelect?: (index: number) => void
   direction?: "ltr" | "rtl"
   disabled?: boolean
@@ -79,6 +78,7 @@ export const RadialScrollGallery = forwardRef<
       baseRadius = 550,
       mobileRadius = 220,
       className = "",
+      centerContent,
       onItemSelect,
       direction = "ltr",
       disabled = false,
@@ -379,9 +379,10 @@ export const RadialScrollGallery = forwardRef<
         className={className}
         style={{
           width: "100%",
+          height: "100%",
           position: "relative",
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "center",
           overflow: "hidden",
         }}
@@ -487,6 +488,25 @@ export const RadialScrollGallery = forwardRef<
             })}
           </ul>
         </div>
+        {centerContent && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: "50%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 20,
+              pointerEvents: "none",
+            }}
+          >
+            {centerContent}
+          </div>
+        )}
       </div>
       <div ref={placeholderRef} style={{ display: "none" }} />
       </>

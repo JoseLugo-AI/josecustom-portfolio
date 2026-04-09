@@ -23,76 +23,9 @@ import { PortfolioGallery } from '../components/PortfolioGallery.tsx';
       }
       a { color: inherit; text-decoration: none; }
 
-      .header {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 3rem 2rem 1rem;
-      }
-      .header-back {
-        color: #1E90FF;
-        font-size: 0.85rem;
-        font-weight: 500;
-        display: inline-block;
-        margin-bottom: 2rem;
-        transition: opacity 0.2s;
-      }
-      .header-back:hover { opacity: 0.7; }
-      .header h1 {
-        font-family: 'Orbitron', sans-serif;
-        font-size: clamp(2.5rem, 6vw, 4rem);
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        margin-bottom: 1rem;
-        background: linear-gradient(135deg, #fff 0%, #1E90FF 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .header p {
-        color: rgba(255,255,255,0.5);
-        font-size: 1.05rem;
-        max-width: 550px;
-        line-height: 1.6;
-      }
-      .header-stats {
-        display: flex;
-        gap: 3rem;
-        margin-top: 2rem;
-      }
-      .stat {
-        text-align: left;
-      }
-      .stat-number {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 2rem;
-        font-weight: 700;
-        color: #1E90FF;
-      }
-      .stat-label {
-        font-size: 0.7rem;
-        color: rgba(255,255,255,0.35);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-top: 0.25rem;
-      }
-
-      .scroll-hint {
-        text-align: center;
-        padding: 1rem 2rem 0;
-        color: rgba(255,255,255,0.25);
-        font-size: 0.75rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
       @keyframes bounce-down {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(6px); }
-      }
-      .scroll-arrow {
-        display: inline-block;
-        margin-top: 0.5rem;
-        animation: bounce-down 1.5s ease-in-out infinite;
-        font-size: 1.2rem;
       }
 
       .footer {
@@ -123,43 +56,12 @@ import { PortfolioGallery } from '../components/PortfolioGallery.tsx';
       }
 
       @media (max-width: 768px) {
-        .header { padding: 2rem 1.5rem 0.5rem; }
-        .header h1 { font-size: 2rem; }
-        .header p { font-size: 0.85rem; }
-        .header-stats { gap: 1.5rem; margin-top: 1.5rem; }
-        .stat-number { font-size: 1.3rem; }
-        .stat-label { font-size: 0.55rem; }
-        .scroll-hint { font-size: 0.65rem; padding-top: 0.5rem; }
         .footer { padding: 2rem 1.5rem; }
         .footer-cta { font-size: 0.7rem; }
       }
     </style>
   </head>
   <body>
-    <header class="header">
-      <a href="https://josecustom.ai" class="header-back">&larr; josecustom.ai</a>
-      <h1>Portfolio</h1>
-      <p>AI-Ready websites built for Orlando businesses. Each site includes custom AI integration architecture.</p>
-      <div class="header-stats">
-        <div class="stat">
-          <div class="stat-number">13</div>
-          <div class="stat-label">Demo Sites</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">13</div>
-          <div class="stat-label">Completed</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">$4.5k</div>
-          <div class="stat-label">Starting At</div>
-        </div>
-      </div>
-    </header>
-
-    <div class="scroll-hint">
-      Scroll over the wheel to spin &middot; Click a card to view
-    </div>
-
     <PortfolioGallery client:load />
 
     <footer class="footer">

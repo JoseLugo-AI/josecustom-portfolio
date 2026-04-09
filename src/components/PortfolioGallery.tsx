@@ -123,10 +123,82 @@ export function PortfolioGallery() {
     </div>
   )
 
+  const centerOverlay = (
+    <div style={{ textAlign: "center", pointerEvents: "auto" }}>
+      <a
+        href="https://josecustom.ai"
+        style={{
+          color: "#1E90FF",
+          fontSize: "0.85rem",
+          fontWeight: 500,
+          display: "inline-block",
+          marginBottom: "1.5rem",
+          transition: "opacity 0.2s",
+        }}
+      >
+        &larr; josecustom.ai
+      </a>
+      <h1
+        style={{
+          fontFamily: "'Orbitron', sans-serif",
+          fontSize: "clamp(2.5rem, 6vw, 4rem)",
+          fontWeight: 800,
+          letterSpacing: "-0.02em",
+          marginBottom: "1rem",
+          background: "linear-gradient(135deg, #fff 0%, #1E90FF 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        }}
+      >
+        Portfolio
+      </h1>
+      <p
+        style={{
+          color: "rgba(255,255,255,0.3)",
+          fontSize: "0.7rem",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase" as const,
+          marginBottom: "0.5rem",
+        }}
+      >
+        Scroll to explore &middot; Click to view
+      </p>
+      <div
+        style={{
+          marginTop: "0.75rem",
+          fontSize: "1.2rem",
+          color: "rgba(255,255,255,0.2)",
+          animation: "bounce-down 1.5s ease-in-out infinite",
+        }}
+      >
+        &#8595;
+      </div>
+    </div>
+  )
+
   // Mobile: horizontal scroll strip
   if (isMobile) {
     return (
-      <div style={{ padding: "2rem 0 3rem" }}>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "2rem 0 3rem" }}>
+        <div style={{ textAlign: "center", padding: "0 1.5rem 2rem" }}>
+          <a href="https://josecustom.ai" style={{ color: "#1E90FF", fontSize: "0.75rem", fontWeight: 500, display: "inline-block", marginBottom: "1rem" }}>&larr; josecustom.ai</a>
+          <h1
+            style={{
+              fontFamily: "'Orbitron', sans-serif",
+              fontSize: "2rem",
+              fontWeight: 800,
+              letterSpacing: "-0.02em",
+              background: "linear-gradient(135deg, #fff 0%, #1E90FF 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Portfolio
+          </h1>
+        </div>
         <div
           style={{
             display: "flex",
@@ -152,14 +224,15 @@ export function PortfolioGallery() {
     )
   }
 
-  // Desktop: radial scroll wheel
+  // Desktop: radial scroll wheel as full-viewport hero
   return (
     <RadialScrollGallery
       baseRadius={420}
       mobileRadius={200}
       visiblePercentage={42}
       onItemSelect={handleSelect}
-      style={{ minHeight: "700px" } as React.CSSProperties}
+      centerContent={centerOverlay}
+      style={{ height: "100vh" } as React.CSSProperties}
     >
       {(hoveredIndex) =>
         sites.map((site, index) => renderCard(site, index, hoveredIndex === index))
