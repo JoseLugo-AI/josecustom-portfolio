@@ -1,9 +1,9 @@
 ---
 /**
  * Southpaw Combat Club - College Park, Orlando
- * Matched to: chuck-trek / Movement Studios template (dark hero photo with serif text,
- * blue/purple gradient accents, marquee ticker, alternating dark/light sections,
- * purple CTA buttons, founder quotes, gradient CTA section)
+ * Movement Studios base + World Boxing design elements:
+ * massive condensed hero type, gold accent (#D4A017), B&W action photos,
+ * glass sticky nav, schedule timetable, full-bleed photo breaks
  */
 import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
@@ -16,95 +16,140 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
   <meta name="description" content="Brazilian Jiu-Jitsu, Muay Thai, and strength training in College Park, Orlando." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #1A1A1A;
+      background: #0F0F0F;
+      color: #E5E5E5;
       -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    /* Nav - dark top with brand right like Movement Studios */
+    /* ── Sticky Glass Nav ── */
     .nav {
-      background: #0F0F0F;
-      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
     }
-    .nav-menu {
+    .nav.scrolled {
+      background: rgba(15, 15, 15, 0.75);
+      backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
       color: #fff;
-      font-size: 1.2rem;
-      cursor: pointer;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
       transition: color 0.3s;
     }
-    .nav-menu:hover { color: #C084FC; }
+    .nav-links a:hover { color: #D4A017; }
     .nav-brand {
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
-      font-weight: 400;
+      font-weight: 700;
       color: #fff;
-      font-style: italic;
-      transition: color 0.3s;
+      letter-spacing: 0.02em;
     }
-    .nav-brand:hover { color: #C084FC; }
+    .nav-brand span { color: #D4A017; }
 
-    /* Hero - dark photo with large serif text like Movement Studios */
+    /* ── Hero - MASSIVE condensed bold type like World Boxing ── */
     .hero {
       position: relative;
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       background: #0F0F0F;
     }
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&q=80') center/cover;
-      filter: grayscale(100%);
+      background: url('https://images.pexels.com/photos/4761792/pexels-photo-4761792.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
+      filter: grayscale(100%) contrast(1.2);
     }
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, #0F0F0F 5%, rgba(15,15,15,0.4) 60%, rgba(15,15,15,0.2));
+      background: linear-gradient(
+        to bottom,
+        rgba(15,15,15,0.3) 0%,
+        rgba(15,15,15,0.5) 40%,
+        rgba(15,15,15,0.85) 75%,
+        #0F0F0F 100%
+      );
     }
     .hero-content {
       position: relative;
       z-index: 1;
-      padding: 4rem 3rem;
+      text-align: center;
+      padding: 0 2rem;
+      max-width: 1000px;
+    }
+    .hero-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: #D4A017;
+      margin-bottom: 1.5rem;
     }
     .hero-content h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 5rem);
-      font-weight: 400;
-      font-style: italic;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 900;
       color: #fff;
-      line-height: 1.05;
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
       margin-bottom: 2rem;
+    }
+    .hero-content h1 .accent { color: #D4A017; }
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2.5rem;
     }
     .hero-cta {
       display: inline-block;
-      background: #6D28D9;
-      color: #fff;
-      padding: 0.8rem 2rem;
-      font-size: 0.75rem;
-      font-weight: 600;
+      background: #D4A017;
+      color: #0F0F0F;
+      padding: 1rem 2.5rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     }
     .hero-cta:hover {
-      background: #5B21B6;
+      background: #E8B82A;
       transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(109, 40, 217, 0.35);
+      box-shadow: 0 6px 24px rgba(212, 160, 23, 0.35);
     }
 
-    /* Marquee ticker - blue/purple like Movement Studios */
+    /* ── Marquee ticker ── */
     .marquee {
       background: #6D28D9;
       padding: 0.6rem 0;
@@ -117,7 +162,7 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     }
     .marquee-text {
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #fff;
@@ -128,206 +173,405 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       100% { transform: translateX(-50%); }
     }
 
-    /* Vision section - large text on dark bg like Movement Studios */
-    .vision-section {
-      background: #0F0F0F;
-      position: relative;
-      overflow: hidden;
+    /* ── Stats bar ── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .vision-bg {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      filter: grayscale(100%);
-      opacity: 0.6;
+    .stat-item {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
     }
-    .vision-overlay {
-      position: absolute;
-      top: 2rem;
-      left: 3rem;
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: #D4A017;
+      line-height: 1;
+      margin-bottom: 0.4rem;
     }
-    .vision-overlay h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 400;
-      font-style: italic;
-      color: #fff;
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #888;
     }
 
-    /* White content sections like Movement Studios */
-    .content-section {
-      padding: 5rem 2rem;
-      max-width: 600px;
+    /* ── Content sections ── */
+    .section-dark {
+      background: #0F0F0F;
+      padding: 6rem 2rem;
     }
-    .content-section h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
+    .section-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.6rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #D4A017;
       margin-bottom: 1rem;
     }
-    .content-section p {
-      font-size: 0.85rem;
-      color: #555;
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+    .section-text {
+      font-size: 0.9rem;
+      color: #999;
       line-height: 1.8;
       margin-bottom: 1.5rem;
     }
-    .content-cta {
+    .section-cta {
       display: inline-block;
       background: #6D28D9;
       color: #fff;
-      padding: 0.7rem 1.5rem;
-      font-size: 0.7rem;
-      font-weight: 600;
+      padding: 0.8rem 2rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     }
-    .content-cta:hover {
+    .section-cta:hover {
       background: #5B21B6;
       transform: translateY(-2px);
       box-shadow: 0 4px 16px rgba(109, 40, 217, 0.35);
     }
 
-    /* Programs listed simply */
-    .programs-section {
-      padding: 4rem 2rem;
-      max-width: 600px;
+    /* ── Full-bleed B&W action photo break ── */
+    .photo-break {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      min-height: 350px;
+      overflow: hidden;
     }
-    .programs-section h3 {
+    .photo-break img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.15);
+    }
+    .photo-break-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(15,15,15,0.4) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(15,15,15,0.6) 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-break-text {
       font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .programs-section > p {
-      font-size: 0.85rem;
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-    .programs-section .content-cta {
-      margin-top: 0.5rem;
+      font-size: clamp(2rem, 6vw, 5rem);
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 40px rgba(0,0,0,0.6);
     }
 
-    /* Founders section - like Movement Studios */
-    .founders-section {
-      padding: 5rem 2rem;
-      max-width: 600px;
+    /* ── Programs grid ── */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      max-width: 1100px;
+      margin: 0 auto;
     }
-    .founders-section h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.2rem;
+    .program-card {
+      background: #0F0F0F;
+      padding: 2.5rem 2rem;
+      transition: background 0.3s;
+    }
+    .program-card:hover { background: #141414; }
+    .program-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .program-name {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .program-desc {
+      font-size: 0.8rem;
+      color: #777;
+      line-height: 1.7;
+    }
+    .program-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.55rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #D4A017;
+      border: 1px solid rgba(212,160,23,0.3);
+      padding: 0.3rem 0.7rem;
+    }
+
+    /* ── Schedule timetable ── */
+    .schedule-section {
+      background: #0A0A0A;
+      padding: 6rem 2rem;
+    }
+    .schedule-header {
+      text-align: center;
       margin-bottom: 3rem;
+    }
+    .schedule-table {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .schedule-table thead th {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #D4A017;
+      padding: 1rem 0.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .schedule-table tbody td {
+      font-size: 0.75rem;
+      color: #ccc;
+      padding: 0.9rem 0.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .schedule-table tbody tr:hover td {
+      background: rgba(109, 40, 217, 0.06);
+    }
+    .schedule-table .time-col {
+      font-weight: 700;
+      color: #D4A017;
+      text-align: left;
+      font-size: 0.7rem;
+      white-space: nowrap;
+    }
+    .class-bjj { color: #C084FC; }
+    .class-mt { color: #F59E0B; }
+    .class-sc { color: #34D399; }
+    .class-open { color: #888; font-style: italic; }
+    .schedule-legend {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: #888;
+    }
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .legend-dot.bjj { background: #C084FC; }
+    .legend-dot.mt { background: #F59E0B; }
+    .legend-dot.sc { background: #34D399; }
+
+    /* ── Founder quote section ── */
+    .founder-section {
+      padding: 6rem 2rem;
+      background: #0F0F0F;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .founder-inner {
+      max-width: 700px;
+      margin: 0 auto;
     }
     .founder-quote {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
+      font-size: clamp(1.3rem, 3vw, 2rem);
       font-style: italic;
-      color: #1A1A1A;
+      color: #fff;
       line-height: 1.5;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
-    .founder-attribution {
-      font-size: 0.75rem;
-      color: #888;
-      margin-bottom: 3rem;
+    .founder-quote::before {
+      content: '\201C';
+      display: block;
+      font-size: 4rem;
+      color: #D4A017;
+      line-height: 0.5;
+      margin-bottom: 1rem;
     }
     .founder-name {
       font-size: 0.85rem;
-      font-weight: 700;
-      color: #6D28D9;
-      border-top: 2px solid #6D28D9;
-      padding-top: 0.5rem;
-      display: inline-block;
+      font-weight: 800;
+      color: #D4A017;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-left: 3px solid #6D28D9;
+      padding-left: 1rem;
       margin-bottom: 0.25rem;
-      transition: border-color 0.4s, padding-top 0.3s;
-    }
-    .founder-name:hover {
-      border-top-width: 3px;
-      border-color: #C084FC;
-      padding-top: 0.4rem;
     }
     .founder-role {
-      font-size: 0.75rem;
-      color: #888;
+      font-size: 0.7rem;
+      color: #666;
+      padding-left: 1rem;
+      border-left: 3px solid transparent;
     }
 
-    /* Gradient CTA section - like Movement Studios bottom */
+    /* ── Gradient CTA ── */
     .gradient-cta {
-      background: linear-gradient(135deg, #C084FC 0%, #818CF8 40%, #60A5FA 100%);
-      padding: 5rem 2rem;
+      background: linear-gradient(135deg, #6D28D9 0%, #4C1D95 50%, #1E1B4B 100%);
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .gradient-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212,160,23,0.15) 0%, transparent 70%);
+      pointer-events: none;
     }
     .gradient-cta-inner {
-      max-width: 600px;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
     .gradient-cta h2 {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
-      font-weight: 700;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
       color: #fff;
       line-height: 1.4;
       margin-bottom: 2rem;
     }
     .gradient-cta-btn {
       display: inline-block;
-      background: #1A1A1A;
-      color: #fff;
-      padding: 0.8rem 2rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      background: #D4A017;
+      color: #0F0F0F;
+      padding: 1rem 2.5rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     }
     .gradient-cta-btn:hover {
-      opacity: 0.85;
+      background: #E8B82A;
       transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 24px rgba(212, 160, 23, 0.3);
     }
 
-    /* AI section */
+    /* ── AI section ── */
     .ai-section {
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
       text-align: center;
-      max-width: 550px;
+      max-width: 600px;
       margin: 0 auto;
     }
     .ai-section h3 {
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
     }
     .ai-section p {
       font-size: 0.8rem;
-      color: #888;
-      line-height: 1.7;
+      color: #666;
+      line-height: 1.8;
     }
     .ai-badge {
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       font-size: 0.55rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #ccc;
+      letter-spacing: 0.14em;
+      color: #D4A017;
     }
 
-    /* Footer */
+    /* ── Footer - dark with gold social icons like World Boxing ── */
     .footer {
-      background: #0F0F0F;
-      color: #888;
-      padding: 3rem 2rem;
+      background: #080808;
+      color: #555;
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
     .footer-inner {
       max-width: 900px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
+      gap: 2rem;
     }
     .footer-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      font-style: italic;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
       color: #fff;
+      margin-bottom: 0.5rem;
     }
-    .footer-info { font-size: 0.7rem; color: #555; }
+    .footer-tagline {
+      font-size: 0.65rem;
+      color: #444;
+      font-style: italic;
+    }
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .footer-social a {
+      color: #D4A017;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+    .footer-social a:hover { color: #E8B82A; }
+    .footer-info {
+      font-size: 0.7rem;
+      color: #444;
+      text-align: right;
+      line-height: 1.8;
+    }
     .footer-info a {
       color: #6D28D9;
       transition: color 0.3s;
@@ -335,6 +579,15 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     .footer-info a:hover {
       color: #C084FC;
       text-decoration: underline;
+    }
+    .footer-bottom {
+      max-width: 900px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      text-align: center;
+      font-size: 0.6rem;
+      color: #333;
     }
 
     .cta-badge {
@@ -351,77 +604,236 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       backdrop-filter: blur(8px);
       transition: all 0.2s;
     }
-    .cta-badge:hover { background: #6D28D9; border-color: #6D28D9; }
+    .cta-badge:hover { background: #D4A017; border-color: #D4A017; color: #0F0F0F; }
 
+    /* ── Responsive ── */
     @media (max-width: 768px) {
-      .hero-content { padding: 3rem 1.5rem; }
-      .vision-overlay { left: 1.5rem; }
-      .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+      .nav { padding: 0.8rem 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.55rem; }
+      .hero-content { padding: 0 1.2rem; }
+      .stats-bar { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1.5rem; }
+      .stat-item:last-child { border-bottom: none; }
+      .programs-grid { grid-template-columns: 1fr; }
+      .schedule-table { font-size: 0.65rem; }
+      .schedule-table thead th { font-size: 0.5rem; padding: 0.6rem 0.3rem; }
+      .schedule-table tbody td { padding: 0.6rem 0.3rem; font-size: 0.65rem; }
+      .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+      .footer-info { text-align: center; }
+      .photo-break { height: 35vh; min-height: 250px; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="nav-menu">&#9776;</div>
-    <div class="nav-brand">Southpaw Combat Club.</div>
+  <!-- Sticky Glass Nav -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-brand">SOUTHPAW<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
 
+  <!-- Hero - massive condensed bold type -->
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <h1>Show up.<br />Get better.</h1>
+      <div class="hero-label">College Park, Orlando -- Est. 2020</div>
+      <h1>SHOW<br />UP<span class="accent">.</span> GET<br />BETTER<span class="accent">.</span></h1>
+      <div class="hero-sub">Brazilian Jiu-Jitsu, Muay Thai, Strength & Conditioning</div>
       <a href="#contact" class="hero-cta">Start Your Free Week</a>
     </div>
   </section>
 
+  <!-- Marquee -->
   <div class="marquee">
     <div class="marquee-inner">
       <span class="marquee-text">Brazilian Jiu-Jitsu <span>&bull;</span> Muay Thai <span>&bull;</span> Strength & Conditioning <span>&bull;</span> No Contracts <span>&bull;</span> First Week Free <span>&bull;</span> Brazilian Jiu-Jitsu <span>&bull;</span> Muay Thai <span>&bull;</span> Strength & Conditioning <span>&bull;</span> No Contracts <span>&bull;</span> First Week Free <span>&bull;</span></span>
     </div>
   </div>
 
-  <section class="vision-section">
-    <div class="vision-overlay">
-      <h2>Vision</h2>
-    </div>
-    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80" alt="Training" class="vision-bg" />
-  </section>
-
+  <!-- Stats bar -->
   <ScrollReveal client:load>
-    <section class="content-section">
-      <h3>Who we are</h3>
-      <p>Southpaw opened in College Park in 2020 with 12 members and a rented warehouse. Coach Andre Watts -- former Army combatives instructor, brown belt in BJJ -- built the gym on one principle: train hard, leave your ego at the door. We're at 150 members now across all programs.</p>
-      <a href="#contact" class="content-cta">About Us</a>
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Active Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2020</div>
+        <div class="stat-label">Established</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Combat Disciplines</div>
+      </div>
+    </div>
+  </ScrollReveal>
+
+  <!-- Who We Are -->
+  <ScrollReveal client:load>
+    <section class="section-dark" id="about">
+      <div class="section-inner">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Built on discipline.<br />Run on respect.</h2>
+        <p class="section-text">Southpaw opened in College Park in 2020 with 12 members and a rented warehouse. Coach Andre Watts -- former Army combatives instructor, brown belt in BJJ -- built the gym on one principle: train hard, leave your ego at the door. We're at 150 members now across all programs.</p>
+        <a href="#contact" class="section-cta">About Us</a>
+      </div>
     </section>
   </ScrollReveal>
 
+  <!-- Full-bleed B&W action photo break -->
+  <ScrollReveal client:load>
+    <div class="photo-break">
+      <img src="https://images.pexels.com/photos/6295903/pexels-photo-6295903.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Boxing gym training" loading="lazy" />
+      <div class="photo-break-overlay">
+        <div class="photo-break-text">Train Hard</div>
+      </div>
+    </div>
+  </ScrollReveal>
+
+  <!-- Programs -->
+  <ScrollReveal client:load>
+    <section class="section-dark" id="programs">
+      <div style="max-width: 1100px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <div class="section-label">Our Programs</div>
+          <h2 class="section-title">Find your fight</h2>
+        </div>
+        <div class="programs-grid">
+          <div class="program-card">
+            <div class="program-icon">&#129354;</div>
+            <div class="program-name">Brazilian Jiu-Jitsu</div>
+            <p class="program-desc">Gi and no-gi classes for all levels. From fundamentals to advanced competition prep. Learn submissions, sweeps, and positional control.</p>
+            <div class="program-tag">All Levels</div>
+          </div>
+          <div class="program-card">
+            <div class="program-icon">&#129354;</div>
+            <div class="program-name">Muay Thai</div>
+            <p class="program-desc">The art of eight limbs. Develop devastating strikes, clinch work, and fight IQ through structured pad rounds and sparring.</p>
+            <div class="program-tag">Striking</div>
+          </div>
+          <div class="program-card">
+            <div class="program-icon">&#127947;</div>
+            <div class="program-name">Strength & Conditioning</div>
+            <p class="program-desc">Sport-specific programming designed for combat athletes. Build explosive power, endurance, and injury resilience.</p>
+            <div class="program-tag">Performance</div>
+          </div>
+          <div class="program-card">
+            <div class="program-icon">&#127942;</div>
+            <div class="program-name">Competition Team</div>
+            <p class="program-desc">For members who want to test themselves. Extra drilling, strategy sessions, and fight camp support for BJJ and Muay Thai competitors.</p>
+            <div class="program-tag">Invite Only</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ScrollReveal>
+
+  <!-- Second photo break -->
+  <ScrollReveal client:load>
+    <div class="photo-break">
+      <img src="https://images.pexels.com/photos/6740304/pexels-photo-6740304.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Combat training" loading="lazy" />
+      <div class="photo-break-overlay">
+        <div class="photo-break-text">No Ego</div>
+      </div>
+    </div>
+  </ScrollReveal>
+
+  <!-- Schedule Timetable -->
+  <ScrollReveal client:load>
+    <section class="schedule-section" id="schedule">
+      <div class="schedule-header">
+        <div class="section-label">Weekly Schedule</div>
+        <h2 class="section-title">Class Timetable</h2>
+      </div>
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Time</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="time-col">6:00 AM</td>
+            <td class="class-sc">S&C</td>
+            <td class="class-bjj">BJJ Fundamentals</td>
+            <td class="class-sc">S&C</td>
+            <td class="class-bjj">BJJ Fundamentals</td>
+            <td class="class-sc">S&C</td>
+          </tr>
+          <tr>
+            <td class="time-col">9:00 AM</td>
+            <td class="class-bjj">BJJ All Levels</td>
+            <td class="class-mt">Muay Thai</td>
+            <td class="class-bjj">BJJ All Levels</td>
+            <td class="class-mt">Muay Thai</td>
+            <td class="class-bjj">BJJ All Levels</td>
+          </tr>
+          <tr>
+            <td class="time-col">12:00 PM</td>
+            <td class="class-open">Open Mat</td>
+            <td class="class-bjj">No-Gi BJJ</td>
+            <td class="class-open">Open Mat</td>
+            <td class="class-bjj">No-Gi BJJ</td>
+            <td class="class-open">Open Mat</td>
+          </tr>
+          <tr>
+            <td class="time-col">5:30 PM</td>
+            <td class="class-mt">Muay Thai</td>
+            <td class="class-sc">S&C</td>
+            <td class="class-mt">Muay Thai</td>
+            <td class="class-sc">S&C</td>
+            <td class="class-mt">Muay Thai</td>
+          </tr>
+          <tr>
+            <td class="time-col">7:00 PM</td>
+            <td class="class-bjj">BJJ Advanced</td>
+            <td class="class-mt">Muay Thai Sparring</td>
+            <td class="class-bjj">BJJ Advanced</td>
+            <td class="class-mt">Muay Thai Sparring</td>
+            <td class="class-open">Open Mat</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="schedule-legend">
+        <div class="legend-item"><div class="legend-dot bjj"></div> BJJ</div>
+        <div class="legend-item"><div class="legend-dot mt"></div> Muay Thai</div>
+        <div class="legend-item"><div class="legend-dot sc"></div> S&C</div>
+      </div>
+    </section>
+  </ScrollReveal>
+
+  <!-- Founder quote -->
   <ScrollReveal client:load delay={0.1}>
-    <section class="programs-section">
-      <h3>Our Programs</h3>
-      <p>Brazilian Jiu-Jitsu (gi and no-gi, all levels), Muay Thai kickboxing, strength and conditioning, and a competition team for members who want to test themselves.</p>
-      <a href="#contact" class="content-cta">Reserve your spot</a>
+    <section class="founder-section">
+      <div class="founder-inner">
+        <div class="section-label">Our Founder</div>
+        <div class="founder-quote">Show up three times a week and everything changes. We'll hold you accountable.</div>
+        <div class="founder-name">Andre Watts</div>
+        <div class="founder-role">Head Coach & Owner -- Former Army Combatives, Brown Belt BJJ</div>
+      </div>
     </section>
   </ScrollReveal>
 
-  <ScrollReveal client:load delay={0.1}>
-    <section class="founders-section">
-      <h2>Our Founders</h2>
-      <div class="founder-quote">"Show up three times a week and everything changes. We'll hold you accountable."</div>
-      <div class="founder-attribution">-- Andre Watts</div>
-
-      <div class="founder-name">Andre Watts</div>
-      <div class="founder-role">Head Coach & Owner</div>
-    </section>
-  </ScrollReveal>
-
+  <!-- Gradient CTA -->
   <section class="gradient-cta" id="contact">
     <div class="gradient-cta-inner">
       <h2>Whether you're a complete beginner looking to learn self-defense or a competitor ready to sharpen your game, we have programs for you.</h2>
-      <a href="mailto:train@southpawcombat.com" class="gradient-cta-btn">Reserve your spot</a>
+      <a href="mailto:train@southpawcombat.com" class="gradient-cta-btn">Reserve Your Spot</a>
     </div>
   </section>
 
+  <!-- AI section -->
   <ScrollReveal client:load>
     <section class="ai-section">
       <h3>Smart Programming & Member Insights</h3>
@@ -430,18 +842,42 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     </section>
   </ScrollReveal>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">Southpaw Combat Club.</div>
+      <div>
+        <div class="footer-brand">SOUTHPAW COMBAT CLUB</div>
+        <div class="footer-tagline">College Park, Orlando</div>
+        <div class="footer-social">
+          <a href="#">IG</a>
+          <a href="#">YT</a>
+          <a href="#">FB</a>
+        </div>
+      </div>
       <div class="footer-info">
         2240 Edgewater Dr, Orlando, FL 32804<br />
-        (407) 555-4927 &middot; <a href="mailto:train@southpawcombat.com">train@southpawcombat.com</a><br />
-        &copy; 2026 Southpaw Combat Club &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
+        (407) 555-4927<br />
+        <a href="mailto:train@southpawcombat.com">train@southpawcombat.com</a>
       </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Southpaw Combat Club &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" style="color:#6D28D9;">Built by josecustom.ai</a>
     </div>
   </footer>
 
   <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+  <!-- Sticky nav glass effect on scroll -->
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  </script>
 
 </body>
 </html>

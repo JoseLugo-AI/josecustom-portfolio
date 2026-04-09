@@ -1,8 +1,8 @@
 ---
 /**
  * Still Water Tattoo - Ivanhoe Village, Orlando
- * Matched to: nature-slam / Véloce Figma template (white/cream bg, bold condensed black uppercase,
- * asymmetric product layouts, yellow nav accent, minimal product-forward)
+ * Rebuilt: Veloce template structure + mommyimsorry.com editorial tattoo aesthetic
+ * Dark/moody hero, portfolio gallery grid, artist profile cards, B&W contrast with gold accent
  */
 import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
@@ -21,213 +21,445 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Roboto', sans-serif;
-      background: #FAFAFA;
-      color: #1A1A1A;
+      background: #0A0A0A;
+      color: #FAFAFA;
       -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    /* Nav - minimal like Véloce, yellow underline */
+    /* ── Sticky Nav - glass on scroll ── */
     .nav {
-      padding: 1.5rem 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 2.5rem;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
-      border-bottom: 3px solid #D4A017;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+    }
+    .nav.scrolled {
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(212, 160, 23, 0.15);
     }
     .nav-brand {
       font-family: 'Roboto Condensed', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.15em;
+      color: #FAFAFA;
     }
-    .nav-links { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; }
+    .nav-brand span { color: #D4A017; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #1A1A1A;
-      transition: color 0.3s ease;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #D4A017;
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover { color: #D4A017; }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* Hero - bold condensed type, left-aligned like Véloce */
-    .hero {
-      padding: 4rem 2rem 2rem;
-      max-width: 900px;
-    }
-    .hero h1 {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 2rem;
-    }
-    .hero-cta {
-      display: inline-block;
-      background: #1A1A1A;
-      color: #fff;
-      padding: 0.7rem 1.5rem;
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    }
-    .hero-cta:hover {
-      background: #D4A017;
-      color: #000;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(212, 160, 23, 0.3);
-    }
-
-    /* Large manifesto text - like Véloce's big description */
-    .manifesto {
-      padding: 3rem 2rem 4rem;
-      max-width: 900px;
-    }
-    .manifesto p {
-      font-family: 'Roboto Condensed', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-      color: #1A1A1A;
-    }
-    .manifesto .cta-link {
-      display: inline-block;
-      margin-top: 1.5rem;
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      border-bottom: 2px solid #1A1A1A;
-      padding-bottom: 2px;
-      transition: color 0.3s ease, border-color 0.3s ease;
+      letter-spacing: 0.15em;
+      color: #888;
+      transition: color 0.3s ease;
     }
-    .manifesto .cta-link:hover {
-      color: #D4A017;
-      border-color: #D4A017;
+    .nav-links a:hover { color: #D4A017; }
+    .nav-links .nav-cta {
+      color: #0A0A0A;
+      background: #D4A017;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .nav-links .nav-cta:hover {
+      background: #e6b422;
+      transform: translateY(-1px);
     }
 
-    /* Product/Service cards - asymmetric like Véloce product showcase */
-    .showcase { padding: 0 2rem 4rem; }
-    .showcase-card {
-      max-width: 900px;
-      margin-bottom: 3rem;
+    /* ── Hero - full-bleed editorial dark ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: #0A0A0A;
     }
-    .showcase-card-badge {
-      display: inline-block;
-      background: #D4A017;
-      color: #000;
-      padding: 0.25rem 0.75rem;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(0.25) contrast(1.2);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.85) 60%, #0A0A0A 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+    .hero-label {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 0.6rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
-      transition: background 0.3s ease;
+      letter-spacing: 0.3em;
+      color: #D4A017;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
     }
-    .showcase-card:hover .showcase-card-badge {
-      background: #e6b422;
-    }
-
-    /* Image container with hover overlay */
-    .showcase-img-wrap {
-      position: relative;
-      overflow: hidden;
-      max-width: 500px;
-      margin-bottom: 1rem;
-    }
-    .showcase-img-wrap img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .showcase-img-wrap::after {
+    .hero-label::before,
+    .hero-label::after {
       content: '';
+      width: 40px;
+      height: 1px;
+      background: #D4A017;
+    }
+    .hero h1 {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
+      margin-bottom: 1.5rem;
+      color: #FAFAFA;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: #D4A017;
+      display: block;
+    }
+    .hero-sub {
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      font-weight: 400;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: #D4A017;
+      color: #0A0A0A;
+      padding: 0.85rem 2.5rem;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .hero-cta:hover {
+      background: #e6b422;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(212, 160, 23, 0.3);
+    }
+    .hero-scroll {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(212, 160, 23, 0.15), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #555;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .showcase-img-wrap:hover img {
-      transform: scale(1.05);
+    .hero-scroll span {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, #D4A017, transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
     }
-    .showcase-img-wrap:hover::after {
-      opacity: 1;
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
     }
 
-    .showcase-card-title {
+    /* ── Section utilities ── */
+    .section-label {
       font-family: 'Roboto Condensed', sans-serif;
-      font-size: 1.8rem;
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: #D4A017;
+      margin-bottom: 1rem;
+    }
+    .section-heading {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: -0.02em;
-      font-style: italic;
-      margin-bottom: 0.5rem;
+      line-height: 1;
+      color: #FAFAFA;
     }
-    .showcase-card-desc {
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: #D4A017;
+      margin: 1.5rem 0;
+    }
+
+    /* ── Portfolio Gallery Grid ── */
+    .portfolio {
+      padding: 6rem 2rem;
+      background: #0A0A0A;
+    }
+    .portfolio-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+    }
+    .portfolio-header p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.7;
+      margin-top: 1rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .portfolio-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(80%);
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+    .portfolio-item:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.08);
+    }
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(10,10,10,0.9) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+    }
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    .portfolio-overlay span {
+      font-family: 'Roboto Condensed', sans-serif;
       font-size: 0.7rem;
-      font-weight: 500;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: #666;
-      max-width: 400px;
-      line-height: 1.5;
+      color: #D4A017;
     }
-    .showcase-card .cta-link {
-      display: inline-block;
+
+    /* ── Artist Profile Cards ── */
+    .artists {
+      padding: 6rem 2rem;
+      background: #111;
+    }
+    .artists-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+    }
+    .artists-header p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.7;
       margin-top: 1rem;
+    }
+    .artists-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .artist-card {
+      background: #1A1A1A;
+      border: 1px solid #222;
+      overflow: hidden;
+      transition: border-color 0.4s ease, transform 0.3s ease;
+    }
+    .artist-card:hover {
+      border-color: #D4A017;
+      transform: translateY(-4px);
+    }
+    .artist-photo {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+    .artist-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.1);
+      transition: filter 0.5s ease;
+    }
+    .artist-card:hover .artist-photo img {
+      filter: grayscale(40%) contrast(1.05);
+    }
+    .artist-photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, #1A1A1A, transparent);
+      pointer-events: none;
+    }
+    .artist-info {
+      padding: 1.5rem;
+    }
+    .artist-name {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+    .artist-title {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 0.6rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      border-bottom: 1px solid #1A1A1A;
-      padding-bottom: 2px;
-      transition: color 0.3s ease, border-color 0.3s ease, padding-bottom 0.3s ease;
-    }
-    .showcase-card .cta-link:hover {
+      letter-spacing: 0.15em;
       color: #D4A017;
+      margin-bottom: 0.75rem;
+    }
+    .artist-bio {
+      font-size: 0.8rem;
+      color: #777;
+      line-height: 1.6;
+    }
+    .artist-specialties {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .artist-specialties span {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid #333;
+      color: #999;
+      transition: border-color 0.3s ease, color 0.3s ease;
+    }
+    .artist-card:hover .artist-specialties span {
       border-color: #D4A017;
+      color: #D4A017;
     }
-    /* Alternate: image right */
-    .showcase-card.right { display: flex; flex-direction: row-reverse; gap: 2rem; align-items: flex-start; }
-    .showcase-card.right .showcase-img-wrap { margin-bottom: 0; }
 
-    /* Big stacked type section - like Véloce's product name stacking */
-    .stacked-type {
-      background: #1A1A1A;
-      color: #FAFAFA;
-      padding: 4rem 2rem;
+    /* ── The Studio section ── */
+    .studio {
+      padding: 6rem 2rem;
+      background: #0A0A0A;
     }
-    .stacked-type-inner { max-width: 900px; margin: 0 auto; }
+    .studio-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .studio-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .studio-header p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 1rem auto 0;
+    }
+    .studio-gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 4px;
+    }
+    .studio-gallery-item {
+      position: relative;
+      overflow: hidden;
+    }
+    .studio-gallery-item:first-child {
+      grid-row: 1 / 3;
+    }
+    .studio-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(60%) brightness(0.8);
+      transition: filter 0.5s ease;
+    }
+    .studio-gallery-item:hover img {
+      filter: grayscale(0%) brightness(1);
+    }
+    .studio-desc {
+      max-width: 600px;
+      margin: 3rem auto 0;
+      text-align: center;
+    }
+    .studio-desc p {
+      font-size: 0.85rem;
+      color: #777;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Stacked Type section ── */
+    .stacked-type {
+      background: #111;
+      color: #FAFAFA;
+      padding: 6rem 2rem;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+    .stacked-type-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
     .stacked-type h2 {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: clamp(3rem, 10vw, 6rem);
@@ -248,25 +480,26 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     }
     .stacked-type p {
       font-size: 0.85rem;
-      color: #aaa;
+      color: #666;
       line-height: 1.7;
       max-width: 500px;
       margin-bottom: 1.5rem;
     }
 
-    /* AI Feature */
+    /* ── AI Feature ── */
     .ai-section {
-      background: #FAFAFA;
-      padding: 4rem 2rem;
+      background: #0A0A0A;
+      padding: 6rem 2rem;
       text-align: center;
-      border-top: 3px solid #D4A017;
     }
     .ai-section h2 {
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 1.5rem;
       font-weight: 900;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
       margin-bottom: 1rem;
+      color: #FAFAFA;
     }
     .ai-section p {
       max-width: 480px;
@@ -281,16 +514,17 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #ccc;
+      color: #444;
       transition: color 0.3s ease;
     }
     .ai-badge:hover { color: #D4A017; }
 
-    /* Footer - like Véloce's dark footer */
+    /* ── Footer ── */
     .footer {
-      background: #1A1A1A;
+      background: #111;
       color: #FAFAFA;
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
+      border-top: 1px solid #222;
     }
     .footer-inner {
       max-width: 900px;
@@ -307,7 +541,7 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     }
     .footer-col p {
       font-size: 0.75rem;
-      color: #888;
+      color: #666;
       line-height: 1.8;
     }
     .footer-col a {
@@ -319,19 +553,20 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       max-width: 900px;
       margin: 2rem auto 0;
       padding-top: 1.5rem;
-      border-top: 1px solid #333;
+      border-top: 1px solid #222;
       font-size: 0.6rem;
-      color: #555;
+      color: #444;
       text-align: center;
     }
 
+    /* ── CTA Badge ── */
     .cta-badge {
       position: fixed;
       bottom: 1rem;
       right: 1rem;
       z-index: 50;
-      background: rgba(26,26,26,0.9);
-      border: 1px solid #333;
+      background: rgba(10,10,10,0.9);
+      border: 1px solid #222;
       color: #FAFAFA;
       padding: 0.5rem 1rem;
       border-radius: 999px;
@@ -339,95 +574,190 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       backdrop-filter: blur(8px);
       transition: all 0.3s ease;
     }
-    .cta-badge:hover { background: #D4A017; color: #000; border-color: #D4A017; transform: translateY(-2px); }
+    .cta-badge:hover { background: #D4A017; color: #0A0A0A; border-color: #D4A017; transform: translateY(-2px); }
 
+    /* ── Mobile ── */
     @media (max-width: 768px) {
-      .showcase-card.right { flex-direction: column; }
-      .showcase-card.right .showcase-img-wrap { margin-bottom: 1rem; }
+      .nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .artists-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .studio-gallery { grid-template-columns: 1fr; }
+      .studio-gallery-item:first-child { grid-row: auto; }
       .footer-inner { flex-direction: column; gap: 1.5rem; }
-      .nav-links { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-sub { font-size: 0.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="nav-brand">Still Water</div>
+  <!-- Sticky Nav -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-brand">Still<span>Water</span></div>
     <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#portfolio">Work</a>
+      <a href="#artists">Artists</a>
+      <a href="#studio">Studio</a>
+      <a href="#contact" class="nav-cta">Book Now</a>
     </div>
   </nav>
 
+  <!-- Hero - full-bleed editorial -->
   <section class="hero">
-    <h1>The only custom tattoo studio that takes as good as it makes you feel.</h1>
-    <a href="#contact" class="hero-cta">Book a Consultation</a>
+    <div class="hero-bg">
+      <img src="https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Tattoo studio atmosphere" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-label">Ivanhoe Village, Orlando</div>
+      <h1>Home of<em>the craft</em></h1>
+      <p class="hero-sub">Still Water is a two-artist custom tattoo studio. Every piece starts with a conversation. No flash. No walk-ins. Just permanent work done right.</p>
+      <a href="#contact" class="hero-cta">Book a Consultation</a>
+    </div>
+    <div class="hero-scroll">
+      Scroll
+      <span></span>
+    </div>
   </section>
 
+  <!-- Portfolio Gallery Grid -->
   <ScrollReveal client:visible>
-    <section class="manifesto">
-      <p>Still Water is the custom tattoo studio for intentional work. Every piece starts with a conversation, designed for your body and your story, without compromising the craft of permanent art.</p>
-      <a href="#about" class="cta-link">About Us</a>
+    <section id="portfolio" class="portfolio">
+      <div class="portfolio-header">
+        <div class="section-label">Selected Work</div>
+        <h2 class="section-heading">The Portfolio</h2>
+        <p>Custom pieces designed for the body and the story. Fine line, blackwork, cover-ups, and everything between.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fine line botanical tattoo" />
+          <div class="portfolio-overlay"><span>Fine Line</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/4123051/pexels-photo-4123051.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Blackwork tattoo" />
+          <div class="portfolio-overlay"><span>Blackwork</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom cover-up" />
+          <div class="portfolio-overlay"><span>Cover-Up</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop&crop=bottom" alt="Geometric tattoo detail" />
+          <div class="portfolio-overlay"><span>Geometric</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/4123051/pexels-photo-4123051.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop&crop=top" alt="Portrait tattoo" />
+          <div class="portfolio-overlay"><span>Portrait</span></div>
+        </div>
+        <div class="portfolio-item">
+          <img src="https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop&crop=center" alt="Botanical tattoo" />
+          <div class="portfolio-overlay"><span>Botanical</span></div>
+        </div>
+      </div>
     </section>
   </ScrollReveal>
 
-  <section id="work" class="showcase">
-    <ScrollReveal client:visible>
-      <div class="showcase-card">
-        <div class="showcase-card-badge">Custom</div>
-        <div class="showcase-img-wrap">
-          <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fine line botanical tattoo" />
-        </div>
-        <div class="showcase-card-title">Fine Line</div>
-        <div class="showcase-card-desc">Delicate botanical and geometric work. Precision placement for pieces that age beautifully.</div>
-        <a href="#contact" class="cta-link">Book This Style</a>
-      </div>
-    </ScrollReveal>
-
-    <ScrollReveal client:visible delay={0.15}>
-      <div class="showcase-card right">
-        <div class="showcase-img-wrap">
-          <img src="https://images.pexels.com/photos/4123051/pexels-photo-4123051.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Black and grey portrait tattoo" />
-        </div>
-        <div>
-          <div class="showcase-card-title">Blackwork</div>
-          <div class="showcase-card-desc">Bold black and grey work. Portraits, traditional, and custom compositions built for impact.</div>
-          <a href="#contact" class="cta-link">Book This Style</a>
-        </div>
-      </div>
-    </ScrollReveal>
-
-    <ScrollReveal client:visible delay={0.3}>
-      <div class="showcase-card">
-        <div class="showcase-img-wrap">
-          <img src="https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tattoo cover-up work" />
-        </div>
-        <div class="showcase-card-title">Cover-Ups</div>
-        <div class="showcase-card-desc">Turning old or unwanted tattoos into something you're proud of. We design around what's there.</div>
-        <a href="#contact" class="cta-link">Book This Style</a>
-      </div>
-    </ScrollReveal>
-  </section>
-
+  <!-- Artist Profile Cards -->
   <ScrollReveal client:visible>
-    <section id="about" class="stacked-type">
+    <section id="artists" class="artists">
+      <div class="artists-header">
+        <div class="section-label">Meet the Artists</div>
+        <h2 class="section-heading">Two Artists.<br/>One Standard.</h2>
+        <p>We don't stack clients. We don't rush. Every appointment gets the time and focus it deserves.</p>
+      </div>
+      <div class="artists-grid">
+        <div class="artist-card">
+          <div class="artist-photo">
+            <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Reina Torres - Fine Line Specialist" />
+            <div class="artist-photo-overlay"></div>
+          </div>
+          <div class="artist-info">
+            <div class="artist-name">Reina Torres</div>
+            <div class="artist-title">Fine Line Specialist</div>
+            <p class="artist-bio">Delicate botanical and geometric work. Precision placement for pieces that age beautifully. 8 years of focused practice.</p>
+            <div class="artist-specialties">
+              <span>Fine Line</span>
+              <span>Botanical</span>
+              <span>Geometric</span>
+              <span>Micro Realism</span>
+            </div>
+          </div>
+        </div>
+        <div class="artist-card">
+          <div class="artist-photo">
+            <img src="https://images.pexels.com/photos/4123051/pexels-photo-4123051.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="James Oku - Blackwork Master" />
+            <div class="artist-photo-overlay"></div>
+          </div>
+          <div class="artist-info">
+            <div class="artist-name">James Oku</div>
+            <div class="artist-title">Blackwork Master</div>
+            <p class="artist-bio">Bold black and grey compositions built for impact. Portraits, traditional, and custom work that commands attention. 12 years in the craft.</p>
+            <div class="artist-specialties">
+              <span>Blackwork</span>
+              <span>Portraits</span>
+              <span>Cover-Ups</span>
+              <span>Traditional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ScrollReveal>
+
+  <!-- The Studio -->
+  <ScrollReveal client:visible>
+    <section id="studio" class="studio">
+      <div class="studio-inner">
+        <div class="studio-header">
+          <div class="section-label">The Space</div>
+          <h2 class="section-heading">The Studio</h2>
+          <p>A two-artist space on Orange Avenue in Ivanhoe Village. Also a small gallery showing original work from local artists on a rotating basis.</p>
+        </div>
+        <div class="studio-gallery">
+          <div class="studio-gallery-item">
+            <img src="https://images.pexels.com/photos/955938/pexels-photo-955938.jpeg?auto=compress&cs=tinysrgb&w=1000&h=800&fit=crop" alt="Still Water studio interior" style="min-height: 100%;" />
+          </div>
+          <div class="studio-gallery-item">
+            <img src="https://images.pexels.com/photos/4125659/pexels-photo-4125659.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&fit=crop" alt="Studio detail" />
+          </div>
+          <div class="studio-gallery-item">
+            <img src="https://images.pexels.com/photos/4123051/pexels-photo-4123051.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&fit=crop" alt="Gallery wall" />
+          </div>
+        </div>
+        <div class="studio-desc">
+          <p>We book 3-4 weeks out because we don't stack clients. Walk-ins welcome for consultations only. The gallery rotates monthly, featuring original work from Orlando artists.</p>
+        </div>
+      </div>
+    </section>
+  </ScrollReveal>
+
+  <!-- Stacked Type -->
+  <ScrollReveal client:visible>
+    <section class="stacked-type">
       <div class="stacked-type-inner">
         <h2><span>Fine Line</span><span>Blackwork</span><span>Custom</span><span>Ivanhoe Village</span></h2>
-        <p>Still Water is a two-artist studio on Orange Avenue in Ivanhoe Village. Artists Reina Torres and James Oku focus on custom work only. We book 3-4 weeks out because we don't stack clients.</p>
-        <p>The studio doubles as a small gallery showing original work from local artists on a rotating basis.</p>
+        <p>Still Water is the custom tattoo studio for intentional work. Every piece starts with a conversation, designed for your body and your story, without compromising the craft of permanent art.</p>
       </div>
     </section>
   </ScrollReveal>
 
+  <!-- AI Feature -->
   <ScrollReveal client:visible delay={0.1}>
     <section class="ai-section">
+      <div class="section-label" style="text-align:center;">AI-Powered</div>
       <h2>Visual Reference Builder</h2>
       <p>Describe your idea in words, and our tool generates a mood board with style references, color palettes, and composition options for your artist to work from.</p>
       <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
     </section>
   </ScrollReveal>
 
+  <!-- Footer -->
   <ScrollReveal client:visible delay={0.1}>
     <footer id="contact" class="footer">
       <div class="footer-inner">
@@ -446,6 +776,21 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
   </ScrollReveal>
 
   <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+
+  <!-- Sticky Nav scroll behavior -->
+  <script>
+    const nav = document.getElementById('mainNav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 80) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      lastScroll = scrollY;
+    }, { passive: true });
+  </script>
 
 </body>
 </html>
