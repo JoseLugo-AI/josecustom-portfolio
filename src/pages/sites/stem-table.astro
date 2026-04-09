@@ -6,6 +6,7 @@
  * Colors: forest green #2D4A3E, warm gold #9B6B4A, cream #FDFAF6
  */
 import ScrollReveal from '../../components/ScrollReveal.tsx';
+import { ScrollExpandMedia } from '../../components/ScrollExpandMedia.tsx';
 ---
 <!doctype html>
 <html lang="en">
@@ -65,52 +66,6 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     }
     .nav-links a:hover { color: #2D4A3E; }
 
-    /* ── Hero - full bleed image with overlay like La Fleur ── */
-    .hero {
-      position: relative;
-      height: 75vh;
-      min-height: 500px;
-      overflow: hidden;
-    }
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(253,250,246,0.9) 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    .hero-overlay h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.5rem, 12vw, 7rem);
-      font-weight: 300;
-      font-style: italic;
-      color: #2D4A3E;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-    .hero-overlay h1 sup {
-      font-size: 0.25em;
-      vertical-align: super;
-      font-style: normal;
-    }
-    .hero-tagline {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #9B6B4A;
-      margin-bottom: 1.5rem;
-    }
     .hero-cta {
       display: inline-block;
       background: #2D4A3E;
@@ -461,27 +416,27 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav class="nav">
-    <div class="nav-monogram">Stem & Table<sup style="font-size:0.5em">&reg;</sup></div>
-    <div class="nav-links">
-      <a href="#collections">Collections</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+  <!-- Scroll-expand hero with flower field video -->
+  <ScrollExpandMedia
+    client:load
+    mediaType="video"
+    mediaSrc="https://www.youtube.com/embed/F1rFaB56j0c"
+    bgImageSrc="https://images.pexels.com/photos/1458825/pexels-photo-1458825.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    title="Stem & Table"
+    scrollToExpand="Scroll to explore"
+    textBlend={true}
+  >
+    <!-- Nav (inside revealed content) -->
+    <nav class="nav scrolled" style="position:relative;">
+      <div class="nav-monogram">Stem & Table<sup style="font-size:0.5em">&reg;</sup></div>
+      <div class="nav-links">
+        <a href="#collections">Collections</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
 
-  <!-- Hero - full bleed floral image -->
-  <section class="hero">
-    <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1400&q=80" alt="Lush seasonal floral arrangement" loading="eager" />
-    <div class="hero-overlay">
-      <h1>Stem &<br />Table<sup>&reg;</sup></h1>
-      <div class="hero-tagline">Seasonal. Intentional. Yours.</div>
-      <a href="#contact" class="hero-cta">Book a Consultation</a>
-    </div>
-  </section>
-
-  <!-- Intro -->
+    <!-- Intro -->
   <ScrollReveal client:load>
     <section class="intro">
       <div class="intro-label">Winter Park Floral Studio</div>
@@ -646,6 +601,8 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       &copy; 2026 Stem & Table &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
     </div>
   </footer>
+
+  </ScrollExpandMedia>
 
   <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">josecustom.ai</a>
 
