@@ -53,104 +53,117 @@ export function PortfolioGallery() {
     }
   }
 
-  const cardW = isMobile ? 130 : 200
-  const cardH = isMobile ? 185 : 280
+  const cardW = isMobile ? 160 : 200
+  const cardH = isMobile ? 220 : 280
 
+  const renderCard = (site: SiteCard, index: number, isActive = false) => (
+    <div
+      key={site.slug || site.name}
+      onClick={() => handleSelect(index)}
+      style={{
+        width: cardW,
+        minWidth: cardW,
+        height: cardH,
+        borderRadius: isMobile ? 10 : 12,
+        overflow: "hidden",
+        border: "1px solid rgba(255,255,255,0.08)",
+        background: "#111",
+        display: "flex",
+        flexDirection: "column" as const,
+        transition: "all 400ms ease",
+        cursor: "pointer",
+        boxShadow: isActive
+          ? "0 12px 40px rgba(0,0,0,0.5)"
+          : "0 2px 8px rgba(0,0,0,0.3)",
+      }}
+    >
+      <div
+        style={{
+          flex: 1,
+          overflow: "hidden",
+          position: "relative" as const,
+        }}
+      >
+        <img
+          src={site.screenshot}
+          alt={site.name}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover" as const,
+            transition: "transform 500ms ease",
+            transform: isActive ? "scale(1.05)" : "scale(1)",
+          }}
+          loading="lazy"
+        />
+      </div>
+      <div style={{ padding: isMobile ? "10px 12px" : "12px 14px" }}>
+        <div
+          style={{
+            fontFamily: "'Orbitron', sans-serif",
+            fontSize: isMobile ? "0.6rem" : "0.7rem",
+            fontWeight: 700,
+            color: "#fff",
+            marginBottom: 2,
+            textTransform: "uppercase" as const,
+            letterSpacing: "0.02em",
+          }}
+        >
+          {site.name}
+        </div>
+        <div
+          style={{
+            fontSize: isMobile ? "0.5rem" : "0.55rem",
+            color: "rgba(255,255,255,0.4)",
+          }}
+        >
+          {site.neighborhood} &middot; Orlando
+        </div>
+      </div>
+    </div>
+  )
+
+  // Mobile: horizontal scroll strip
+  if (isMobile) {
+    return (
+      <div style={{ padding: "2rem 0 3rem" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "1rem",
+            overflowX: "auto",
+            padding: "0 1.5rem 1rem",
+            scrollSnapType: "x mandatory",
+            WebkitOverflowScrolling: "touch",
+            msOverflowStyle: "none",
+            scrollbarWidth: "none",
+          }}
+        >
+          {sites.map((site, index) => (
+            <div key={site.slug || site.name} style={{ scrollSnapAlign: "center", flexShrink: 0 }}>
+              {renderCard(site, index)}
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: "0.75rem", fontSize: "0.6rem", color: "rgba(255,255,255,0.25)", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+          Swipe to browse &rarr;
+        </div>
+      </div>
+    )
+  }
+
+  // Desktop: radial scroll wheel
   return (
     <RadialScrollGallery
       baseRadius={420}
-      mobileRadius={150}
-      scrollDuration={isMobile ? 1200 : 2000}
-      visiblePercentage={isMobile ? 55 : 42}
+      mobileRadius={200}
+      scrollDuration={2000}
+      visiblePercentage={42}
       onItemSelect={handleSelect}
-      style={{ minHeight: isMobile ? "420px" : "700px" } as React.CSSProperties}
+      style={{ minHeight: "700px" } as React.CSSProperties}
     >
       {(hoveredIndex) =>
-        sites.map((site, index) => {
-          const isActive = hoveredIndex === index
-          return (
-            <div
-              key={site.slug || site.name}
-              style={{
-                width: cardW,
-                height: cardH,
-                borderRadius: isMobile ? 8 : 12,
-                overflow: "hidden",
-                border: "1px solid rgba(255,255,255,0.08)",
-                background: "#111",
-                display: "flex",
-                flexDirection: "column" as const,
-                transition: "all 400ms ease",
-                boxShadow: isActive
-                  ? "0 12px 40px rgba(0,0,0,0.5)"
-                  : "0 2px 8px rgba(0,0,0,0.3)",
-              }}
-            >
-              <div
-                style={{
-                  flex: 1,
-                  overflow: "hidden",
-                  position: "relative" as const,
-                }}
-              >
-                <img
-                  src={site.screenshot}
-                  alt={site.name}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover" as const,
-                    transition: "transform 500ms ease",
-                    transform: isActive ? "scale(1.05)" : "scale(1)",
-                  }}
-                  loading="lazy"
-                />
-                {!site.done && (
-                  <div
-                    style={{
-                      position: "absolute" as const,
-                      top: 4,
-                      right: 4,
-                      background: "rgba(0,0,0,0.7)",
-                      color: "#888",
-                      fontSize: isMobile ? "0.4rem" : "0.5rem",
-                      fontWeight: 700,
-                      textTransform: "uppercase" as const,
-                      letterSpacing: "0.1em",
-                      padding: "2px 6px",
-                      borderRadius: 4,
-                    }}
-                  >
-                    Coming Soon
-                  </div>
-                )}
-              </div>
-              <div style={{ padding: isMobile ? "8px 10px" : "12px 14px" }}>
-                <div
-                  style={{
-                    fontFamily: "'Orbitron', sans-serif",
-                    fontSize: isMobile ? "0.55rem" : "0.7rem",
-                    fontWeight: 700,
-                    color: "#fff",
-                    marginBottom: 2,
-                    textTransform: "uppercase" as const,
-                    letterSpacing: "0.02em",
-                  }}
-                >
-                  {site.name}
-                </div>
-                <div
-                  style={{
-                    fontSize: isMobile ? "0.45rem" : "0.55rem",
-                    color: "rgba(255,255,255,0.4)",
-                  }}
-                >
-                  {site.neighborhood} &middot; Orlando
-                </div>
-              </div>
-            </div>
-          )
-        })
+        sites.map((site, index) => renderCard(site, index, hoveredIndex === index))
       }
     </RadialScrollGallery>
   )
