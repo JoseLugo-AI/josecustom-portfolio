@@ -157,7 +157,6 @@ export function PortfolioGallery() {
     <RadialScrollGallery
       baseRadius={420}
       mobileRadius={200}
-      scrollDuration={2000}
       visiblePercentage={42}
       onItemSelect={handleSelect}
       style={{ minHeight: "700px" } as React.CSSProperties}

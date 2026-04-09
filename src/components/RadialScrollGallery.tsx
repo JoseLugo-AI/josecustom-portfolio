@@ -1,22 +1,17 @@
 "use client"
 
-import { useGSAP } from "@gsap/react"
 import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import React, {
   forwardRef,
   type HTMLAttributes,
   type ReactNode,
   type Ref,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from "react"
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger)
-}
 
 function useMergeRefs<T>(...refs: (Ref<T> | undefined)[]) {
   return useMemo(() => {
@@ -81,12 +76,10 @@ export const RadialScrollGallery = forwardRef<
   (
     {
       children,
-      scrollDuration = 2500,
       visiblePercentage = 45,
       baseRadius = 550,
       mobileRadius = 220,
       className = "",
-      startTrigger = "center center",
       onItemSelect,
       direction = "ltr",
       disabled = false,
@@ -105,6 +98,9 @@ export const RadialScrollGallery = forwardRef<
       null
     )
     const [isMounted, setIsMounted] = useState(false)
+
+    const rotationRef = useRef(0)
+    const isOverGallery = useRef(false)
 
     const currentRadius = useResponsiveValue(baseRadius, mobileRadius)
     const circleDiameter = currentRadius * 2
@@ -133,64 +129,132 @@ export const RadialScrollGallery = forwardRef<
             h: entry.contentRect.height,
           })
         }
-        ScrollTrigger.refresh()
       })
 
       observer.observe(childRef.current)
       return () => observer.disconnect()
     }, [childrenCount])
 
-    useGSAP(
-      () => {
-        if (!pinRef.current || !containerRef.current || childrenCount === 0)
-          return
+    // Entry animation
+    useEffect(() => {
+      if (!containerRef.current || childrenCount === 0 || !isMounted) return
 
-        const prefersReducedMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches
 
-        if (!prefersReducedMotion) {
-          gsap.fromTo(
-            containerRef.current.children,
-            { scale: 0, autoAlpha: 0 },
-            {
-              scale: 1,
-              autoAlpha: 1,
-              duration: 1.2,
-              ease: "back.out(1.2)",
-              stagger: 0.05,
-              scrollTrigger: {
-                trigger: pinRef.current,
-                start: "top 80%",
-                toggleActions: "play none none reverse",
-              },
+      if (prefersReducedMotion) {
+        gsap.set(containerRef.current.children, { scale: 1, autoAlpha: 1 })
+        return
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              gsap.fromTo(
+                containerRef.current!.children,
+                { scale: 0, autoAlpha: 0 },
+                {
+                  scale: 1,
+                  autoAlpha: 1,
+                  duration: 1.2,
+                  ease: "back.out(1.2)",
+                  stagger: 0.05,
+                  force3D: true,
+                }
+              )
+              observer.disconnect()
             }
-          )
+          })
+        },
+        { threshold: 0.2 }
+      )
 
+      observer.observe(containerRef.current)
+      return () => observer.disconnect()
+    }, [childrenCount, isMounted])
+
+    // Wheel-driven rotation
+    const handleWheel = useCallback(
+      (e: WheelEvent) => {
+        if (disabled) return
+
+        e.preventDefault()
+
+        const sensitivity = 0.15
+        const delta = e.deltaY * sensitivity
+        rotationRef.current += delta
+
+        if (containerRef.current) {
           gsap.to(containerRef.current, {
-            rotation: 360,
-            ease: "none",
-            scrollTrigger: {
-              trigger: pinRef.current,
-              pin: true,
-              start: startTrigger,
-              end: `+=${scrollDuration}`,
-              scrub: 1,
-              invalidateOnRefresh: true,
-            },
+            rotation: rotationRef.current,
+            duration: 0.6,
+            ease: "power2.out",
+            force3D: true,
+            overwrite: true,
           })
         }
       },
-      {
-        scope: pinRef,
-        dependencies: [
-          scrollDuration,
-          currentRadius,
-          startTrigger,
-          childrenCount,
-        ],
-      }
+      [disabled]
     )
+
+    useEffect(() => {
+      const el = pinRef.current
+      if (!el) return
+
+      const onEnter = () => { isOverGallery.current = true }
+      const onLeave = () => { isOverGallery.current = false }
+
+      el.addEventListener("mouseenter", onEnter)
+      el.addEventListener("mouseleave", onLeave)
+      el.addEventListener("wheel", handleWheel, { passive: false })
+
+      return () => {
+        el.removeEventListener("mouseenter", onEnter)
+        el.removeEventListener("mouseleave", onLeave)
+        el.removeEventListener("wheel", handleWheel)
+      }
+    }, [handleWheel])
+
+    // Touch-driven rotation
+    const touchStartY = useRef(0)
+
+    useEffect(() => {
+      const el = pinRef.current
+      if (!el || disabled) return
+
+      const onTouchStart = (e: TouchEvent) => {
+        touchStartY.current = e.touches[0].clientY
+      }
+
+      const onTouchMove = (e: TouchEvent) => {
+        e.preventDefault()
+        const deltaY = touchStartY.current - e.touches[0].clientY
+        touchStartY.current = e.touches[0].clientY
+
+        const sensitivity = 0.3
+        rotationRef.current += deltaY * sensitivity
+
+        if (containerRef.current) {
+          gsap.to(containerRef.current, {
+            rotation: rotationRef.current,
+            duration: 0.4,
+            ease: "power2.out",
+            force3D: true,
+            overwrite: true,
+          })
+        }
+      }
+
+      el.addEventListener("touchstart", onTouchStart, { passive: true })
+      el.addEventListener("touchmove", onTouchMove, { passive: false })
+
+      return () => {
+        el.removeEventListener("touchstart", onTouchStart)
+        el.removeEventListener("touchmove", onTouchMove)
+      }
+    }, [disabled])
 
     if (childrenCount === 0) return null
 
@@ -208,13 +272,13 @@ export const RadialScrollGallery = forwardRef<
         ref={mergedRef}
         className={className}
         style={{
-          minHeight: "100vh",
           width: "100%",
           position: "relative",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
+          cursor: "ns-resize",
         }}
         {...rest}
       >
