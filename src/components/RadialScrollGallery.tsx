@@ -100,7 +100,6 @@ export const RadialScrollGallery = forwardRef<
     const [isMounted, setIsMounted] = useState(false)
 
     const rotationRef = useRef(0)
-    const isOverGallery = useRef(false)
 
     const currentRadius = useResponsiveValue(baseRadius, mobileRadius)
     const circleDiameter = currentRadius * 2
@@ -175,12 +174,10 @@ export const RadialScrollGallery = forwardRef<
       return () => observer.disconnect()
     }, [childrenCount, isMounted])
 
-    // Wheel-driven rotation
+    // Wheel-driven rotation (no preventDefault — page scrolls normally)
     const handleWheel = useCallback(
       (e: WheelEvent) => {
         if (disabled) return
-
-        e.preventDefault()
 
         const sensitivity = 0.15
         const delta = e.deltaY * sensitivity
@@ -203,16 +200,9 @@ export const RadialScrollGallery = forwardRef<
       const el = pinRef.current
       if (!el) return
 
-      const onEnter = () => { isOverGallery.current = true }
-      const onLeave = () => { isOverGallery.current = false }
-
-      el.addEventListener("mouseenter", onEnter)
-      el.addEventListener("mouseleave", onLeave)
-      el.addEventListener("wheel", handleWheel, { passive: false })
+      el.addEventListener("wheel", handleWheel, { passive: true })
 
       return () => {
-        el.removeEventListener("mouseenter", onEnter)
-        el.removeEventListener("mouseleave", onLeave)
         el.removeEventListener("wheel", handleWheel)
       }
     }, [handleWheel])
@@ -229,7 +219,6 @@ export const RadialScrollGallery = forwardRef<
       }
 
       const onTouchMove = (e: TouchEvent) => {
-        e.preventDefault()
         const deltaY = touchStartY.current - e.touches[0].clientY
         touchStartY.current = e.touches[0].clientY
 
@@ -248,7 +237,7 @@ export const RadialScrollGallery = forwardRef<
       }
 
       el.addEventListener("touchstart", onTouchStart, { passive: true })
-      el.addEventListener("touchmove", onTouchMove, { passive: false })
+      el.addEventListener("touchmove", onTouchMove, { passive: true })
 
       return () => {
         el.removeEventListener("touchstart", onTouchStart)
