@@ -1,8 +1,9 @@
 ---
 /**
  * Puente Learning Academy - Conway, Orlando
- * Matched to: snack-petal template (ultra minimal, light gray bg, large centered serif display,
- * 2x2 info grid What/Who/When/Where, huge whitespace, rounded CTA, dark footer)
+ * Inspired by: snack-petal (minimal serif) + Stanford.edu (full-bleed hero,
+ * news card grid, alternating image sections, category blocks, sticky nav)
+ * Colors: #1A1A1A dark, #5B7F5E green accent, #F5F5F0 cream bg
  */
 import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
@@ -15,7 +16,7 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
   <meta name="description" content="Bilingual tutoring for K-8 students in Conway and East Orlando." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -24,206 +25,299 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       background: #F5F5F0;
       color: #1A1A1A;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+    a { color: inherit; text-decoration: none; transition: color 0.3s; }
 
-    /* Nav - ultra minimal like snack-petal: just "Menu" top-left */
+    /* ── Nav - sticky, Stanford-style ── */
     .nav {
-      padding: 1.5rem 2rem;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: background 0.3s, backdrop-filter 0.3s, box-shadow 0.3s;
     }
-    .nav-menu {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: #1A1A1A;
-      cursor: pointer;
-      transition: color 0.3s ease;
+    .nav.scrolled {
+      background: rgba(245,245,240,0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
     }
-    .nav-menu:hover {
-      color: #5B7F5E;
+    .nav-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: #fff;
+      transition: color 0.3s;
     }
+    .nav.scrolled .nav-brand { color: #1A1A1A; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.8);
+    }
+    .nav.scrolled .nav-links a { color: #888; }
+    .nav-links a:hover { color: #5B7F5E; }
 
-    /* Divider line */
-    .divider {
-      max-width: 700px;
-      margin: 0 auto;
-      border: none;
-      border-top: 1px solid #D5D5CF;
-    }
-
-    /* Hero - large centered serif display like snack-petal */
+    /* ── Hero - full-bleed dark like Stanford ── */
     .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #1A1A1A;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(26,26,26,0.3) 0%, rgba(26,26,26,0.7) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      padding: 4rem 2rem 6rem;
+      padding: 6rem 2rem 4rem;
       max-width: 700px;
-      margin: 0 auto;
     }
     .hero-label {
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: #999;
+      font-size: 0.65rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
+      color: #5B7F5E;
       margin-bottom: 1.5rem;
     }
-    .hero h1 {
+    .hero-content h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      font-size: clamp(2.8rem, 7vw, 4.5rem);
       font-weight: 400;
-      line-height: 1.15;
-      color: #1A1A1A;
-      letter-spacing: -0.01em;
-    }
-    .hero-sub {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: #999;
-    }
-
-    /* Spacious empty area like snack-petal's big whitespace blocks */
-    .spacer {
-      height: 12rem;
-    }
-    .spacer-sm {
-      height: 6rem;
-    }
-
-    /* "What We Do" section - centered heading */
-    .section-heading {
-      text-align: center;
-      padding: 4rem 2rem 3rem;
-    }
-    .section-heading h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 400;
-      color: #1A1A1A;
-    }
-
-    /* 2x2 Info Grid - like snack-petal's What/Who/When/Where */
-    .info-grid {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .info-cell {
-      padding: 2.5rem 1.5rem;
-      border-top: 1px solid #D5D5CF;
-    }
-    .info-cell:nth-child(odd) {
-      border-right: 1px solid #D5D5CF;
-    }
-    .info-label {
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+      line-height: 1.1;
+      color: #fff;
       margin-bottom: 1rem;
     }
-    .info-title {
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: #5B7F5E;
+      color: #fff;
+      padding: 0.9rem 2.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .hero-cta:hover { background: #4A6B4D; transform: translateY(-2px); }
+
+    /* ── Mission statement - Stanford "A Mission Defined" style ── */
+    .mission {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .mission-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #5B7F5E;
+      margin-bottom: 1.5rem;
+    }
+    .mission h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.4;
+      color: #1A1A1A;
+    }
+
+    /* ── News/Program cards - Stanford 3-column grid ── */
+    .card-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    .card-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #1A1A1A;
+    }
+    .card-section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+    .card-section-header a {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #5B7F5E;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card-img {
+      overflow: hidden;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      aspect-ratio: 4/3;
+    }
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .card:hover .card-img img { transform: scale(1.05); }
+    .card-tag {
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #5B7F5E;
+      margin-bottom: 0.4rem;
+    }
+    .card h3 {
       font-family: 'DM Serif Display', serif;
       font-size: 1rem;
       font-weight: 400;
-      color: #1A1A1A;
-      margin-bottom: 0.75rem;
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
     }
-    .info-cell p {
-      font-size: 0.8rem;
+    .card p {
+      font-size: 0.75rem;
       color: #888;
       line-height: 1.6;
     }
 
-    /* Programs section - like snack-petal's results/news area */
-    .programs-section {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
+    /* ── Alternating feature sections - Stanford style ── */
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 450px;
     }
-    .programs-section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 400;
+    .feature-img {
+      overflow: hidden;
+    }
+    .feature-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .feature-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3rem;
+    }
+    .feature-text.dark {
+      background: #1A1A1A;
+      color: #fff;
+    }
+    .feature-text.light {
+      background: #F5F5F0;
+    }
+    .feature-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #5B7F5E;
       margin-bottom: 1rem;
     }
-    .programs-section .sub {
-      font-size: 0.85rem;
-      color: #888;
-      line-height: 1.6;
-      margin-bottom: 3rem;
-    }
-    .program-item {
-      padding: 2rem 0;
-      border-top: 1px solid #D5D5CF;
-      border-left: 3px solid transparent;
-      padding-left: 1rem;
-      transition: border-left-color 0.3s ease;
-    }
-    .program-item:hover {
-      border-left-color: #5B7F5E;
-    }
-    .program-item:last-child {
-      border-bottom: 1px solid #D5D5CF;
-    }
-    .program-item h3 {
+    .feature-text h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.15rem;
+      font-size: clamp(1.4rem, 3vw, 2rem);
       font-weight: 400;
-      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
     }
-    .program-item p {
-      font-size: 0.8rem;
-      color: #888;
+    .feature-text p {
+      font-size: 0.85rem;
       line-height: 1.7;
-      max-width: 500px;
+      color: #888;
+      margin-bottom: 1.5rem;
     }
+    .feature-text.dark p { color: rgba(255,255,255,0.5); }
+    .feature-link {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #5B7F5E;
+    }
+    .feature-link:hover { text-decoration: underline; }
 
-    /* About - simple text like snack-petal */
-    .about-section {
-      max-width: 700px;
-      margin: 0 auto;
+    /* ── Stats row - Stanford-inspired ── */
+    .stats {
+      background: #1A1A1A;
       padding: 4rem 2rem;
+    }
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
       text-align: center;
     }
-    .about-section h2 {
+    .stat-number {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 400;
-      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: #5B7F5E;
+      margin-bottom: 0.25rem;
     }
-    .about-section p {
-      font-size: 0.85rem;
-      color: #777;
-      line-height: 1.8;
-      max-width: 520px;
-      margin: 0 auto 1rem;
-    }
-    .about-owner {
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: #999;
-    }
-    .about-owner strong {
-      color: #1A1A1A;
-      display: block;
-      margin-bottom: 0.15rem;
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
     }
 
-    /* Testimonials - centered simple */
-    .testimonials-section {
+    /* ── Testimonials ── */
+    .testimonials {
       max-width: 700px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
     }
-    .testimonials-section h2 {
+    .testimonials h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(1.5rem, 4vw, 2rem);
       font-weight: 400;
       text-align: center;
       margin-bottom: 3rem;
@@ -235,32 +329,68 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
     }
     .testimonial-quote {
       font-family: 'DM Serif Display', serif;
-      font-size: 1rem;
-      font-weight: 400;
+      font-size: 1.05rem;
       font-style: italic;
       line-height: 1.6;
       color: #333;
-      max-width: 500px;
+      max-width: 520px;
       margin: 0 auto 1rem;
     }
     .testimonial-name {
-      font-size: 0.75rem;
-      font-weight: 500;
+      font-size: 0.7rem;
+      font-weight: 700;
       color: #1A1A1A;
     }
     .testimonial-role {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: #999;
     }
 
-    /* CTA - big rounded button like snack-petal */
+    /* ── AI Section ── */
+    .ai-section {
+      background: #5B7F5E;
+      color: #fff;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .ai-section .label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.75rem;
+    }
+    .ai-section h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .ai-section p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .ai-badge {
+      margin-top: 1.5rem;
+      font-size: 0.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── CTA ── */
     .cta-section {
       text-align: center;
-      padding: 4rem 2rem 6rem;
+      padding: 5rem 2rem;
     }
     .cta-section h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 400;
       color: #1A1A1A;
       margin-bottom: 1rem;
@@ -270,84 +400,44 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       color: #888;
       margin-bottom: 2rem;
     }
-    .cta-btn {
-      display: inline-block;
-      background: #1A1A1A;
-      color: #F5F5F0;
-      padding: 1.1rem 3rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .cta-btn:hover {
-      opacity: 0.85;
-      transform: translateY(-2px);
-    }
 
-    /* AI Feature */
-    .ai-section {
-      text-align: center;
-      padding: 3rem 2rem;
-      max-width: 550px;
-      margin: 0 auto;
-    }
-    .ai-section h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin-bottom: 0.75rem;
-    }
-    .ai-section p {
-      font-size: 0.8rem;
-      color: #888;
-      line-height: 1.7;
-    }
-    .ai-badge {
-      margin-top: 1rem;
-      font-size: 0.55rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #ccc;
-    }
-
-    /* Footer - dark like snack-petal */
+    /* ── Footer ── */
     .footer {
       background: #1A1A1A;
       color: #999;
-      padding: 3rem 2rem;
+      padding: 3rem 2.5rem;
     }
     .footer-inner {
-      max-width: 700px;
+      max-width: 900px;
       margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
     }
     .footer-brand {
       font-family: 'DM Serif Display', serif;
       font-size: 1rem;
       color: #F5F5F0;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
-    .footer p {
+    .footer-col p {
       font-size: 0.75rem;
       line-height: 1.8;
       color: #666;
     }
-    .footer a {
-      color: #999;
-      transition: color 0.3s ease;
-    }
-    .footer a:hover {
-      color: #F5F5F0;
-      text-decoration: underline;
-    }
+    .footer-col a { color: #5B7F5E; }
+    .footer-col a:hover { color: #F5F5F0; }
     .footer-copy {
-      margin-top: 2rem;
+      max-width: 900px;
+      margin: 2rem auto 0;
       padding-top: 1.5rem;
       border-top: 1px solid #333;
-      font-size: 0.65rem;
+      text-align: center;
+      font-size: 0.6rem;
       color: #555;
     }
+    .footer-copy a { color: #5B7F5E; }
 
     .cta-badge {
       position: fixed;
@@ -355,176 +445,228 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       right: 1rem;
       z-index: 50;
       background: rgba(26,26,26,0.9);
-      border: 1px solid #333;
       color: #F5F5F0;
       padding: 0.5rem 1rem;
       border-radius: 999px;
       font-size: 0.7rem;
       backdrop-filter: blur(8px);
-      transition: all 0.2s;
+      transition: all 0.3s;
     }
-    .cta-badge:hover { background: #333; }
+    .cta-badge:hover { background: #5B7F5E; }
 
+    /* ── Responsive ── */
     @media (max-width: 768px) {
-      .info-grid { grid-template-columns: 1fr; }
-      .info-cell:nth-child(odd) { border-right: none; }
-      .spacer { height: 6rem; }
-      .spacer-sm { height: 3rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .feature { grid-template-columns: 1fr; }
+      .feature-img { height: 300px; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { flex-direction: column; }
+      .nav-links { gap: 1rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Sticky Nav -->
   <nav class="nav">
-    <div class="nav-menu">Menu</div>
-    <div></div>
+    <div class="nav-brand">Puente Learning</div>
+    <div class="nav-links">
+      <a href="#programs">Programs</a>
+      <a href="#about">About</a>
+      <a href="#families">Families</a>
+      <a href="#enroll">Enroll</a>
+    </div>
   </nav>
 
-  <hr class="divider" />
-
+  <!-- Hero - Stanford full-bleed -->
   <section class="hero">
-    <div class="hero-label">Bilingual Education &middot; Conway</div>
-    <h1>Puente Learning Academy</h1>
-    <div class="hero-sub">Two languages. One future.</div>
+    <div class="hero-bg">
+      <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Children learning in classroom" loading="eager" />
+    </div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="hero-label">Bilingual Education &middot; Conway, Orlando</div>
+      <h1>Two Languages. One Future.</h1>
+      <div class="hero-sub">K-8 bilingual tutoring that builds confidence in English and Spanish. Small groups, credentialed tutors, real results.</div>
+      <a href="#enroll" class="hero-cta">Enroll Your Child</a>
+    </div>
   </section>
 
-  <div class="spacer"></div>
-
-  <ScrollReveal client:visible>
-    <div class="section-heading">
-      <h2>What We Do</h2>
-    </div>
-
-    <div class="info-grid">
-      <div class="info-cell">
-        <div class="info-label">What</div>
-        <div class="info-title">Bilingual tutoring for K-8</div>
-        <p>Reading, math, and writing instruction in English and Spanish. Small groups, credentialed bilingual tutors.</p>
-      </div>
-      <div class="info-cell">
-        <div class="info-label">Who</div>
-        <div class="info-title">All Conway & East Orlando families</div>
-        <p>First- and second-generation Latino households where parents want their kids strong in both languages.</p>
-      </div>
-      <div class="info-cell">
-        <div class="info-label">When</div>
-        <div class="info-title">Monday - Thursday, 3:30-6pm</div>
-        <p>After-school sessions that fit your schedule. Summer enrichment camps available June through July.</p>
-      </div>
-      <div class="info-cell">
-        <div class="info-label">Where</div>
-        <div class="info-title">4510 S Conway Rd</div>
-        <p>Orlando, FL 32812. Walk-ins welcome. We'll find the right program for your child.</p>
-      </div>
-    </div>
+  <!-- Mission -->
+  <ScrollReveal client:load>
+    <section class="mission">
+      <div class="mission-label">Our Mission</div>
+      <h2>Every bilingual child deserves a learning environment that honors both languages. We don't make kids choose -- we make them stronger in both.</h2>
+    </section>
   </ScrollReveal>
 
-  <div class="spacer"></div>
-
-  <hr class="divider" />
-
-  <ScrollReveal client:visible>
-    <section class="programs-section">
-      <h2>Our Programs</h2>
-      <div class="sub">Everything we offer is led by credentialed, bilingual staff.</div>
-      <div class="program-item">
-        <h3>After-School Tutoring (K-8)</h3>
-        <p>Monday through Thursday, 3:30-6pm. Reading, math, and writing instruction in English and Spanish. Small groups, credentialed bilingual tutors.</p>
+  <!-- Program Cards - Stanford news grid -->
+  <ScrollReveal client:load>
+    <section class="card-section" id="programs">
+      <div class="card-section-header">
+        <h2>Our Programs</h2>
+        <a href="#enroll">View All &rarr;</a>
       </div>
-      <div class="program-item">
-        <h3>Reading & Math Intervention</h3>
-        <p>Targeted support for students performing below grade level. Structured programs that close gaps without making kids feel behind.</p>
-      </div>
-      <div class="program-item">
-        <h3>Summer Enrichment Camps</h3>
-        <p>Six-week summer program combining academic reinforcement with hands-on STEM projects. Keeps skills sharp without feeling like school.</p>
-      </div>
-      <div class="program-item">
-        <h3>Parent Workshops</h3>
-        <p>Monthly workshops helping parents navigate the school system, understand report cards, and advocate for their children. In Spanish and English.</p>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-img">
+            <img src="https://images.pexels.com/photos/8612990/pexels-photo-8612990.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Student reading" loading="lazy" />
+          </div>
+          <div class="card-tag">After School</div>
+          <h3>K-8 Bilingual Tutoring</h3>
+          <p>Monday-Thursday, 3:30-6pm. Reading, math, and writing in English and Spanish.</p>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <img src="https://images.pexels.com/photos/5905700/pexels-photo-5905700.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Math tutoring" loading="lazy" />
+          </div>
+          <div class="card-tag">Intervention</div>
+          <h3>Reading & Math Support</h3>
+          <p>Targeted programs for students below grade level. Close gaps without making kids feel behind.</p>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <img src="https://images.pexels.com/photos/8613312/pexels-photo-8613312.jpeg?auto=compress&cs=tinysrgb&w=600" alt="STEM project" loading="lazy" />
+          </div>
+          <div class="card-tag">Summer</div>
+          <h3>Enrichment Camps</h3>
+          <p>Six-week summer program combining academics with hands-on STEM projects.</p>
+        </div>
       </div>
     </section>
   </ScrollReveal>
 
-  <div class="spacer-sm"></div>
-
-  <ScrollReveal client:visible>
-    <section class="about-section">
-      <h2>Our Story</h2>
-      <p>Puente was founded by Carmen Delgado, a former Orange County Public Schools teacher who saw too many bilingual kids falling through the cracks.</p>
-      <p>We work with families in Conway, Azalea Park, and Meadow Woods. Our tutors are bilingual, credentialed, and from the community.</p>
-      <div class="about-owner">
-        <strong>Carmen Delgado</strong>
-        Founder & Director
+  <!-- Feature: About - alternating image/text like Stanford -->
+  <ScrollReveal client:load>
+    <section class="feature" id="about">
+      <div class="feature-img">
+        <img src="https://images.pexels.com/photos/3769981/pexels-photo-3769981.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tutor helping student" loading="lazy" />
+      </div>
+      <div class="feature-text dark">
+        <div class="feature-label">Our Story</div>
+        <h2>Founded by a Teacher Who Saw the Gap</h2>
+        <p>Carmen Delgado spent 12 years in Orange County Public Schools watching bilingual kids fall through the cracks. Puente was born to catch them.</p>
+        <p>Our tutors are bilingual, credentialed, and from Conway, Azalea Park, and Meadow Woods -- the same communities we serve.</p>
+        <a href="#enroll" class="feature-link">Meet Our Team &rarr;</a>
       </div>
     </section>
   </ScrollReveal>
 
-  <div class="spacer-sm"></div>
-
-  <hr class="divider" />
-
-  <ScrollReveal client:visible>
-    <section class="testimonials-section">
-      <h2>From Our Families</h2>
-      <ScrollReveal client:visible delay={0.1}>
-        <div class="testimonial">
-          <div class="testimonial-quote">"My daughter went from dreading reading to asking for books. Carmen and her team changed everything for us."</div>
-          <div class="testimonial-name">Rosa M.</div>
-          <div class="testimonial-role">Parent, Conway</div>
-        </div>
-      </ScrollReveal>
-      <ScrollReveal client:visible delay={0.2}>
-        <div class="testimonial">
-          <div class="testimonial-quote">"The bilingual approach means my son doesn't have to choose. He's getting stronger in both languages at the same time."</div>
-          <div class="testimonial-name">Eduardo S.</div>
-          <div class="testimonial-role">Parent, Azalea Park</div>
-        </div>
-      </ScrollReveal>
-      <ScrollReveal client:visible delay={0.3}>
-        <div class="testimonial">
-          <div class="testimonial-quote">"The parent workshops helped me understand how to talk to my child's teacher. That alone was worth it."</div>
-          <div class="testimonial-name">Lucia T.</div>
-          <div class="testimonial-role">Parent, Meadow Woods</div>
-        </div>
-      </ScrollReveal>
+  <ScrollReveal client:load>
+    <section class="feature">
+      <div class="feature-text light">
+        <div class="feature-label">Parent Workshops</div>
+        <h2>Helping Parents Navigate the System</h2>
+        <p>Monthly workshops in Spanish and English. Understand report cards, advocate at conferences, and support learning at home.</p>
+        <a href="#enroll" class="feature-link">Learn More &rarr;</a>
+      </div>
+      <div class="feature-img">
+        <img src="https://images.pexels.com/photos/7551442/pexels-photo-7551442.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Parent and child learning" loading="lazy" />
+      </div>
     </section>
   </ScrollReveal>
 
-  <div class="spacer"></div>
+  <!-- Stats -->
+  <ScrollReveal client:load>
+    <section class="stats">
+      <div class="stats-inner">
+        <div>
+          <div class="stat-number">200+</div>
+          <div class="stat-label">Students Served</div>
+        </div>
+        <div>
+          <div class="stat-number">94%</div>
+          <div class="stat-label">Grade Improvement</div>
+        </div>
+        <div>
+          <div class="stat-number">12</div>
+          <div class="stat-label">Bilingual Tutors</div>
+        </div>
+        <div>
+          <div class="stat-number">3</div>
+          <div class="stat-label">Communities</div>
+        </div>
+      </div>
+    </section>
+  </ScrollReveal>
 
-  <ScrollReveal client:visible>
+  <!-- Testimonials -->
+  <section class="testimonials" id="families">
+    <h2>From Our Families</h2>
+    <ScrollReveal client:load>
+      <div class="testimonial">
+        <div class="testimonial-quote">"My daughter went from dreading reading to asking for books. Carmen and her team changed everything for us."</div>
+        <div class="testimonial-name">Rosa M.</div>
+        <div class="testimonial-role">Parent, Conway</div>
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:load delay={0.1}>
+      <div class="testimonial">
+        <div class="testimonial-quote">"The bilingual approach means my son doesn't have to choose. He's getting stronger in both languages at the same time."</div>
+        <div class="testimonial-name">Eduardo S.</div>
+        <div class="testimonial-role">Parent, Azalea Park</div>
+      </div>
+    </ScrollReveal>
+    <ScrollReveal client:load delay={0.2}>
+      <div class="testimonial">
+        <div class="testimonial-quote">"The parent workshops helped me understand how to talk to my child's teacher. That alone was worth it."</div>
+        <div class="testimonial-name">Lucia T.</div>
+        <div class="testimonial-role">Parent, Meadow Woods</div>
+      </div>
+    </ScrollReveal>
+  </section>
+
+  <!-- AI Section - green accent block -->
+  <ScrollReveal client:load>
     <section class="ai-section">
-      <h3>Automated Progress Reports</h3>
-      <p>Our system tracks each student's weekly performance and generates bilingual progress reports sent directly to parents. English and Spanish, every Friday, no extra admin time for tutors.</p>
+      <div class="label">Powered by AI</div>
+      <h3>Automated Bilingual Progress Reports</h3>
+      <p>Our system tracks each student's weekly performance and generates progress reports in English and Spanish, sent directly to parents every Friday. No extra admin time for tutors.</p>
       <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
     </section>
   </ScrollReveal>
 
-  <div class="spacer-sm"></div>
-
-  <ScrollReveal client:visible>
-    <section class="cta-section">
-      <h2>All families are welcome here!</h2>
+  <!-- CTA -->
+  <ScrollReveal client:load>
+    <section class="cta-section" id="enroll">
+      <h2>All families are welcome here</h2>
       <p>Walk-ins welcome. We'll find the right program for your child.</p>
-      <a href="mailto:info@puentelearning.com" class="cta-btn">Enroll Your Child</a>
+      <a href="mailto:info@puentelearning.com" class="hero-cta">Enroll Your Child</a>
     </section>
   </ScrollReveal>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">Puente Learning Academy</div>
-      <p><a href="mailto:info@puentelearning.com">info@puentelearning.com</a><br />
-      4510 S Conway Rd,<br />
-      Orlando, FL 32812<br />
-      (407) 555-6241</p>
-      <div class="footer-copy">
-        &copy; 2026 Puente Learning Academy &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
+      <div class="footer-col">
+        <div class="footer-brand">Puente Learning Academy</div>
+        <p>Bilingual Education<br />Conway, Orlando</p>
       </div>
+      <div class="footer-col">
+        <p>4510 S Conway Rd<br />Orlando, FL 32812<br />(407) 555-6241</p>
+      </div>
+      <div class="footer-col">
+        <p><a href="mailto:info@puentelearning.com">info@puentelearning.com</a></p>
+      </div>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 Puente Learning Academy &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
     </div>
   </footer>
 
-  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">josecustom.ai</a>
+
+  <!-- Sticky nav scroll effect -->
+  <script>
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  </script>
 
 </body>
 </html>
