@@ -6,7 +6,6 @@ import React, {
   type HTMLAttributes,
   type ReactNode,
   type Ref,
-  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -99,7 +98,10 @@ export const RadialScrollGallery = forwardRef<
     )
     const [isMounted, setIsMounted] = useState(false)
 
-    const rotationRef = useRef(0)
+    const progressRef = useRef(0) // 0 to 1, where 1 = full 360°
+    const isPinned = useRef(false)
+    const pinOffset = useRef(0) // scroll position where pin started
+    const placeholderRef = useRef<HTMLDivElement>(null)
 
     const currentRadius = useResponsiveValue(baseRadius, mobileRadius)
     const circleDiameter = currentRadius * 2
@@ -174,45 +176,131 @@ export const RadialScrollGallery = forwardRef<
       return () => observer.disconnect()
     }, [childrenCount, isMounted])
 
-    // Wheel-driven rotation (no preventDefault — page scrolls normally)
-    const handleWheel = useCallback(
-      (e: WheelEvent) => {
-        if (disabled) return
+    // Scroll-pinned rotation: pin the gallery, spin 360°, then release
+    const SCROLL_DISTANCE = 1200 // px of scroll consumed by the 360° spin
 
-        const sensitivity = 0.15
-        const delta = e.deltaY * sensitivity
-        rotationRef.current += delta
+    useEffect(() => {
+      const el = pinRef.current
+      const placeholder = placeholderRef.current
+      if (!el || !placeholder || disabled) return
+
+      const pin = () => {
+        if (isPinned.current) return
+        isPinned.current = true
+        pinOffset.current = window.scrollY
+
+        const rect = el.getBoundingClientRect()
+        placeholder.style.height = `${rect.height}px`
+        placeholder.style.display = "block"
+
+        el.style.position = "fixed"
+        el.style.top = `${rect.top}px`
+        el.style.left = "0"
+        el.style.width = "100%"
+        el.style.zIndex = "50"
+      }
+
+      const unpin = (scrollTo: number) => {
+        if (!isPinned.current) return
+        isPinned.current = false
+
+        el.style.position = ""
+        el.style.top = ""
+        el.style.left = ""
+        el.style.width = ""
+        el.style.zIndex = ""
+        placeholder.style.display = "none"
+
+        window.scrollTo(0, scrollTo)
+      }
+
+      const handleWheel = (e: WheelEvent) => {
+        const elRect = el.getBoundingClientRect()
+        const inView =
+          elRect.top < window.innerHeight * 0.6 && elRect.bottom > window.innerHeight * 0.4
+
+        // Not pinned yet — check if we should pin
+        if (!isPinned.current) {
+          if (inView && e.deltaY > 0 && progressRef.current < 1) {
+            pin()
+            e.preventDefault()
+            return
+          }
+          if (inView && e.deltaY < 0 && progressRef.current > 0) {
+            pin()
+            e.preventDefault()
+            return
+          }
+          return // let page scroll normally
+        }
+
+        // We are pinned — consume scroll to rotate
+        e.preventDefault()
+
+        const delta = e.deltaY / SCROLL_DISTANCE
+        progressRef.current = Math.max(0, Math.min(1, progressRef.current + delta))
 
         if (containerRef.current) {
           gsap.to(containerRef.current, {
-            rotation: rotationRef.current,
-            duration: 0.6,
+            rotation: progressRef.current * 360,
+            duration: 0.5,
             ease: "power2.out",
             force3D: true,
             overwrite: true,
           })
         }
-      },
-      [disabled]
-    )
 
-    useEffect(() => {
-      const el = pinRef.current
-      if (!el) return
-
-      el.addEventListener("wheel", handleWheel, { passive: true })
-
-      return () => {
-        el.removeEventListener("wheel", handleWheel)
+        // Release pin when progress hits bounds
+        if (progressRef.current >= 1 && e.deltaY > 0) {
+          progressRef.current = 1
+          unpin(pinOffset.current + SCROLL_DISTANCE)
+        } else if (progressRef.current <= 0 && e.deltaY < 0) {
+          progressRef.current = 0
+          unpin(pinOffset.current)
+        }
       }
-    }, [handleWheel])
 
-    // Touch-driven rotation
+      window.addEventListener("wheel", handleWheel, { passive: false })
+      return () => window.removeEventListener("wheel", handleWheel)
+    }, [disabled, SCROLL_DISTANCE])
+
+    // Touch-pinned rotation
     const touchStartY = useRef(0)
 
     useEffect(() => {
       const el = pinRef.current
-      if (!el || disabled) return
+      const placeholder = placeholderRef.current
+      if (!el || !placeholder || disabled) return
+
+      const pin = () => {
+        if (isPinned.current) return
+        isPinned.current = true
+        pinOffset.current = window.scrollY
+
+        const rect = el.getBoundingClientRect()
+        placeholder.style.height = `${rect.height}px`
+        placeholder.style.display = "block"
+
+        el.style.position = "fixed"
+        el.style.top = `${rect.top}px`
+        el.style.left = "0"
+        el.style.width = "100%"
+        el.style.zIndex = "50"
+      }
+
+      const unpin = (scrollTo: number) => {
+        if (!isPinned.current) return
+        isPinned.current = false
+
+        el.style.position = ""
+        el.style.top = ""
+        el.style.left = ""
+        el.style.width = ""
+        el.style.zIndex = ""
+        placeholder.style.display = "none"
+
+        window.scrollTo(0, scrollTo)
+      }
 
       const onTouchStart = (e: TouchEvent) => {
         touchStartY.current = e.touches[0].clientY
@@ -222,28 +310,56 @@ export const RadialScrollGallery = forwardRef<
         const deltaY = touchStartY.current - e.touches[0].clientY
         touchStartY.current = e.touches[0].clientY
 
-        const sensitivity = 0.3
-        rotationRef.current += deltaY * sensitivity
+        const elRect = el.getBoundingClientRect()
+        const inView =
+          elRect.top < window.innerHeight * 0.6 && elRect.bottom > window.innerHeight * 0.4
+
+        if (!isPinned.current) {
+          if (inView && deltaY > 0 && progressRef.current < 1) {
+            pin()
+            e.preventDefault()
+            return
+          }
+          if (inView && deltaY < 0 && progressRef.current > 0) {
+            pin()
+            e.preventDefault()
+            return
+          }
+          return
+        }
+
+        e.preventDefault()
+
+        const delta = deltaY / SCROLL_DISTANCE
+        progressRef.current = Math.max(0, Math.min(1, progressRef.current + delta))
 
         if (containerRef.current) {
           gsap.to(containerRef.current, {
-            rotation: rotationRef.current,
+            rotation: progressRef.current * 360,
             duration: 0.4,
             ease: "power2.out",
             force3D: true,
             overwrite: true,
           })
         }
+
+        if (progressRef.current >= 1 && deltaY > 0) {
+          progressRef.current = 1
+          unpin(pinOffset.current + SCROLL_DISTANCE)
+        } else if (progressRef.current <= 0 && deltaY < 0) {
+          progressRef.current = 0
+          unpin(pinOffset.current)
+        }
       }
 
-      el.addEventListener("touchstart", onTouchStart, { passive: true })
-      el.addEventListener("touchmove", onTouchMove, { passive: true })
+      window.addEventListener("touchstart", onTouchStart, { passive: true })
+      window.addEventListener("touchmove", onTouchMove, { passive: false })
 
       return () => {
-        el.removeEventListener("touchstart", onTouchStart)
-        el.removeEventListener("touchmove", onTouchMove)
+        window.removeEventListener("touchstart", onTouchStart)
+        window.removeEventListener("touchmove", onTouchMove)
       }
-    }, [disabled])
+    }, [disabled, SCROLL_DISTANCE])
 
     if (childrenCount === 0) return null
 
@@ -257,6 +373,7 @@ export const RadialScrollGallery = forwardRef<
       : circleDiameter * visibleDecimal + 200
 
     return (
+      <>
       <div
         ref={mergedRef}
         className={className}
@@ -267,7 +384,6 @@ export const RadialScrollGallery = forwardRef<
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
-          cursor: "ns-resize",
         }}
         {...rest}
       >
@@ -372,6 +488,8 @@ export const RadialScrollGallery = forwardRef<
           </ul>
         </div>
       </div>
+      <div ref={placeholderRef} style={{ display: "none" }} />
+      </>
     )
   }
 )
