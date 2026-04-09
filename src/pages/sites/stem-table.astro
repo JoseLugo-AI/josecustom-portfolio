@@ -1,8 +1,9 @@
 ---
 /**
  * Stem & Table - Winter Park, Orlando
- * Matched to: grit-editor / Our Blooms template (huge decorative serif title with trademark,
- * monogram nav, numbered services with big standalone numbers, image strip, gradient footer)
+ * Inspired by: Our Blooms template + La Fleur Bouquets (product grid,
+ * category blocks, full-width hero, elegant e-commerce feel)
+ * Colors: forest green #2D4A3E, warm gold #9B6B4A, cream #FDFAF6
  */
 import ScrollReveal from '../../components/ScrollReveal.tsx';
 ---
@@ -15,7 +16,7 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
   <meta name="description" content="Boutique floral design for Central Florida weddings and events. Winter Park, Orlando." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -24,13 +25,14 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       background: #FDFAF6;
       color: #2C3E36;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+    a { color: inherit; text-decoration: none; transition: color 0.3s; }
 
-    /* Nav - monogram left, hamburger right like Our Blooms */
+    /* ── Nav ── */
     .nav {
-      padding: 1.25rem 2rem;
+      padding: 1.25rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -40,302 +42,384 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       font-size: 1.3rem;
       font-weight: 700;
       color: #2D4A3E;
-      transition: color 0.3s ease;
     }
-    .nav-monogram:hover { color: #9B6B4A; }
-    .nav-hamburger {
-      font-size: 1.2rem;
-      color: #2D4A3E;
-      cursor: pointer;
-      transition: color 0.3s ease, transform 0.3s ease;
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #888;
     }
-    .nav-hamburger:hover { color: #9B6B4A; transform: scale(1.1); }
+    .nav-links a:hover { color: #2D4A3E; }
 
-    /* HUGE decorative serif title like Our Blooms */
-    .hero-title {
-      text-align: center;
-      padding: 2rem 2rem 0;
+    /* ── Hero - full bleed image with overlay like La Fleur ── */
+    .hero {
+      position: relative;
+      height: 75vh;
+      min-height: 500px;
+      overflow: hidden;
     }
-    .hero-title h1 {
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(253,250,246,0.3) 0%, rgba(253,250,246,0.85) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .hero-overlay h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.5rem, 12vw, 8rem);
+      font-size: clamp(3.5rem, 12vw, 7rem);
       font-weight: 300;
       font-style: italic;
       color: #2D4A3E;
       line-height: 0.95;
       letter-spacing: -0.02em;
+      margin-bottom: 1rem;
     }
-    .hero-title h1 sup {
-      font-size: 0.3em;
+    .hero-overlay h1 sup {
+      font-size: 0.25em;
       vertical-align: super;
       font-style: normal;
     }
-
-    /* Hero image with badge like Our Blooms */
-    .hero-image {
-      max-width: 500px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-      position: relative;
+    .hero-tagline {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #9B6B4A;
+      margin-bottom: 1.5rem;
     }
-    .hero-image img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-    .hero-image:hover img { transform: scale(1.02); }
-    .hero-badge {
-      position: absolute;
-      top: 1rem;
-      left: 2.5rem;
-      background: #D4A017;
-      color: #fff;
-      padding: 0.5rem 0.75rem;
-      font-size: 0.6rem;
+    .hero-cta {
+      display: inline-block;
+      background: #2D4A3E;
+      color: #FDFAF6;
+      padding: 0.85rem 2.5rem;
+      font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      line-height: 1.3;
-      transition: background 0.3s ease, transform 0.3s ease;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
     }
-    .hero-badge:hover { background: #B8860B; transform: scale(1.05); }
+    .hero-cta:hover { background: #9B6B4A; transform: translateY(-2px); }
 
-    /* Who we are intro - centered text like Our Blooms */
-    .intro-section {
+    /* ── Intro ── */
+    .intro {
       text-align: center;
-      padding: 4rem 2rem;
-      max-width: 550px;
+      padding: 5rem 2rem;
+      max-width: 580px;
       margin: 0 auto;
     }
     .intro-label {
       font-size: 0.6rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       color: #9B6B4A;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
-    .intro-section p {
+    .intro p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 400;
-      line-height: 1.5;
+      line-height: 1.6;
       color: #2C3E36;
-      margin-bottom: 1.5rem;
-    }
-    .intro-btn {
-      display: inline-block;
-      border: 1.5px solid #2D4A3E;
-      padding: 0.6rem 1.5rem;
-      font-size: 0.65rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: all 0.3s ease;
-    }
-    .intro-btn:hover {
-      background: #2D4A3E;
-      color: #FDFAF6;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(45, 74, 62, 0.25);
     }
 
-    /* Image strip - 4 thumbnails like Our Blooms */
-    .image-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 4px;
-      max-width: 800px;
+    /* ── Product grid - La Fleur style ── */
+    .products {
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 2rem 4rem;
     }
-    .image-strip-item {
+    .products-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .products-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 400;
+      font-style: italic;
+      color: #2D4A3E;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .product-card {
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .product-card:hover { transform: translateY(-6px); }
+    .product-card-img {
       overflow: hidden;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      background: #F0EBE3;
     }
-    .image-strip-item img {
+    .product-card-img img {
       width: 100%;
-      aspect-ratio: 1;
+      aspect-ratio: 3/4;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s;
     }
-    .image-strip-item:hover img {
-      transform: scale(1.08);
+    .product-card:hover .product-card-img img { transform: scale(1.05); }
+    .product-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2D4A3E;
+      margin-bottom: 0.25rem;
+    }
+    .product-card .price {
+      font-size: 0.7rem;
+      color: #9B6B4A;
+      font-weight: 600;
     }
 
-    /* "What We Do" heading - bold uppercase like Our Blooms */
-    .section-heading {
-      text-align: center;
-      padding: 5rem 2rem 2rem;
+    /* ── Category blocks - La Fleur "Shop by Flower" ── */
+    .categories {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
     }
-    .section-heading h2 {
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 0.85rem;
+    .categories-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .categories-header h2 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #888;
+    }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .category-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .category-card:hover img { transform: scale(1.08); }
+    .category-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(45, 74, 62, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .category-card:hover .category-card-overlay { background: rgba(45, 74, 62, 0.6); }
+    .category-card-overlay h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .category-card-overlay span {
+      font-size: 0.55rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: #2D4A3E;
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.5);
+      padding: 0.4rem 1rem;
+      transition: all 0.3s;
     }
-    .section-heading p {
-      font-size: 0.8rem;
-      color: #888;
-      margin-top: 0.5rem;
+    .category-card:hover .category-card-overlay span {
+      background: #fff;
+      color: #2D4A3E;
+      border-color: #fff;
     }
 
-    /* Numbered services - big standalone numbers like Our Blooms */
-    .numbered-service {
-      text-align: center;
-      padding: 3rem 2rem;
-      max-width: 600px;
+    /* ── Numbered services ── */
+    .services-section {
+      max-width: 700px;
       margin: 0 auto;
-      transition: transform 0.3s ease, background 0.3s ease;
-      border-radius: 8px;
-      cursor: default;
+      padding: 4rem 2rem;
     }
-    .numbered-service:hover {
-      transform: translateY(-4px);
-      background: rgba(213, 207, 199, 0.12);
+    .services-header {
+      text-align: center;
+      margin-bottom: 3rem;
     }
-    .service-number {
+    .services-header h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 400;
+      font-style: italic;
+      color: #2D4A3E;
+    }
+    .service-item {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(44,62,54,0.1);
+      align-items: start;
+      transition: background 0.3s;
+      border-radius: 4px;
+    }
+    .service-item:last-child { border-bottom: 1px solid rgba(44,62,54,0.1); }
+    .service-item:hover { background: rgba(155,107,74,0.04); }
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
       font-weight: 300;
       color: #D5CFC7;
       line-height: 1;
-      margin-bottom: 0.5rem;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
     }
-    .numbered-service:hover .service-number {
-      color: #9B6B4A;
-    }
-    .service-divider {
-      width: 40px;
-      height: 1px;
-      background: #D5CFC7;
-      margin: 1.5rem auto;
-      transition: width 0.3s ease, background 0.3s ease;
-    }
-    .numbered-service:hover .service-divider {
-      width: 60px;
-      background: #9B6B4A;
-    }
-    .numbered-service h3 {
-      font-family: 'Nunito Sans', sans-serif;
+    .service-item:hover .service-num { color: #9B6B4A; }
+    .service-item h3 {
       font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       color: #2D4A3E;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
-    .numbered-service p {
+    .service-item p {
       font-size: 0.8rem;
       color: #888;
       line-height: 1.7;
-      max-width: 450px;
-      margin: 0 auto;
     }
 
-    /* Grow with us CTA - like Our Blooms bottom */
-    .grow-section {
-      text-align: center;
-      padding: 4rem 2rem;
-      max-width: 550px;
-      margin: 0 auto;
+    /* ── Full-width image break ── */
+    .full-image {
+      width: 100%;
+      overflow: hidden;
+      height: 400px;
     }
-    .grow-label {
-      font-size: 0.6rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #9B6B4A;
-      margin-bottom: 1rem;
-    }
-    .grow-section p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      line-height: 1.5;
-      color: #2C3E36;
-      margin-bottom: 1.5rem;
+    .full-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    /* AI section */
+    /* ── AI Section ── */
     .ai-section {
+      background: #2D4A3E;
+      color: #FDFAF6;
       text-align: center;
-      padding: 3rem 2rem;
-      max-width: 500px;
-      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    .ai-section .label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #9B6B4A;
+      margin-bottom: 0.75rem;
     }
     .ai-section h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 1rem;
     }
     .ai-section p {
-      font-size: 0.75rem;
-      color: #888;
+      font-size: 0.8rem;
+      color: rgba(253,250,246,0.5);
       line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto;
     }
     .ai-badge {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       font-size: 0.5rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #ccc;
-      transition: color 0.3s ease;
+      color: rgba(253,250,246,0.2);
     }
-    .ai-badge:hover { color: #9B6B4A; }
 
-    /* Footer - gradient fade with monogram like Our Blooms */
+    /* ── CTA Section ── */
+    .cta-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #2D4A3E;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Footer ── */
     .footer {
       background: linear-gradient(to bottom, #FDFAF6 0%, #E8E3DB 100%);
-      padding: 4rem 2rem 2rem;
+      padding: 4rem 2.5rem 2rem;
     }
     .footer-inner {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: flex-start;
     }
-    .footer-monogram {
+    .footer-brand {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: 1.6rem;
+      font-weight: 600;
+      font-style: italic;
       color: #2D4A3E;
-      transition: color 0.3s ease;
-    }
-    .footer-monogram:hover { color: #9B6B4A; }
-    .footer-right {
-      text-align: right;
-    }
-    .footer-location {
-      font-size: 0.7rem;
-      color: #888;
       margin-bottom: 0.5rem;
     }
-    .footer-links {
-      font-size: 0.65rem;
-      color: #aaa;
+    .footer-col p {
+      font-size: 0.75rem;
+      color: #888;
+      line-height: 1.8;
     }
-    .footer-links a {
-      color: #9B6B4A;
-      transition: color 0.3s ease;
-    }
-    .footer-links a:hover { text-decoration: underline; color: #2D4A3E; }
+    .footer-col a { color: #9B6B4A; }
+    .footer-col a:hover { color: #2D4A3E; }
     .footer-copy {
+      max-width: 900px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(44,62,54,0.1);
       text-align: center;
-      margin-top: 2rem;
       font-size: 0.6rem;
       color: #bbb;
     }
-    .footer-copy a {
-      color: #9B6B4A;
-      transition: color 0.3s ease;
-    }
-    .footer-copy a:hover { color: #2D4A3E; }
+    .footer-copy a { color: #9B6B4A; }
 
     .cta-badge {
       position: fixed;
@@ -343,147 +427,215 @@ import ScrollReveal from '../../components/ScrollReveal.tsx';
       right: 1rem;
       z-index: 50;
       background: rgba(45,74,62,0.9);
-      border: 1px solid rgba(155,107,74,0.3);
       color: #F2EDE8;
       padding: 0.5rem 1rem;
       border-radius: 999px;
       font-size: 0.7rem;
       backdrop-filter: blur(8px);
-      transition: all 0.3s ease;
+      transition: all 0.3s;
     }
-    .cta-badge:hover {
-      background: #9B6B4A;
-      border-color: #9B6B4A;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(155, 107, 74, 0.35);
-    }
+    .cta-badge:hover { background: #9B6B4A; }
 
+    /* ── Responsive ── */
     @media (max-width: 768px) {
-      .image-strip { grid-template-columns: repeat(2, 1fr); }
-      .hero-image img { height: 350px; }
-      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
-      .footer-right { text-align: center; }
+      .product-grid { grid-template-columns: 1fr 1fr; }
+      .category-grid { grid-template-columns: 1fr; }
+      .service-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .hero { height: 60vh; }
+      .footer-inner { flex-direction: column; gap: 1.5rem; }
+      .nav-links { gap: 1rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Nav -->
   <nav class="nav">
-    <div class="nav-monogram">S.T.</div>
-    <div class="nav-hamburger">&#9776;</div>
+    <div class="nav-monogram">Stem & Table<sup style="font-size:0.5em">&reg;</sup></div>
+    <div class="nav-links">
+      <a href="#collections">Collections</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
-  <ScrollReveal client:visible>
-    <section class="hero-title">
+  <!-- Hero - full bleed floral image -->
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1400&q=80" alt="Lush seasonal floral arrangement" loading="eager" />
+    <div class="hero-overlay">
       <h1>Stem &<br />Table<sup>&reg;</sup></h1>
-    </section>
-  </ScrollReveal>
-
-  <ScrollReveal client:visible delay={0.15}>
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=800&q=80" alt="Seasonal floral arrangement" />
-      <div class="hero-badge">New<br />10% Off Your<br />First Order</div>
+      <div class="hero-tagline">Seasonal. Intentional. Yours.</div>
+      <a href="#contact" class="hero-cta">Book a Consultation</a>
     </div>
-  </ScrollReveal>
+  </section>
 
-  <ScrollReveal client:visible delay={0.1}>
-    <section class="intro-section">
-      <div class="intro-label">Who We Are</div>
-      <p>We're Stem & Table<sup>&reg;</sup> and we're here to help you find your floral story.</p>
-      <a href="#contact" class="intro-btn">About Us</a>
+  <!-- Intro -->
+  <ScrollReveal client:load>
+    <section class="intro">
+      <div class="intro-label">Winter Park Floral Studio</div>
+      <p>We design with what the season gives us. No dyed flowers, no foam, no filler. Every arrangement tells a story -- yours.</p>
     </section>
   </ScrollReveal>
 
-  <div class="image-strip">
-    <ScrollReveal client:visible delay={0}>
-      <div class="image-strip-item">
-        <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=400&q=80" alt="Wedding arch" />
+  <!-- Product Grid - La Fleur inspired -->
+  <ScrollReveal client:load>
+    <section class="products" id="collections">
+      <div class="products-header">
+        <h2>Our Most-Loved Arrangements</h2>
       </div>
-    </ScrollReveal>
-    <ScrollReveal client:visible delay={0.1}>
-      <div class="image-strip-item">
-        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=400&q=80" alt="Bridal bouquet" />
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=600&q=80" alt="Bridal bouquet" loading="lazy" />
+          </div>
+          <h3>The Bridal</h3>
+          <div class="price">From $285</div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Table centerpiece" loading="lazy" />
+          </div>
+          <h3>Garden Centerpiece</h3>
+          <div class="price">From $120</div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=600&q=80" alt="Seasonal arrangement" loading="lazy" />
+          </div>
+          <h3>Seasonal Petite</h3>
+          <div class="price">From $65</div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=600&q=80" alt="Wedding arch" loading="lazy" />
+          </div>
+          <h3>Ceremony Arch</h3>
+          <div class="price">From $800</div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="https://images.pexels.com/photos/2879824/pexels-photo-2879824.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wrapped bouquet" loading="lazy" />
+          </div>
+          <h3>Market Wrap</h3>
+          <div class="price">From $45</div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-img">
+            <img src="https://images.pexels.com/photos/1697912/pexels-photo-1697912.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dried flowers" loading="lazy" />
+          </div>
+          <h3>Everlasting Dried</h3>
+          <div class="price">From $75</div>
+        </div>
       </div>
-    </ScrollReveal>
-    <ScrollReveal client:visible delay={0.2}>
-      <div class="image-strip-item">
-        <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Centerpiece" />
+    </section>
+  </ScrollReveal>
+
+  <!-- Category Blocks - La Fleur "Shop by" style -->
+  <ScrollReveal client:load>
+    <section class="categories">
+      <div class="categories-header">
+        <h2>Browse by Occasion</h2>
       </div>
-    </ScrollReveal>
-    <ScrollReveal client:visible delay={0.3}>
-      <div class="image-strip-item">
-        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=400&q=80" alt="In progress" />
+      <div class="category-grid">
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Wedding flowers" loading="lazy" />
+          <div class="category-card-overlay">
+            <h3>Weddings</h3>
+            <span>Explore</span>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Corporate event" loading="lazy" />
+          <div class="category-card-overlay">
+            <h3>Events</h3>
+            <span>Explore</span>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://images.pexels.com/photos/1458825/pexels-photo-1458825.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Weekly flowers" loading="lazy" />
+          <div class="category-card-overlay">
+            <h3>Weekly Fresh</h3>
+            <span>Explore</span>
+          </div>
+        </div>
       </div>
-    </ScrollReveal>
+    </section>
+  </ScrollReveal>
+
+  <!-- Full-width image break -->
+  <div class="full-image">
+    <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=1400&q=80" alt="Floral studio workspace" loading="lazy" />
   </div>
 
-  <ScrollReveal client:visible>
-    <div class="section-heading">
-      <h2>What We Do</h2>
-      <p>We bring a touch of that simple magic into your world.</p>
-    </div>
-  </ScrollReveal>
-
-  <ScrollReveal client:visible delay={0.1}>
-    <div class="numbered-service">
-      <div class="service-number">1</div>
-      <div class="service-divider"></div>
-      <h3>Wedding Floral Design</h3>
-      <p>Ceremony arches, reception centerpieces, bouquets, boutonnieres, and personal flowers. We limit ourselves to one wedding per weekend so every event gets our full attention.</p>
-    </div>
-  </ScrollReveal>
-
-  <ScrollReveal client:visible delay={0.15}>
-    <div class="numbered-service">
-      <div class="service-number">2</div>
-      <div class="service-divider"></div>
-      <h3>Event Installations & Centerpieces</h3>
-      <p>Corporate events, galas, and private parties. Large-scale installations or intimate table arrangements -- scaled to your space and budget.</p>
-    </div>
-  </ScrollReveal>
-
-  <ScrollReveal client:visible delay={0.2}>
-    <div class="numbered-service">
-      <div class="service-number">3</div>
-      <div class="service-divider"></div>
-      <h3>Weekly Fresh Arrangements</h3>
-      <p>Standing orders for restaurants, hotels, and offices. Fresh seasonal flowers delivered weekly, arranged on-site. If it's not in season, we'll tell you -- and suggest something better.</p>
-    </div>
-  </ScrollReveal>
-
-  <ScrollReveal client:visible delay={0.1}>
-    <section class="grow-section" id="contact">
-      <div class="grow-label">Grow With Us</div>
-      <p>Discover how we can add a touch of natural beauty to your next event.</p>
-      <a href="mailto:flowers@stemandtable.com" class="intro-btn">About Us</a>
+  <!-- Services -->
+  <ScrollReveal client:load>
+    <section class="services-section" id="services">
+      <div class="services-header">
+        <h2>What We Do</h2>
+      </div>
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <div>
+          <h3>Wedding Floral Design</h3>
+          <p>Ceremony arches, reception centerpieces, bouquets, and personal flowers. We limit ourselves to one wedding per weekend so every event gets our full attention.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <div>
+          <h3>Event Installations</h3>
+          <p>Corporate events, galas, and private parties. Large-scale installations or intimate table arrangements -- scaled to your space and budget.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <div>
+          <h3>Weekly Fresh Arrangements</h3>
+          <p>Standing orders for restaurants, hotels, and offices. Fresh seasonal flowers delivered weekly, arranged on-site.</p>
+        </div>
+      </div>
     </section>
   </ScrollReveal>
 
-  <ScrollReveal client:visible delay={0.15}>
+  <!-- AI Section -->
+  <ScrollReveal client:load>
     <section class="ai-section">
+      <div class="label">Powered by AI</div>
       <h3>Seasonal Availability & Instant Quoting</h3>
-      <p>Select your colors, style, and wedding date. Our system shows what's in season, suggests arrangement options, and generates a ballpark quote before your first consultation. No guesswork, no sticker shock.</p>
+      <p>Select your colors, style, and event date. Our system shows what's in season, suggests arrangement options, and generates a ballpark quote before your first consultation.</p>
       <div class="ai-badge">AI-Ready Architecture by josecustom.ai</div>
     </section>
   </ScrollReveal>
 
+  <!-- CTA -->
+  <ScrollReveal client:load>
+    <section class="cta-section" id="contact">
+      <h2>Let's Create Something Beautiful</h2>
+      <p>Every project starts with a conversation. Tell us about your event and we'll show you what the season has to offer.</p>
+      <a href="mailto:flowers@stemandtable.com" class="hero-cta">Start Your Consultation</a>
+    </section>
+  </ScrollReveal>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-monogram">S.T.</div>
-      <div class="footer-right">
-        <div class="footer-location">Winter Park, FL</div>
-        <div class="footer-links">
-          <a href="mailto:flowers@stemandtable.com">Contact</a>
-        </div>
+      <div class="footer-col">
+        <div class="footer-brand">Stem & Table</div>
+        <p>Boutique Floral Design<br />Winter Park, Florida</p>
+      </div>
+      <div class="footer-col">
+        <p>287 W Fairbanks Ave<br />Winter Park, FL 32789<br />(407) 555-3192</p>
+      </div>
+      <div class="footer-col">
+        <p><a href="mailto:flowers@stemandtable.com">flowers@stemandtable.com</a><br /><a href="#">Instagram</a></p>
       </div>
     </div>
     <div class="footer-copy">
-      &copy; 2026 Stem & Table &middot; 287 W Fairbanks Ave, Winter Park, FL 32789 &middot; (407) 555-3192<br />
-      <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
+      &copy; 2026 Stem & Table &middot; <a href="https://josecustom.ai/websites" target="_blank" rel="noopener">Built by josecustom.ai</a>
     </div>
   </footer>
 
-  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">Demo site by josecustom.ai</a>
+  <a href="https://josecustom.ai/websites" target="_blank" rel="noopener" class="cta-badge">josecustom.ai</a>
 
 </body>
 </html>
