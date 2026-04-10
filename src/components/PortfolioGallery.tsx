@@ -45,7 +45,7 @@ export function PortfolioGallery() {
     }
   }
 
-  const [cardW, cardH] = typeof window !== "undefined" && window.innerWidth < 768 ? [140, 195] : [200, 280]
+  const [cardW, cardH] = typeof window !== "undefined" && window.innerWidth < 768 ? [100, 140] : [200, 280]
 
   const renderCard = (site: SiteCard, index: number, isActive = false) => (
     <div
@@ -119,10 +119,10 @@ export function PortfolioGallery() {
       <h1
         style={{
           fontFamily: "'Orbitron', sans-serif",
-          fontSize: "clamp(2.5rem, 6vw, 4rem)",
+          fontSize: "clamp(2rem, 6vw, 4rem)",
           fontWeight: 800,
           letterSpacing: "-0.02em",
-          marginBottom: "1rem",
+          marginBottom: "0.75rem",
           background: "linear-gradient(135deg, #fff 0%, #1E90FF 100%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
@@ -134,23 +134,27 @@ export function PortfolioGallery() {
       <p
         style={{
           color: "rgba(255,255,255,0.3)",
-          fontSize: "0.7rem",
+          fontSize: "0.65rem",
           letterSpacing: "0.1em",
           textTransform: "uppercase" as const,
-          marginBottom: "0.5rem",
+          marginBottom: "1.5rem",
         }}
       >
         Scroll to explore &middot; Click to view
       </p>
-      <div
-        style={{
-          marginTop: "0.75rem",
-          fontSize: "1.2rem",
-          color: "rgba(255,255,255,0.2)",
-          animation: "bounce-down 1.5s ease-in-out infinite",
-        }}
-      >
-        &#8595;
+      <div style={{
+        fontFamily: "'Orbitron', sans-serif",
+        fontSize: "0.7rem",
+        fontWeight: 600,
+        textTransform: "uppercase" as const,
+        letterSpacing: "0.05em",
+        color: "rgba(255,255,255,0.5)",
+      }}>
+        Want a site like these?{" "}
+        <a href="https://josecustom.ai/websites" style={{ color: "#1E90FF", textDecoration: "none" }}>Get started</a>
+      </div>
+      <div style={{ fontSize: "0.55rem", color: "rgba(255,255,255,0.15)", marginTop: "0.5rem" }}>
+        &copy; 2026 josecustom.ai
       </div>
     </div>
   )
