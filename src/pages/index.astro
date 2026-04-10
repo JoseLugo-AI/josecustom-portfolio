@@ -13,13 +13,16 @@ import { PortfolioGallery } from '../components/PortfolioGallery.tsx';
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html { scroll-behavior: auto; overscroll-behavior: none; -webkit-overflow-scrolling: touch; }
+      html, body {
+        height: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+      }
       body {
         font-family: 'Inter', sans-serif;
         background: #0a0a0a;
         color: #fff;
         -webkit-font-smoothing: antialiased;
-        overscroll-behavior: none;
       }
       a { color: inherit; text-decoration: none; }
 

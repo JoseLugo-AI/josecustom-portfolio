@@ -45,7 +45,7 @@ export function PortfolioGallery() {
     }
   }
 
-  const [cardW, cardH] = typeof window !== "undefined" && window.innerWidth < 768 ? [100, 140] : [200, 280]
+  const [cardW, cardH] = typeof window !== "undefined" && window.innerWidth < 768 ? [75, 105] : [200, 280]
 
   const renderCard = (site: SiteCard, index: number, isActive = false) => (
     <div
@@ -163,7 +163,7 @@ export function PortfolioGallery() {
   return (
     <RadialScrollGallery
       baseRadius={420}
-      mobileRadius={200}
+      mobileRadius={140}
       visiblePercentage={42}
       onItemSelect={handleSelect}
       centerContent={centerOverlay}
