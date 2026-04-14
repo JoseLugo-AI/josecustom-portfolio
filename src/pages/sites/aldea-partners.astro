@@ -97,11 +97,15 @@ import AldeaHero from '../../components/AldeaHero.tsx';
     .main {
       flex: 1;
       min-width: 0;
+      position: relative;
     }
 
-    /* Hero styles handled by AldeaHero React component */
-
     /* ── Content area ── */
+    .content-wrapper {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+    }
     .content {
       padding: 0 3rem 0 3rem;
       max-width: 960px;
@@ -576,6 +580,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
       <!-- Hero: animated WebGL mesh gradient -->
       <AldeaHero client:load />
 
+      <div class="content-wrapper">
       <div class="content">
 
         <!-- Intro -->
@@ -841,6 +846,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
         </div>
       </footer>
 
+      </div><!-- .content-wrapper -->
     </div>
   </div>
 
