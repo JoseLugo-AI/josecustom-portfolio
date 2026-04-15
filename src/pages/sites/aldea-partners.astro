@@ -45,8 +45,9 @@ import AldeaHero from '../../components/AldeaHero.tsx';
       left: 0;
       right: 0;
       z-index: 100;
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(232,232,232,0.6);
     }
     .topnav-row1 {
       display: flex;
@@ -105,15 +106,29 @@ import AldeaHero from '../../components/AldeaHero.tsx';
       position: relative;
       z-index: 1;
       background: #fff;
+      margin-top: 0;
     }
     .content {
       padding: 0 3rem 0 3rem;
-      max-width: 960px;
+      max-width: 100%;
     }
 
-    /* ── Two-column section: title left, body right ── */
+    /* ── Two-column section: staggered left/right ── */
     .section {
       padding: 2.5rem 0 5rem;
+      max-width: 820px;
+    }
+    .section.align-left {
+      margin-right: auto;
+      margin-left: 0;
+    }
+    .section.align-right {
+      margin-left: auto;
+      margin-right: 0;
+    }
+    .section.align-center {
+      margin-left: auto;
+      margin-right: auto;
     }
     .section-header {
       display: flex;
@@ -536,6 +551,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
+      .section.align-left, .section.align-right { max-width: 100%; margin-left: 0; margin-right: 0; }
       .topnav-row2 { display: none; }
       .topnav-row1 { padding: 0.75rem 1.5rem; }
       .content { padding: 0 1.5rem; }
@@ -584,7 +600,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
       <div class="content">
 
         <!-- Intro -->
-        <div class="intro section">
+        <div class="intro section align-center">
           <div class="section-header">
             <div class="section-title">
               <span class="name">Clear Numbers.<br />Straight Answers.</span>
@@ -598,7 +614,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
         </div>
 
         <!-- TOC -->
-        <div class="toc section">
+        <div class="toc section align-center">
           <div class="section-header">
             <div class="section-title">
               <span class="name">Contents</span>
@@ -616,7 +632,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
         </div>
 
         <!-- 01 Services -->
-        <section id="services" class="section">
+        <section id="services" class="section align-center">
           <div class="section-header">
             <div class="section-title">
               <span class="num">01</span>
@@ -659,7 +675,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
         </section>
 
         <!-- 02 Our Approach -->
-        <section id="approach" class="section">
+        <section id="approach" class="section align-center">
           <div class="section-header">
             <div class="section-title">
               <span class="num">02</span>
@@ -718,7 +734,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
         </section>
 
         <!-- 03 The Team -->
-        <section id="team" class="section">
+        <section id="team" class="section align-center">
           <div class="section-header">
             <div class="section-title">
               <span class="num">03</span>
@@ -761,7 +777,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
         </section>
 
         <!-- 04 AI Integration -->
-        <section id="ai" class="section">
+        <section id="ai" class="section align-center">
           <div class="section-header">
             <div class="section-title">
               <span class="num">04</span>
@@ -799,7 +815,7 @@ import AldeaHero from '../../components/AldeaHero.tsx';
         </section>
 
         <!-- 05 Contact -->
-        <section id="contact" class="section">
+        <section id="contact" class="section align-center">
           <div class="section-header">
             <div class="section-title">
               <span class="num">05</span>
